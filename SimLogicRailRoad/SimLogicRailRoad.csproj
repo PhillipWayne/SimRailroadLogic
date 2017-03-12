@@ -1,0 +1,506 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C1BEBAC9-FAF6-49A6-9F4E-BFBD159FC125}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SimLogicRailRoad</RootNamespace>
+    <AssemblyName>SimLogicRailRoad</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssignBitform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AssignBitform.designer.cs">
+      <DependentUpon>AssignBitform.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form2.designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form3.designer.cs">
+      <DependentUpon>Form3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Information.cs" />
+    <Compile Include="Initial_Window.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Initial_Window.designer.cs">
+      <DependentUpon>Initial_Window.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ladder_Logic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ladder_Logic.designer.cs">
+      <DependentUpon>Ladder_Logic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SaveXML.cs" />
+    <Compile Include="Simulation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Simulation.designer.cs">
+      <DependentUpon>Simulation.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AssignBitform.resx">
+      <DependentUpon>AssignBitform.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form2.resx">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form3.resx">
+      <DependentUpon>Form3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Initial_Window.resx">
+      <DependentUpon>Initial_Window.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ladder_Logic.resx">
+      <DependentUpon>Ladder_Logic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Simulation.resx">
+      <DependentUpon>Simulation.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1487634177_play-circle-outline.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1487634499_undo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1487634657_icon-ios7-undo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1487634802_icon-ios7-redo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1487635227_ic_folder_open_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1487635598_24_Stop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1487635747_content-cut.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1487635873_ic_content_cut_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1487636058_ic_content_paste_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1487636182_ic_content_copy_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1487636256_ic_close_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1487640103_new10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1487640932_save_as.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1487640945_save_as.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1487652856_14.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1487653625_icon-play.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1487653660_icon-stop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ActualSizeHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ActualSizeHS1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\back_closed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\back_open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BehindTextHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BehindTextHS1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\burnsengineering.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CanvasScaleHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CanvasScaleHS1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CopyAsImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CopyAsImage1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CopyHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CopyHS1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CutHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CutHS1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DeleteHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DeleteHS1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Edit_RedoHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Edit_RedoHS1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Edit_UndoHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Edit_UndoHS1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\front_closed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\front_open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Hard_Drive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Hard_Drive1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hare.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hare1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Help.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Help1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ImportXMLHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ImportXMLHS1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\InsertPictureHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\InsertPictureHS1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LegendHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LegendHS1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NewDocumentHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NewDocumentHS1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\openHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\openHS1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PageWidthHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PageWidthHS1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PasteHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PasteHS1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PauseHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PauseHS1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PrintHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PrintHS1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PrintPreviewHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PrintPreviewHS1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PrintSetupHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PrintSetupHS1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ProtectFormHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ProtectFormHS1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\railroad_crossing.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ram.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ram.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ram1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RecordHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RecordHS1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RefreshDocViewHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RefreshDocViewHS1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\relay.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\saveAsHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\saveAsHS1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SaveAsImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SaveAsImage1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\saveHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\saveHS1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sig_1h_d_e.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sig_1h_d_w.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sig_1h_l_n.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sig_1h_l_s.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sig_1h_r_n.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sig_1h_r_n1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sig_2h_d_e.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sig_2h_d_w.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sig_2h_l_n.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sig_2h_l_s.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sig_2h_r_n.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sig_2h_r_s.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sig_2h_u_e.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sig_2h_u_w.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\splash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\splash1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Steamroller-32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Steamroller-32x321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\switch_hor_ne.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\switch_hor_nw.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\switch_hor_se.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\switch_hor_sw.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\switch_vert_ne.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\switch_vert_nw.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\switch_vert_se.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\switch_vert_sw.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\track_45.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\track_90.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\track_135.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\track_180.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\turtle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\turtle1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wire_color.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wire_color1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ZoomHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ZoomHS1.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
