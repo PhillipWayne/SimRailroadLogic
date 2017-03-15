@@ -166,7 +166,7 @@ namespace testsim
             for (int i = 0; i < count; i++)
             {             
             
-                if (bits[i].IndexOfAny(chars) > 0)
+                if (bits[i].IndexOfAny(chars) >= 0)
                 {
 
                     disp_bits[disp_count] = bits[i];
