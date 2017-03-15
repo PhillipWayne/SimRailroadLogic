@@ -65,19 +65,19 @@ namespace testsim
                 {
                     case 45:
                         pb.Image = SimLogicRailRoad.Properties.Resources.track_45;
-                        pb.Name = "Pic";
+                        pb.Name = "Track_component_at_a_45_degree_angle";
                         pb.ContextMenuStrip = contextMenuStrip1;
                         this.Controls.Add(pb);
                         break;
                     case 90:
                         pb.Image = SimLogicRailRoad.Properties.Resources.track_90;
-                        pb.Name = "Pic";
+                        pb.Name = "Track_component_at_a_90_degree_angle";
                         pb.ContextMenuStrip = contextMenuStrip1;
                         this.Controls.Add(pb);
                         break;
                     case 135:
                         pb.Image = SimLogicRailRoad.Properties.Resources.track_135;
-                        pb.Name = "Pic";
+                        pb.Name = "Track_component_at_a_135_degree_angle";
                         pb.ContextMenuStrip = contextMenuStrip1;
                         this.Controls.Add(pb);
                         break;

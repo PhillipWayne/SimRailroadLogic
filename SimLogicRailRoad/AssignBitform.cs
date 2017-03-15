@@ -25,6 +25,7 @@ namespace RailRoadLogicSim
         public string [] lastofbit1;
         string assignbit;
         private object namebit;
+        string check;
         private void AssignBitform_Load(object sender, EventArgs e)
         {
             guibits = Simulation.bitssofbits;
@@ -59,42 +60,36 @@ namespace RailRoadLogicSim
         }
             private void listbox1_mouseclick(object sender, EventArgs e)
         {
+            namebit = Form2.knowbit;
+            PictureBox pb = (PictureBox)namebit;
+            check = pb.Name;
+
             if (listBox1.SelectedItem != null)
             {
-               namebit =Form2.knowbit;
-                PictureBox pb = (PictureBox)namebit;
-               /* MemoryStream ms = new MemoryStream();
-                pb.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
-                Byte[] a = ms.ToArray();
-
-                String text = Convert.ToBase64String(a);
-                switch (text)
+               
+               
+                switch (check)
                 {
 
-                    case 45:
-                        pb.Image = RailRoadLogicSim.Properties.Resources.track_45;
-                        pb.Name = "Pic";
-                        pb.ContextMenuStrip = contextMenuStrip1;
-                        this.Controls.Add(pb);
+                    case "Track_component_at_a_45_degree_angle":
+                        assignbit = listBox1.SelectedItem.ToString();
+                        pb.Tag = assignbit;
+                        MessageBox.Show(" Your "+ check + "\n\n" +"is now assigned the bit " + assignbit );
                         break;
-                    case 90:
-                        pb.Image = RailRoadLogicSim.Properties.Resources.track_90;
-                        pb.Name = "Pic";
-                        pb.ContextMenuStrip = contextMenuStrip1;
-                        this.Controls.Add(pb);
+                    case "Track_component_at_a_90_degree_angle":
+                        assignbit = listBox1.SelectedItem.ToString();
+                        pb.Tag = assignbit;
+                        MessageBox.Show(" Your " + check +"\n\n" + " is now assigned the bit "  + assignbit);
                         break;
-                    case 135:
-                        pb.Image = RailRoadLogicSim.Properties.Resources.track_135;
-                        pb.Name = "Pic";
-                        pb.ContextMenuStrip = contextMenuStrip1;
-                        this.Controls.Add(pb);
+                    case "Track_component_at_a_135_degree_angle":
+                        assignbit = listBox1.SelectedItem.ToString();
+                        pb.Tag = assignbit;
+                        MessageBox.Show(" Your " + check+ "\n\n" + " is now assigned the bit " + assignbit);
                         break;
                 }
-                */
                 
-                assignbit = listBox1.SelectedItem.ToString();
-                pb.Tag = assignbit;
-                MessageBox.Show("Your component is now assigned the bit "+ assignbit);
+                
+              
             }
 
         }
