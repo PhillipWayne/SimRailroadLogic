@@ -23,7 +23,7 @@ namespace testsim
 
    
 
-            for (int i = 1;  i < user_input_num; i++)
+            for (int i = 1;  i < user_input_num + 1; i++)
             {
                 //Create label
                 Label label = new Label();
