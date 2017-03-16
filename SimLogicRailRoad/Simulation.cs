@@ -14,7 +14,7 @@ namespace testsim
 {
     public partial class  Simulation : Form
     {
-        
+   
         string[] bits = new string[1000]; //bits and boolean logic
         public string[] to_bits = new string[1000]; //here bits and boolean logic go
 
@@ -30,7 +30,6 @@ namespace testsim
         public static string[] lastofbit;
         //user input
         int[] user_input_num = new int[1000];
-         
 
         public Simulation()
         {
