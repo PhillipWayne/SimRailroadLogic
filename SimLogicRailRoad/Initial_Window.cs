@@ -23,7 +23,7 @@ namespace testsim
 
             Sim_start.Enabled = false;
 
-
+            this.AutoSize = true;
         }
 
         public void findTextToolStripMenuItem_Click(object sender, EventArgs e)
@@ -47,6 +47,7 @@ namespace testsim
 
                 Sim_start.Enabled = true;
             }
+
         }
 
         private void Sim_start_Click(object sender, EventArgs e)
