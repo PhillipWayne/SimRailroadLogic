@@ -55,7 +55,7 @@ namespace testsim
             Simulation sim = new Simulation();
 
             //  sim.Hide();
-            sim.Show();
+            //sim.Show();
            sim.text_file_parse(file_name,text_read);
            // sim.Close();
             Form2 f2 = new testsim.Form2();

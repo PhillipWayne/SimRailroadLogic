@@ -25,11 +25,25 @@ namespace testsim
         
         //boolean logic parsed
         string[] boolean_parsed = new string[1000];
+
+        //user input
+        int[] user_input_num = new int[1000];
+
+        //ismails static bits
+
         public static string[] bitassign;
         public static string[] bitssofbits;
         public static string[] lastofbit;
-        //user input
-        int[] user_input_num = new int[1000];
+
+        //jimmys static bits
+
+        public static string[] disp_bits_static;
+        public static string[] boolean_parsed_static;
+        public static int[] user_input_num_static;
+        public static string[] disp_to_bits_static;
+        public static string[] to_bits_static;
+        public static string[] bits_static;
+        public static int string_array_cap_static;
 
         public Simulation()
         {
@@ -143,9 +157,12 @@ namespace testsim
 
             }
 
+            to_bits_static = to_bits;
+            bits_static = bits;
 
             //pass in count number to display_bits
 
+            string_array_cap_static = count;
             display_bits(count);
 
         }
@@ -375,12 +392,19 @@ namespace testsim
 
 
                 }
+
                 bitssofbits = bits;
                 bitassign = to_bits;
                 lastofbit = disp_to_bits;
+
                 //store bit_num to record number of user inputs
                 user_input_num[i] = bit_num - 1;
             }
+
+            disp_bits_static = disp_bits;
+            boolean_parsed_static = boolean_parsed;
+            user_input_num_static = user_input_num;
+            disp_to_bits_static = disp_to_bits;
 
         }
         
