@@ -51,6 +51,18 @@
     <Compile Include="AssignBitform.designer.cs">
       <DependentUpon>AssignBitform.cs</DependentUpon>
     </Compile>
+    <Compile Include="Bit_And_Boolean_Lists.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bit_And_Boolean_Lists.Designer.cs">
+      <DependentUpon>Bit_And_Boolean_Lists.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Coded_Tk_Assign.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Coded_Tk_Assign.Designer.cs">
+      <DependentUpon>Coded_Tk_Assign.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,6 +94,12 @@
     <Compile Include="Ladder_Logic.designer.cs">
       <DependentUpon>Ladder_Logic.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ladder_Logic_Selection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ladder_Logic_Selection.Designer.cs">
+      <DependentUpon>Ladder_Logic_Selection.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SaveXML.cs" />
@@ -91,8 +109,26 @@
     <Compile Include="Simulation.designer.cs">
       <DependentUpon>Simulation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Switch_Assign.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Switch_Assign.Designer.cs">
+      <DependentUpon>Switch_Assign.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Track_Assign.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Track_Assign.Designer.cs">
+      <DependentUpon>Track_Assign.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AssignBitform.resx">
       <DependentUpon>AssignBitform.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bit_And_Boolean_Lists.resx">
+      <DependentUpon>Bit_And_Boolean_Lists.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Coded_Tk_Assign.resx">
+      <DependentUpon>Coded_Tk_Assign.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
@@ -106,6 +142,9 @@
     <EmbeddedResource Include="Ladder_Logic.resx">
       <DependentUpon>Ladder_Logic.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Ladder_Logic_Selection.resx">
+      <DependentUpon>Ladder_Logic_Selection.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -118,6 +157,12 @@
     </Compile>
     <EmbeddedResource Include="Simulation.resx">
       <DependentUpon>Simulation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Switch_Assign.resx">
+      <DependentUpon>Switch_Assign.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Track_Assign.resx">
+      <DependentUpon>Track_Assign.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

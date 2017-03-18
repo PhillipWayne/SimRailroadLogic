@@ -140,13 +140,6 @@ namespace testsim
         }
 
         //Toolbox Button
-        private void toolboxToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Form3 f3 = new testsim.Form3();
-            f3.ControlAdded += new ControlEventHandler(this.Form3_FormControlAdd);
-            
-            f3.Show();
-        }
 
         //New Button
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
@@ -558,6 +551,31 @@ namespace testsim
             AssignBitform assbit = new AssignBitform();
             assbit.Show();
 
+        }
+
+        private void ladderLogicToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Ladder_Logic_Selection ladder = new Ladder_Logic_Selection();
+            ladder.Show();
+        }
+
+        private void componentsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form3 f3 = new testsim.Form3();
+            f3.ControlAdded += new ControlEventHandler(this.Form3_FormControlAdd);
+
+            f3.Show();
+        }
+
+        private void toolboxToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bitListsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Bit_And_Boolean_Lists bit = new Bit_And_Boolean_Lists();
+            bit.Show();
         }
 
         //DB Test in Menu
