@@ -29,7 +29,7 @@ namespace testsim
         //1
 
         //int temp = 0;
-
+        Form3 f31 = new Form3();
         bool capture = false;
         bool copy = false;
         private Point MouseDownLocation;
@@ -354,7 +354,7 @@ namespace testsim
         //Undo Button
         private void undoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            f31.Show();
         }
 
         //Redo Button
@@ -482,7 +482,8 @@ namespace testsim
         }
 
         private void copyToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
+        { 
+
             copy = true;
             // PictureBox pb = (PictureBox)gl;
         }
@@ -491,6 +492,7 @@ namespace testsim
 
         private void pasteToolStripMenuItem2_Click(object sender, EventArgs e)
         {
+
             if (copy == true)
             {
 
