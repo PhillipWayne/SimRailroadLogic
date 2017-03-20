@@ -15,7 +15,7 @@ namespace testsim
         //strings used to get boolean logic from the input function
         string boolean_logic_message;
         string boolean_placeholder_message;
-
+       
         public Ladder_Logic()
         {
             InitializeComponent();
@@ -52,8 +52,10 @@ namespace testsim
                 this.Controls.Add(label);
                 this.Controls.Add(num);
                 this.AutoSize = true;
+               
             }
 
+        
         
 
         }

@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace testsim
 {
-    
+    public delegate void Comm(object sender, EventArgs e);
     public partial class Form3 : Form
     {
         public Form3()
@@ -23,14 +23,18 @@ namespace testsim
         }
         
         public int track;
-
+        public event Comm commbetween;
         public static int trkw = 0;
         int i = 0;
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
            trkw = 45;
-            
+
+            if (commbetween != null)
+            {
+                commbetween(sender, e);
+            }
             Label sel = new Label();
             sel.Text = "Component added ";
             var selLocX = sel.Location.X;
@@ -55,6 +59,10 @@ namespace testsim
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             trkw = 135;
+            if (commbetween != null)
+            {
+                commbetween(sender, e);
+            }
             Label sel = new Label();
             sel.Text = "Component added";
             var selLocX = sel.Location.X;
@@ -85,13 +93,18 @@ namespace testsim
         private void pictureBox3_Click(object sender, EventArgs e)
         {
             trkw = 90;
-
-            TextBox sel = new TextBox();
-            sel.Text = "Your component has been added to the simulator";
+            if (commbetween != null)
+            {
+                commbetween(sender, e);
+            }
+            
+                Label sel = new Label();
+            sel.Text = "Component added";
             var selLocX = sel.Location.X;
             var selLocY = sel.Location.Y;
             selLocX = 0;
             selLocY = 0;
+            sel.ForeColor = Color.Red;
             this.Controls.Add(sel);
             if (i >= 1)
             {

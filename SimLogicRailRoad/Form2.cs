@@ -41,13 +41,13 @@ namespace testsim
         Image text;
         int  x;
         int y;
-        bool simstart=false;
+       bool simstart=false;
      public static string[] assinbits;
         
         // string file_name;
         // string text_read;
         static string[] bitsass;
-        private void Form3_FormControlAdd(object sender, EventArgs e)
+        private void Form3_bridggap(object sender, EventArgs e)
         {
             if (simstart == false)
             {
@@ -67,18 +67,21 @@ namespace testsim
                         pb.Image = SimLogicRailRoad.Properties.Resources.track_45;
                         pb.Name = "Track_component_at_a_45_degree_angle";
                         pb.ContextMenuStrip = contextMenuStrip1;
+                        pb.Tag = "track";
                         this.Controls.Add(pb);
                         break;
                     case 90:
                         pb.Image = SimLogicRailRoad.Properties.Resources.track_90;
                         pb.Name = "Track_component_at_a_90_degree_angle";
                         pb.ContextMenuStrip = contextMenuStrip1;
+                        pb.Tag = "track";
                         this.Controls.Add(pb);
                         break;
                     case 135:
                         pb.Image = SimLogicRailRoad.Properties.Resources.track_135;
                         pb.Name = "Track_component_at_a_135_degree_angle";
                         pb.ContextMenuStrip = contextMenuStrip1;
+                        pb.Tag = "track";
                         this.Controls.Add(pb);
                         break;
                 }
@@ -562,7 +565,8 @@ namespace testsim
         private void componentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form3 f3 = new testsim.Form3();
-            f3.ControlAdded += new ControlEventHandler(this.Form3_FormControlAdd);
+            f3.commbetween += new Comm(Form3_bridggap);
+            //f3.ControlAdded += new ControlEventHandler(this.Form3_FormControlAdd);
 
             f3.Show();
         }
