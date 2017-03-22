@@ -47,6 +47,7 @@ namespace testsim
         // string file_name;
         // string text_read;
         static string[] bitsass;
+
         private void Form3_bridggap(object sender, EventArgs e)
         {
             if (simstart == false)

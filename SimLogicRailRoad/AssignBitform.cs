@@ -26,6 +26,7 @@ namespace RailRoadLogicSim
         string assignbit;
         private object namebit;
         string check;
+
         private void AssignBitform_Load(object sender, EventArgs e)
         {
             guibits = Simulation.bitssofbits;
