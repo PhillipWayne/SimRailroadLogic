@@ -545,15 +545,16 @@ namespace testsim
         private void assignBitToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            /*  ListBox lb = new ListBox();
-              lb.Location = new System.Drawing.Point(100, 100);
-              lb.Items.AddRange(assinbits);
-              this.Controls.Add(lb);
-
-              */
+           
             knowbit=gl;
-            AssignBitform assbit = new AssignBitform();
-            assbit.Show();
+            PictureBox pb = (PictureBox)gl;
+            if (pb.Tag == "track")
+            {
+                Track_Assign TA = new Track_Assign();
+                TA.Show();
+            }
+           /* AssignBitform assbit = new AssignBitform();
+            assbit.Show();*/
 
         }
 
