@@ -29,28 +29,18 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Coded_Tk_Assign));
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.textBox12 = new System.Windows.Forms.TextBox();
@@ -72,46 +62,49 @@
             this.textBox28 = new System.Windows.Forms.TextBox();
             this.textBox29 = new System.Windows.Forms.TextBox();
             this.textBox30 = new System.Windows.Forms.TextBox();
-            this.textBox31 = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.textBox32 = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.textBox33 = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.textBox34 = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.textBox35 = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.textBox36 = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.textBox37 = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
-            this.textBox38 = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.textBox39 = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.textBox40 = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
-            this.textBox41 = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
-            this.textBox42 = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
-            this.textBox43 = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
-            this.textBox44 = new System.Windows.Forms.TextBox();
             this.label27 = new System.Windows.Forms.Label();
-            this.textBox45 = new System.Windows.Forms.TextBox();
             this.label28 = new System.Windows.Forms.Label();
+            this.comboBox7 = new System.Windows.Forms.ComboBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.comboBox6 = new System.Windows.Forms.ComboBox();
+            this.comboBox8 = new System.Windows.Forms.ComboBox();
+            this.comboBox9 = new System.Windows.Forms.ComboBox();
+            this.comboBox10 = new System.Windows.Forms.ComboBox();
+            this.comboBox11 = new System.Windows.Forms.ComboBox();
+            this.comboBox12 = new System.Windows.Forms.ComboBox();
+            this.comboBox13 = new System.Windows.Forms.ComboBox();
+            this.comboBox14 = new System.Windows.Forms.ComboBox();
+            this.comboBox15 = new System.Windows.Forms.ComboBox();
+            this.comboBox16 = new System.Windows.Forms.ComboBox();
+            this.comboBox17 = new System.Windows.Forms.ComboBox();
+            this.comboBox18 = new System.Windows.Forms.ComboBox();
+            this.comboBox19 = new System.Windows.Forms.ComboBox();
+            this.comboBox20 = new System.Windows.Forms.ComboBox();
+            this.comboBox21 = new System.Windows.Forms.ComboBox();
+            this.comboBox22 = new System.Windows.Forms.ComboBox();
+            this.comboBox23 = new System.Windows.Forms.ComboBox();
+            this.comboBox24 = new System.Windows.Forms.ComboBox();
+            this.comboBox25 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(62, 90);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(228, 20);
-            this.textBox3.TabIndex = 22;
             // 
             // label4
             // 
@@ -122,13 +115,6 @@
             this.label4.TabIndex = 21;
             this.label4.Text = "Code 3:";
             // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(62, 64);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(228, 20);
-            this.textBox2.TabIndex = 20;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -137,13 +123,6 @@
             this.label3.Size = new System.Drawing.Size(44, 13);
             this.label3.TabIndex = 19;
             this.label3.Text = "Code 2:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(62, 38);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(228, 20);
-            this.textBox1.TabIndex = 18;
             // 
             // button2
             // 
@@ -182,13 +161,6 @@
             this.label1.TabIndex = 14;
             this.label1.Text = "Track Inputs";
             // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(62, 168);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(228, 20);
-            this.textBox4.TabIndex = 28;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -197,13 +169,6 @@
             this.label5.Size = new System.Drawing.Size(44, 13);
             this.label5.TabIndex = 27;
             this.label5.Text = "Code 6:";
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(62, 142);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(228, 20);
-            this.textBox5.TabIndex = 26;
             // 
             // label6
             // 
@@ -214,13 +179,6 @@
             this.label6.TabIndex = 25;
             this.label6.Text = "Code 5:";
             // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(62, 116);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(228, 20);
-            this.textBox6.TabIndex = 24;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -229,13 +187,6 @@
             this.label7.Size = new System.Drawing.Size(44, 13);
             this.label7.TabIndex = 23;
             this.label7.Text = "Code 4:";
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(62, 246);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(228, 20);
-            this.textBox7.TabIndex = 34;
             // 
             // label8
             // 
@@ -246,13 +197,6 @@
             this.label8.TabIndex = 33;
             this.label8.Text = "Code 9:";
             // 
-            // textBox8
-            // 
-            this.textBox8.Location = new System.Drawing.Point(62, 220);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(228, 20);
-            this.textBox8.TabIndex = 32;
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -262,13 +206,6 @@
             this.label9.TabIndex = 31;
             this.label9.Text = "Code 8:";
             // 
-            // textBox9
-            // 
-            this.textBox9.Location = new System.Drawing.Point(62, 194);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(228, 20);
-            this.textBox9.TabIndex = 30;
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -277,13 +214,6 @@
             this.label10.Size = new System.Drawing.Size(44, 13);
             this.label10.TabIndex = 29;
             this.label10.Text = "Code 7:";
-            // 
-            // textBox10
-            // 
-            this.textBox10.Location = new System.Drawing.Point(62, 272);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(228, 20);
-            this.textBox10.TabIndex = 36;
             // 
             // label11
             // 
@@ -434,13 +364,6 @@
             this.textBox30.Size = new System.Drawing.Size(28, 20);
             this.textBox30.TabIndex = 68;
             // 
-            // textBox31
-            // 
-            this.textBox31.Location = new System.Drawing.Point(393, 272);
-            this.textBox31.Name = "textBox31";
-            this.textBox31.Size = new System.Drawing.Size(228, 20);
-            this.textBox31.TabIndex = 67;
-            // 
             // label12
             // 
             this.label12.AutoSize = true;
@@ -449,13 +372,6 @@
             this.label12.Size = new System.Drawing.Size(50, 13);
             this.label12.TabIndex = 66;
             this.label12.Text = "Code 10:";
-            // 
-            // textBox32
-            // 
-            this.textBox32.Location = new System.Drawing.Point(393, 246);
-            this.textBox32.Name = "textBox32";
-            this.textBox32.Size = new System.Drawing.Size(228, 20);
-            this.textBox32.TabIndex = 65;
             // 
             // label13
             // 
@@ -466,13 +382,6 @@
             this.label13.TabIndex = 64;
             this.label13.Text = "Code 9:";
             // 
-            // textBox33
-            // 
-            this.textBox33.Location = new System.Drawing.Point(393, 220);
-            this.textBox33.Name = "textBox33";
-            this.textBox33.Size = new System.Drawing.Size(228, 20);
-            this.textBox33.TabIndex = 63;
-            // 
             // label14
             // 
             this.label14.AutoSize = true;
@@ -481,13 +390,6 @@
             this.label14.Size = new System.Drawing.Size(44, 13);
             this.label14.TabIndex = 62;
             this.label14.Text = "Code 8:";
-            // 
-            // textBox34
-            // 
-            this.textBox34.Location = new System.Drawing.Point(393, 194);
-            this.textBox34.Name = "textBox34";
-            this.textBox34.Size = new System.Drawing.Size(228, 20);
-            this.textBox34.TabIndex = 61;
             // 
             // label15
             // 
@@ -498,13 +400,6 @@
             this.label15.TabIndex = 60;
             this.label15.Text = "Code 7:";
             // 
-            // textBox35
-            // 
-            this.textBox35.Location = new System.Drawing.Point(393, 168);
-            this.textBox35.Name = "textBox35";
-            this.textBox35.Size = new System.Drawing.Size(228, 20);
-            this.textBox35.TabIndex = 59;
-            // 
             // label16
             // 
             this.label16.AutoSize = true;
@@ -513,13 +408,6 @@
             this.label16.Size = new System.Drawing.Size(44, 13);
             this.label16.TabIndex = 58;
             this.label16.Text = "Code 6:";
-            // 
-            // textBox36
-            // 
-            this.textBox36.Location = new System.Drawing.Point(393, 142);
-            this.textBox36.Name = "textBox36";
-            this.textBox36.Size = new System.Drawing.Size(228, 20);
-            this.textBox36.TabIndex = 57;
             // 
             // label17
             // 
@@ -530,13 +418,6 @@
             this.label17.TabIndex = 56;
             this.label17.Text = "Code 5:";
             // 
-            // textBox37
-            // 
-            this.textBox37.Location = new System.Drawing.Point(393, 116);
-            this.textBox37.Name = "textBox37";
-            this.textBox37.Size = new System.Drawing.Size(228, 20);
-            this.textBox37.TabIndex = 55;
-            // 
             // label18
             // 
             this.label18.AutoSize = true;
@@ -545,13 +426,6 @@
             this.label18.Size = new System.Drawing.Size(44, 13);
             this.label18.TabIndex = 54;
             this.label18.Text = "Code 4:";
-            // 
-            // textBox38
-            // 
-            this.textBox38.Location = new System.Drawing.Point(393, 90);
-            this.textBox38.Name = "textBox38";
-            this.textBox38.Size = new System.Drawing.Size(228, 20);
-            this.textBox38.TabIndex = 53;
             // 
             // label19
             // 
@@ -562,13 +436,6 @@
             this.label19.TabIndex = 52;
             this.label19.Text = "Code 3:";
             // 
-            // textBox39
-            // 
-            this.textBox39.Location = new System.Drawing.Point(393, 64);
-            this.textBox39.Name = "textBox39";
-            this.textBox39.Size = new System.Drawing.Size(228, 20);
-            this.textBox39.TabIndex = 51;
-            // 
             // label20
             // 
             this.label20.AutoSize = true;
@@ -577,13 +444,6 @@
             this.label20.Size = new System.Drawing.Size(44, 13);
             this.label20.TabIndex = 50;
             this.label20.Text = "Code 2:";
-            // 
-            // textBox40
-            // 
-            this.textBox40.Location = new System.Drawing.Point(393, 38);
-            this.textBox40.Name = "textBox40";
-            this.textBox40.Size = new System.Drawing.Size(228, 20);
-            this.textBox40.TabIndex = 49;
             // 
             // label21
             // 
@@ -604,13 +464,6 @@
             this.label22.TabIndex = 47;
             this.label22.Text = "Track Outputs";
             // 
-            // textBox41
-            // 
-            this.textBox41.Location = new System.Drawing.Point(753, 116);
-            this.textBox41.Name = "textBox41";
-            this.textBox41.Size = new System.Drawing.Size(102, 20);
-            this.textBox41.TabIndex = 81;
-            // 
             // label23
             // 
             this.label23.AutoSize = true;
@@ -620,13 +473,6 @@
             this.label23.TabIndex = 80;
             this.label23.Text = "Track Control:";
             // 
-            // textBox42
-            // 
-            this.textBox42.Location = new System.Drawing.Point(753, 90);
-            this.textBox42.Name = "textBox42";
-            this.textBox42.Size = new System.Drawing.Size(102, 20);
-            this.textBox42.TabIndex = 79;
-            // 
             // label24
             // 
             this.label24.AutoSize = true;
@@ -635,13 +481,6 @@
             this.label24.Size = new System.Drawing.Size(75, 13);
             this.label24.TabIndex = 78;
             this.label24.Text = "Track Display:";
-            // 
-            // textBox43
-            // 
-            this.textBox43.Location = new System.Drawing.Point(753, 64);
-            this.textBox43.Name = "textBox43";
-            this.textBox43.Size = new System.Drawing.Size(102, 20);
-            this.textBox43.TabIndex = 83;
             // 
             // label25
             // 
@@ -662,13 +501,6 @@
             this.label26.TabIndex = 84;
             this.label26.Text = "Track Block";
             // 
-            // textBox44
-            // 
-            this.textBox44.Location = new System.Drawing.Point(759, 220);
-            this.textBox44.Name = "textBox44";
-            this.textBox44.Size = new System.Drawing.Size(102, 20);
-            this.textBox44.TabIndex = 88;
-            // 
             // label27
             // 
             this.label27.AutoSize = true;
@@ -677,13 +509,6 @@
             this.label27.Size = new System.Drawing.Size(81, 13);
             this.label27.TabIndex = 87;
             this.label27.Text = "Office Request:";
-            // 
-            // textBox45
-            // 
-            this.textBox45.Location = new System.Drawing.Point(759, 194);
-            this.textBox45.Name = "textBox45";
-            this.textBox45.Size = new System.Drawing.Size(102, 20);
-            this.textBox45.TabIndex = 86;
             // 
             // label28
             // 
@@ -694,21 +519,316 @@
             this.label28.TabIndex = 85;
             this.label28.Text = "Status:";
             // 
+            // comboBox7
+            // 
+            this.comboBox7.DropDownHeight = 75;
+            this.comboBox7.DropDownWidth = 530;
+            this.comboBox7.FormattingEnabled = true;
+            this.comboBox7.IntegralHeight = false;
+            this.comboBox7.Location = new System.Drawing.Point(62, 37);
+            this.comboBox7.Name = "comboBox7";
+            this.comboBox7.Size = new System.Drawing.Size(228, 21);
+            this.comboBox7.TabIndex = 99;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownHeight = 75;
+            this.comboBox1.DropDownWidth = 530;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.IntegralHeight = false;
+            this.comboBox1.Location = new System.Drawing.Point(62, 63);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(228, 21);
+            this.comboBox1.TabIndex = 100;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.DropDownHeight = 75;
+            this.comboBox2.DropDownWidth = 530;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.IntegralHeight = false;
+            this.comboBox2.Location = new System.Drawing.Point(62, 89);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(228, 21);
+            this.comboBox2.TabIndex = 101;
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.DropDownHeight = 75;
+            this.comboBox3.DropDownWidth = 530;
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.IntegralHeight = false;
+            this.comboBox3.Location = new System.Drawing.Point(62, 115);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(228, 21);
+            this.comboBox3.TabIndex = 102;
+            // 
+            // comboBox4
+            // 
+            this.comboBox4.DropDownHeight = 75;
+            this.comboBox4.DropDownWidth = 530;
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.IntegralHeight = false;
+            this.comboBox4.Location = new System.Drawing.Point(62, 141);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(228, 21);
+            this.comboBox4.TabIndex = 103;
+            // 
+            // comboBox5
+            // 
+            this.comboBox5.DropDownHeight = 75;
+            this.comboBox5.DropDownWidth = 530;
+            this.comboBox5.FormattingEnabled = true;
+            this.comboBox5.IntegralHeight = false;
+            this.comboBox5.Location = new System.Drawing.Point(62, 167);
+            this.comboBox5.Name = "comboBox5";
+            this.comboBox5.Size = new System.Drawing.Size(228, 21);
+            this.comboBox5.TabIndex = 104;
+            // 
+            // comboBox6
+            // 
+            this.comboBox6.DropDownHeight = 75;
+            this.comboBox6.DropDownWidth = 530;
+            this.comboBox6.FormattingEnabled = true;
+            this.comboBox6.IntegralHeight = false;
+            this.comboBox6.Location = new System.Drawing.Point(62, 193);
+            this.comboBox6.Name = "comboBox6";
+            this.comboBox6.Size = new System.Drawing.Size(228, 21);
+            this.comboBox6.TabIndex = 105;
+            // 
+            // comboBox8
+            // 
+            this.comboBox8.DropDownHeight = 75;
+            this.comboBox8.DropDownWidth = 530;
+            this.comboBox8.FormattingEnabled = true;
+            this.comboBox8.IntegralHeight = false;
+            this.comboBox8.Location = new System.Drawing.Point(62, 219);
+            this.comboBox8.Name = "comboBox8";
+            this.comboBox8.Size = new System.Drawing.Size(228, 21);
+            this.comboBox8.TabIndex = 106;
+            // 
+            // comboBox9
+            // 
+            this.comboBox9.DropDownHeight = 75;
+            this.comboBox9.DropDownWidth = 530;
+            this.comboBox9.FormattingEnabled = true;
+            this.comboBox9.IntegralHeight = false;
+            this.comboBox9.Location = new System.Drawing.Point(62, 245);
+            this.comboBox9.Name = "comboBox9";
+            this.comboBox9.Size = new System.Drawing.Size(228, 21);
+            this.comboBox9.TabIndex = 107;
+            // 
+            // comboBox10
+            // 
+            this.comboBox10.DropDownHeight = 75;
+            this.comboBox10.DropDownWidth = 530;
+            this.comboBox10.FormattingEnabled = true;
+            this.comboBox10.IntegralHeight = false;
+            this.comboBox10.Location = new System.Drawing.Point(62, 271);
+            this.comboBox10.Name = "comboBox10";
+            this.comboBox10.Size = new System.Drawing.Size(228, 21);
+            this.comboBox10.TabIndex = 108;
+            // 
+            // comboBox11
+            // 
+            this.comboBox11.DropDownHeight = 75;
+            this.comboBox11.DropDownWidth = 530;
+            this.comboBox11.FormattingEnabled = true;
+            this.comboBox11.IntegralHeight = false;
+            this.comboBox11.Location = new System.Drawing.Point(393, 272);
+            this.comboBox11.Name = "comboBox11";
+            this.comboBox11.Size = new System.Drawing.Size(228, 21);
+            this.comboBox11.TabIndex = 118;
+            // 
+            // comboBox12
+            // 
+            this.comboBox12.DropDownHeight = 75;
+            this.comboBox12.DropDownWidth = 530;
+            this.comboBox12.FormattingEnabled = true;
+            this.comboBox12.IntegralHeight = false;
+            this.comboBox12.Location = new System.Drawing.Point(393, 246);
+            this.comboBox12.Name = "comboBox12";
+            this.comboBox12.Size = new System.Drawing.Size(228, 21);
+            this.comboBox12.TabIndex = 117;
+            // 
+            // comboBox13
+            // 
+            this.comboBox13.DropDownHeight = 75;
+            this.comboBox13.DropDownWidth = 530;
+            this.comboBox13.FormattingEnabled = true;
+            this.comboBox13.IntegralHeight = false;
+            this.comboBox13.Location = new System.Drawing.Point(393, 220);
+            this.comboBox13.Name = "comboBox13";
+            this.comboBox13.Size = new System.Drawing.Size(228, 21);
+            this.comboBox13.TabIndex = 116;
+            // 
+            // comboBox14
+            // 
+            this.comboBox14.DropDownHeight = 75;
+            this.comboBox14.DropDownWidth = 530;
+            this.comboBox14.FormattingEnabled = true;
+            this.comboBox14.IntegralHeight = false;
+            this.comboBox14.Location = new System.Drawing.Point(393, 194);
+            this.comboBox14.Name = "comboBox14";
+            this.comboBox14.Size = new System.Drawing.Size(228, 21);
+            this.comboBox14.TabIndex = 115;
+            // 
+            // comboBox15
+            // 
+            this.comboBox15.DropDownHeight = 75;
+            this.comboBox15.DropDownWidth = 530;
+            this.comboBox15.FormattingEnabled = true;
+            this.comboBox15.IntegralHeight = false;
+            this.comboBox15.Location = new System.Drawing.Point(393, 168);
+            this.comboBox15.Name = "comboBox15";
+            this.comboBox15.Size = new System.Drawing.Size(228, 21);
+            this.comboBox15.TabIndex = 114;
+            // 
+            // comboBox16
+            // 
+            this.comboBox16.DropDownHeight = 75;
+            this.comboBox16.DropDownWidth = 530;
+            this.comboBox16.FormattingEnabled = true;
+            this.comboBox16.IntegralHeight = false;
+            this.comboBox16.Location = new System.Drawing.Point(393, 142);
+            this.comboBox16.Name = "comboBox16";
+            this.comboBox16.Size = new System.Drawing.Size(228, 21);
+            this.comboBox16.TabIndex = 113;
+            // 
+            // comboBox17
+            // 
+            this.comboBox17.DropDownHeight = 75;
+            this.comboBox17.DropDownWidth = 530;
+            this.comboBox17.FormattingEnabled = true;
+            this.comboBox17.IntegralHeight = false;
+            this.comboBox17.Location = new System.Drawing.Point(393, 116);
+            this.comboBox17.Name = "comboBox17";
+            this.comboBox17.Size = new System.Drawing.Size(228, 21);
+            this.comboBox17.TabIndex = 112;
+            // 
+            // comboBox18
+            // 
+            this.comboBox18.DropDownHeight = 75;
+            this.comboBox18.DropDownWidth = 530;
+            this.comboBox18.FormattingEnabled = true;
+            this.comboBox18.IntegralHeight = false;
+            this.comboBox18.Location = new System.Drawing.Point(393, 90);
+            this.comboBox18.Name = "comboBox18";
+            this.comboBox18.Size = new System.Drawing.Size(228, 21);
+            this.comboBox18.TabIndex = 111;
+            // 
+            // comboBox19
+            // 
+            this.comboBox19.DropDownHeight = 75;
+            this.comboBox19.DropDownWidth = 530;
+            this.comboBox19.FormattingEnabled = true;
+            this.comboBox19.IntegralHeight = false;
+            this.comboBox19.Location = new System.Drawing.Point(393, 64);
+            this.comboBox19.Name = "comboBox19";
+            this.comboBox19.Size = new System.Drawing.Size(228, 21);
+            this.comboBox19.TabIndex = 110;
+            // 
+            // comboBox20
+            // 
+            this.comboBox20.DropDownHeight = 75;
+            this.comboBox20.DropDownWidth = 530;
+            this.comboBox20.FormattingEnabled = true;
+            this.comboBox20.IntegralHeight = false;
+            this.comboBox20.Location = new System.Drawing.Point(393, 38);
+            this.comboBox20.Name = "comboBox20";
+            this.comboBox20.Size = new System.Drawing.Size(228, 21);
+            this.comboBox20.TabIndex = 109;
+            // 
+            // comboBox21
+            // 
+            this.comboBox21.DropDownHeight = 75;
+            this.comboBox21.DropDownWidth = 530;
+            this.comboBox21.FormattingEnabled = true;
+            this.comboBox21.IntegralHeight = false;
+            this.comboBox21.Location = new System.Drawing.Point(753, 63);
+            this.comboBox21.Name = "comboBox21";
+            this.comboBox21.Size = new System.Drawing.Size(97, 21);
+            this.comboBox21.TabIndex = 119;
+            // 
+            // comboBox22
+            // 
+            this.comboBox22.DropDownHeight = 75;
+            this.comboBox22.DropDownWidth = 530;
+            this.comboBox22.FormattingEnabled = true;
+            this.comboBox22.IntegralHeight = false;
+            this.comboBox22.Location = new System.Drawing.Point(753, 89);
+            this.comboBox22.Name = "comboBox22";
+            this.comboBox22.Size = new System.Drawing.Size(97, 21);
+            this.comboBox22.TabIndex = 120;
+            // 
+            // comboBox23
+            // 
+            this.comboBox23.DropDownHeight = 75;
+            this.comboBox23.DropDownWidth = 530;
+            this.comboBox23.FormattingEnabled = true;
+            this.comboBox23.IntegralHeight = false;
+            this.comboBox23.Location = new System.Drawing.Point(753, 115);
+            this.comboBox23.Name = "comboBox23";
+            this.comboBox23.Size = new System.Drawing.Size(97, 21);
+            this.comboBox23.TabIndex = 121;
+            // 
+            // comboBox24
+            // 
+            this.comboBox24.DropDownHeight = 75;
+            this.comboBox24.DropDownWidth = 530;
+            this.comboBox24.FormattingEnabled = true;
+            this.comboBox24.IntegralHeight = false;
+            this.comboBox24.Location = new System.Drawing.Point(753, 193);
+            this.comboBox24.Name = "comboBox24";
+            this.comboBox24.Size = new System.Drawing.Size(97, 21);
+            this.comboBox24.TabIndex = 122;
+            // 
+            // comboBox25
+            // 
+            this.comboBox25.DropDownHeight = 75;
+            this.comboBox25.DropDownWidth = 530;
+            this.comboBox25.FormattingEnabled = true;
+            this.comboBox25.IntegralHeight = false;
+            this.comboBox25.Location = new System.Drawing.Point(753, 220);
+            this.comboBox25.Name = "comboBox25";
+            this.comboBox25.Size = new System.Drawing.Size(97, 21);
+            this.comboBox25.TabIndex = 123;
+            // 
             // Coded_Tk_Assign
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(873, 315);
-            this.Controls.Add(this.textBox44);
+            this.Controls.Add(this.comboBox25);
+            this.Controls.Add(this.comboBox24);
+            this.Controls.Add(this.comboBox23);
+            this.Controls.Add(this.comboBox22);
+            this.Controls.Add(this.comboBox21);
+            this.Controls.Add(this.comboBox11);
+            this.Controls.Add(this.comboBox12);
+            this.Controls.Add(this.comboBox13);
+            this.Controls.Add(this.comboBox14);
+            this.Controls.Add(this.comboBox15);
+            this.Controls.Add(this.comboBox16);
+            this.Controls.Add(this.comboBox17);
+            this.Controls.Add(this.comboBox18);
+            this.Controls.Add(this.comboBox19);
+            this.Controls.Add(this.comboBox20);
+            this.Controls.Add(this.comboBox10);
+            this.Controls.Add(this.comboBox9);
+            this.Controls.Add(this.comboBox8);
+            this.Controls.Add(this.comboBox6);
+            this.Controls.Add(this.comboBox5);
+            this.Controls.Add(this.comboBox4);
+            this.Controls.Add(this.comboBox3);
+            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comboBox7);
             this.Controls.Add(this.label27);
-            this.Controls.Add(this.textBox45);
             this.Controls.Add(this.label28);
             this.Controls.Add(this.label26);
-            this.Controls.Add(this.textBox43);
             this.Controls.Add(this.label25);
-            this.Controls.Add(this.textBox41);
             this.Controls.Add(this.label23);
-            this.Controls.Add(this.textBox42);
             this.Controls.Add(this.label24);
             this.Controls.Add(this.textBox21);
             this.Controls.Add(this.textBox22);
@@ -720,25 +840,15 @@
             this.Controls.Add(this.textBox28);
             this.Controls.Add(this.textBox29);
             this.Controls.Add(this.textBox30);
-            this.Controls.Add(this.textBox31);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.textBox32);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.textBox33);
             this.Controls.Add(this.label14);
-            this.Controls.Add(this.textBox34);
             this.Controls.Add(this.label15);
-            this.Controls.Add(this.textBox35);
             this.Controls.Add(this.label16);
-            this.Controls.Add(this.textBox36);
             this.Controls.Add(this.label17);
-            this.Controls.Add(this.textBox37);
             this.Controls.Add(this.label18);
-            this.Controls.Add(this.textBox38);
             this.Controls.Add(this.label19);
-            this.Controls.Add(this.textBox39);
             this.Controls.Add(this.label20);
-            this.Controls.Add(this.textBox40);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.textBox20);
@@ -751,25 +861,15 @@
             this.Controls.Add(this.textBox13);
             this.Controls.Add(this.textBox12);
             this.Controls.Add(this.textBox11);
-            this.Controls.Add(this.textBox10);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.textBox7);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.textBox8);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.textBox9);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.textBox4);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox5);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBox6);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.textBox3);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
@@ -785,28 +885,18 @@
         }
 
         #endregion
-        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.TextBox textBox12;
@@ -828,37 +918,47 @@
         private System.Windows.Forms.TextBox textBox28;
         private System.Windows.Forms.TextBox textBox29;
         private System.Windows.Forms.TextBox textBox30;
-        private System.Windows.Forms.TextBox textBox31;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox32;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox33;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox textBox34;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox textBox35;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox textBox36;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox textBox37;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox textBox38;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox textBox39;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.TextBox textBox40;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.TextBox textBox41;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.TextBox textBox42;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.TextBox textBox43;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.TextBox textBox44;
         private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.TextBox textBox45;
         private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.ComboBox comboBox7;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.ComboBox comboBox5;
+        private System.Windows.Forms.ComboBox comboBox6;
+        private System.Windows.Forms.ComboBox comboBox8;
+        private System.Windows.Forms.ComboBox comboBox9;
+        private System.Windows.Forms.ComboBox comboBox10;
+        private System.Windows.Forms.ComboBox comboBox11;
+        private System.Windows.Forms.ComboBox comboBox12;
+        private System.Windows.Forms.ComboBox comboBox13;
+        private System.Windows.Forms.ComboBox comboBox14;
+        private System.Windows.Forms.ComboBox comboBox15;
+        private System.Windows.Forms.ComboBox comboBox16;
+        private System.Windows.Forms.ComboBox comboBox17;
+        private System.Windows.Forms.ComboBox comboBox18;
+        private System.Windows.Forms.ComboBox comboBox19;
+        private System.Windows.Forms.ComboBox comboBox20;
+        private System.Windows.Forms.ComboBox comboBox21;
+        private System.Windows.Forms.ComboBox comboBox22;
+        private System.Windows.Forms.ComboBox comboBox23;
+        private System.Windows.Forms.ComboBox comboBox24;
+        private System.Windows.Forms.ComboBox comboBox25;
     }
 }

@@ -103,6 +103,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SaveXML.cs" />
+    <Compile Include="Signal_Assign.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Signal_Assign.Designer.cs">
+      <DependentUpon>Signal_Assign.cs</DependentUpon>
+    </Compile>
     <Compile Include="Simulation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,6 +161,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Signal_Assign.resx">
+      <DependentUpon>Signal_Assign.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Simulation.resx">
       <DependentUpon>Simulation.cs</DependentUpon>
     </EmbeddedResource>
