@@ -18,6 +18,9 @@ using System.Data.Sql;
 using SimLogicRailRoad;
 using RailRoadLogicSim;
 
+
+
+
 namespace testsim
 {
     public partial class Form2 : Form
@@ -25,45 +28,48 @@ namespace testsim
         public Form2()
         {
             InitializeComponent();
-            
         }
-        
-        
-        
+
+        //1
+
+        //int temp = 0;
+        Form3 f31 = new Form3();
         bool capture = false;
         bool copy = false;
         private Point MouseDownLocation;
         private object gl;
-      public static object knowbit;
+        public static object knowbit;
         int rx;
         int ry;
         string f;
         Image text;
-        int  x;
+        int x;
         int y;
-       bool simstart=false;
-     public static string[] assinbits;
-        
-        
+        bool simstart = false;
+        public static string[] assinbits;
+        private const int GridGap = 8;
+
+
         // string file_name;
         // string text_read;
         static string[] bitsass;
-        private int boundary;
-        private int directxcheck;
+
 
         private void Form3_bridggap(object sender, EventArgs e)
         {
             if (simstart == false)
             {
                 int temp = Form3.trkw;
-                
-                
+
+
                 PictureBox pb = new PictureBox();
                 pb.SizeMode = PictureBoxSizeMode.Normal;
                 pb.Location = new Point(100, 75);
                 pb.MouseMove += new MouseEventHandler(pb_MouseMove);
                 pb.MouseDown += new MouseEventHandler(pb_MouseDown);
                 pb.MouseUp += new MouseEventHandler(pb_MouseButtonUp);
+                pb.MouseEnter += new EventHandler(pb_MouseEnter);
+                pb.MouseLeave += new EventHandler(pb_MouseLeave);
 
                 switch (temp)
                 {
@@ -91,46 +97,54 @@ namespace testsim
             }
         }
 
+        //Creates a Box Around Image When Mouse is Over the Image
+        void pb_MouseEnter(object sender, EventArgs e)
+        {
+            if (simstart == false)
+
+            {
+                PictureBox pb = (PictureBox)sender;
+                pb.BorderStyle = BorderStyle.FixedSingle;
+            }
+        }
+        void pb_MouseLeave(object sender, EventArgs e)
+        {
+            if (simstart == false)
+            {
+                PictureBox pb = (PictureBox)sender;
+                pb.BorderStyle = BorderStyle.None;
+            }
+        }
+        /// //////////////////
+
+
         void pb_MouseMove(object sender, MouseEventArgs e)
         {
-
             if (capture == true)
             {
-                // Code to move GUI Components    
+                if (simstart == false)
+                {
+                    // Code to move GUI Components    
 
-                PictureBox pb = (PictureBox)sender;
-                //pb.Left += e.X - MouseDownLocation.X;
-                //pb.Top += e.Y - MouseDownLocation.Y;
-                double Lf = Math.Round((e.X - MouseDownLocation.X) / 10.0) * 10; // Rounds X Mouse/Component Location
-                double Tp = Math.Round((e.Y - MouseDownLocation.Y) / 10.0) * 10; // Rounds Y Mouse/Component Location
+                    PictureBox pb = (PictureBox)sender;
+                    //pb.Left += e.X - MouseDownLocation.X;
+                    //pb.Top += e.Y - MouseDownLocation.Y;
+                    double Lf = Math.Round((e.X - MouseDownLocation.X) / 10.0) * 10; // Rounds X Mouse/Component Location
+                    double Tp = Math.Round((e.Y - MouseDownLocation.Y) / 10.0) * 10; // Rounds Y Mouse/Component Location
 
-                // Converts Double to Integer
-                int pb_Lf = Convert.ToInt32(Lf);
-                int pb_Tp = Convert.ToInt32(Tp);
-                directxcheck = e.X - MouseDownLocation.X;
-                // New Component Location
+                    // Converts Double to Integer
+                    int pb_Lf = Convert.ToInt32(Lf);
+                    int pb_Tp = Convert.ToInt32(Tp);
 
-
-
-                // pb_Lf < this.Size.Width
-               // if (pb.Left > 0)
-               // {
+                    // New Component Location
                     pb.Left += pb_Lf; // X
-
-               // }
-                
-               // = e.Y - MouseDownLocation.Y;
-              // else if (directxcheck<0)
-              //  {
-                    pb.Left += pb_Lf;
-               // }
-                
                     pb.Top += pb_Tp; // Y
-                
+
+                    gl = sender;
+                }
+
                 gl = sender;
             }
-           
-            gl = sender;
         }
 
         void pb_MouseButtonUp(object sender, MouseEventArgs e)
@@ -149,7 +163,7 @@ namespace testsim
             gl = sender;
         }
 
-       void formmousemove(object send,MouseEventArgs e)
+        void formmousemove(object send, MouseEventArgs e)
         {
             x = e.X;
             y = e.Y;
@@ -380,7 +394,7 @@ namespace testsim
         //Undo Button
         private void undoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           
+            f31.Show();
         }
 
         //Redo Button
@@ -440,9 +454,9 @@ namespace testsim
         //Bits Button
         private void bitsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           /* Simulation sim = new Simulation();
-            
-            sim.Show();*/
+            /* Simulation sim = new Simulation();
+
+             sim.Show();*/
         }
 
         //Start Sim Button
@@ -494,19 +508,22 @@ namespace testsim
                 }
 
             }
-          /*  for (int i = 0; i < pbList.Count; i++)
-            {
-               
-                     pBoxes[i].MouseMove -= new MouseEventHandler(pb_MouseMove);
-                pBoxes[i].MouseDown -= new MouseEventHandler(pb_MouseDown);
-                pBoxes[i].MouseUp -= new MouseEventHandler(pb_MouseButtonUp);
-                pBoxes[i].ContextMenuStrip = null;
-            }*/
+
+            /*  for (int i = 0; i < pbList.Count; i++)
+              {
+
+                       pBoxes[i].MouseMove -= new MouseEventHandler(pb_MouseMove);
+                  pBoxes[i].MouseDown -= new MouseEventHandler(pb_MouseDown);
+                  pBoxes[i].MouseUp -= new MouseEventHandler(pb_MouseButtonUp);
+                  pBoxes[i].ContextMenuStrip = null;
+              }*/
+
             simstart = true;
+            MakeBackgroundGrid();
             //Removes the contextmenustrip for form2
             this.ContextMenuStrip = null;
         }
-       
+
 
 
         //Stop Sim Button
@@ -526,18 +543,19 @@ namespace testsim
             }
             // addeds back the contextmenustrip to the form and assigns it to a method
             this.ContextMenuStrip = contextMenuStrip2;
-            
+
             simstart = false;
+            MakeBackgroundGrid();
         }
 
         private void copyToolStripMenuItem1_Click(object sender, EventArgs e)
-        { 
+        {
 
             copy = true;
             // PictureBox pb = (PictureBox)gl;
         }
 
-      
+
 
         private void pasteToolStripMenuItem2_Click(object sender, EventArgs e)
         {
@@ -554,7 +572,7 @@ namespace testsim
                  kl.Top = MousePosition.Y;*/
                 kl.Left = x;
                 kl.Top = y;
-                
+
                 kl.MouseMove += new MouseEventHandler(pb_MouseMove);
                 kl.MouseDown += new MouseEventHandler(pb_MouseDown);
                 kl.MouseUp += new MouseEventHandler(pb_MouseButtonUp);
@@ -565,48 +583,53 @@ namespace testsim
 
         private void Form2_Load(object sender, EventArgs e)
         {
-           /* Simulation sim = new Simulation();
+            if(simstart == false)
+            {
+                MakeBackgroundGrid(); //Loads Background Grid
 
-            // sim.Hide();
-
-            sim.text_file_parse(file_name, text_read);*/
-
-             bitsass = Simulation.bitassign;
-          // int cnt = bitsass.Count;
-          int  n = Convert.ToInt32(bitsass.Length);
-           
-            for (int i = 0; i < n; i++)
-        {
-                if (bitsass[i] != null)
                 {
-                  // bitsass[i]  = bitsass[i];
                 }
+                    /* Simulation sim = new Simulation();
 
-                else
-                {
-                    Array.Resize<string>(ref bitsass, i);
-                    assinbits = bitsass;
-                    
-                    return;
+                     // sim.Hide();
+
+                     sim.text_file_parse(file_name, text_read);*/
+
+                    bitsass = Simulation.bitassign;
+                    // int cnt = bitsass.Count;
+                    int n = Convert.ToInt32(bitsass.Length);
+
+                    for (int i = 0; i < n; i++)
+                    {
+                        if (bitsass[i] != null)
+                        {
+                            // bitsass[i]  = bitsass[i];
+                        }
+
+                        else
+                        {
+                            Array.Resize<string>(ref bitsass, i);
+                            assinbits = bitsass;
+
+                            return;
+                        }
+                    }
                 }
-        }
-        
-
-    }
+                    }
 
         private void assignBitToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-           
-            knowbit=gl;
+
+            knowbit = gl;
             PictureBox pb = (PictureBox)gl;
             if (pb.Name == "Track")
             {
                 Track_Assign TA = new Track_Assign();
                 TA.Show();
             }
-           /* AssignBitform assbit = new AssignBitform();
-            assbit.Show();*/
+            /* AssignBitform assbit = new AssignBitform();
+             assbit.Show();*/
 
         }
 
@@ -636,6 +659,26 @@ namespace testsim
             bit.Show();
         }
 
-    }
-
+        //Grid Background for GUI - Form2
+        private void MakeBackgroundGrid()
+        
+            {
+                Bitmap bm = new Bitmap(ClientSize.Width, ClientSize.Height);
+                for (int x = 0; x < ClientSize.Width; x += GridGap)
+                {
+                    for (int y = 0; y < ClientSize.Height; y += GridGap)
+                    {
+                    if (simstart == true)
+                    {
+                        bm.SetPixel(x, y, Color.Black);
+                    }
+                    else
+                    {
+                        bm.SetPixel(x, y, Color.White);
+                    }
+                }
+                }
+                BackgroundImage = bm;
+            }
+        }
 }
