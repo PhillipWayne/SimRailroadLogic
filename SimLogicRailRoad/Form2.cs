@@ -65,23 +65,20 @@ namespace testsim
                 {
                     case 45:
                         pb.Image = SimLogicRailRoad.Properties.Resources.track_45;
-                        pb.Name = "Track_component_at_a_45_degree_angle";
+                        pb.Name = "Track";
                         pb.ContextMenuStrip = contextMenuStrip1;
-                        pb.Tag = "track";
                         this.Controls.Add(pb);
                         break;
                     case 90:
                         pb.Image = SimLogicRailRoad.Properties.Resources.track_90;
-                        pb.Name = "Track_component_at_a_90_degree_angle";
+                        pb.Name = "Track";
                         pb.ContextMenuStrip = contextMenuStrip1;
-                        pb.Tag = "track";
                         this.Controls.Add(pb);
                         break;
                     case 135:
                         pb.Image = SimLogicRailRoad.Properties.Resources.track_135;
-                        pb.Name = "Track_component_at_a_135_degree_angle";
+                        pb.Name = "Track";
                         pb.ContextMenuStrip = contextMenuStrip1;
-                        pb.Tag = "track";
                         this.Controls.Add(pb);
                         break;
                 }
@@ -135,7 +132,7 @@ namespace testsim
             {
 
                 PictureBox pb = (PictureBox)gl;
-
+                
                 Controls.Remove(pb);
                 pb.Dispose();
                 pb = null;
@@ -381,6 +378,29 @@ namespace testsim
         //Delete Button
         private void deleteToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            PictureBox pb = (PictureBox)gl;
+            if (pb == null)
+            {
+                MessageBox.Show("Please click on a component that you want to delete",
+                          "Component not selected");
+
+
+                return;
+            }
+            DialogResult result1 = MessageBox.Show("Are you sure you want delete this part?",
+           "Warning about to delete part",
+           MessageBoxButtons.YesNo);
+
+
+            if (result1 == DialogResult.Yes)
+            {
+
+                
+
+                Controls.Remove(pb);
+                pb.Dispose();
+                pb = null;
+            }
 
         }
 
@@ -547,7 +567,7 @@ namespace testsim
            
             knowbit=gl;
             PictureBox pb = (PictureBox)gl;
-            if (pb.Tag == "track")
+            if (pb.Name == "Track")
             {
                 Track_Assign TA = new Track_Assign();
                 TA.Show();
