@@ -25,7 +25,8 @@ namespace SimLogicRailRoad
         string assignbit;
         private object namebit;
         string check;
-        
+        private Array bitstry;
+        private Type gy;
 
         private void Track_Assign_Load(object sender, EventArgs e)
         {
@@ -58,12 +59,32 @@ namespace SimLogicRailRoad
                     comboBox3.Items.AddRange(allbits);
                     comboBox4.Items.AddRange(allbits);
                     comboBox5.Items.AddRange(allbits);
+
+                    namebit = Form2.knowbit;
+                    PictureBox pb = (PictureBox)namebit;
+                   
+                   if (pb.Tag !=null)
+                    {
+
+                        string[] tagget = (string[])pb.Tag;
+                     //   string[] tagget = pb.Tag.ToString();
+
+                        comboBox1.Text = tagget[0];
+                        comboBox2.Text = tagget[1];
+                        comboBox3.Text = tagget[2];
+                        comboBox4.Text = tagget[3];
+                        comboBox5.Text = tagget[4];
+
+                       
+                        //comboBox1.Text = reass1(0).t;
+                    }
+                    
+                
                     return;
                 }
 
             }
-
-
+           
             //comboBox1.Items.Add
         }
 
@@ -79,23 +100,34 @@ namespace SimLogicRailRoad
             {
                 refconver.Add(comboBox1.SelectedItem.ToString());
             }
+            else
+                refconver.Add("");
+            
             if (comboBox2.SelectedItem != null)
             {
                 refconver.Add(comboBox2.SelectedItem.ToString());
             }
+            else
+                refconver.Add("");
             if (comboBox3.SelectedItem != null)
             {
                 refconver.Add(comboBox3.SelectedItem.ToString());
             }
+            else
+                refconver.Add("");
             if (comboBox4.SelectedItem != null)
             {
                 refconver.Add(comboBox4.SelectedItem.ToString());
             }
+            else
+                refconver.Add("");
             if (comboBox5.SelectedItem != null)
             {
                 refconver.Add(comboBox5.SelectedItem.ToString());
             }
-          pb.Tag= refconver.ToArray();
+            else
+                refconver.Add("");
+            pb.Tag= refconver.ToArray();
 
             this.Close();
             
