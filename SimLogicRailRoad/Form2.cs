@@ -26,6 +26,7 @@ namespace testsim
         {
             InitializeComponent();
         }
+        
         //1
 
         //int temp = 0;
@@ -44,9 +45,12 @@ namespace testsim
        bool simstart=false;
      public static string[] assinbits;
         
+        
         // string file_name;
         // string text_read;
         static string[] bitsass;
+
+       
         private void Form3_bridggap(object sender, EventArgs e)
         {
             if (simstart == false)
@@ -89,11 +93,25 @@ namespace testsim
 
         void pb_MouseMove(object sender, MouseEventArgs e)
         {
+            
             if (capture == true)
             {
+                // Code to move GUI Components    
+
                 PictureBox pb = (PictureBox)sender;
-                pb.Left += e.X - MouseDownLocation.X;
-                pb.Top += e.Y - MouseDownLocation.Y;
+                //pb.Left += e.X - MouseDownLocation.X;
+                //pb.Top += e.Y - MouseDownLocation.Y;
+                double Lf = Math.Round((e.X - MouseDownLocation.X) / 10.0) * 10; // Rounds X Mouse/Component Location
+                double Tp = Math.Round((e.Y - MouseDownLocation.Y) / 10.0) * 10; // Rounds Y Mouse/Component Location
+
+                // Converts Double to Integer
+                int pb_Lf = Convert.ToInt32(Lf);
+                int pb_Tp = Convert.ToInt32(Tp);
+
+                // New Component Location
+                pb.Left += pb_Lf; // X
+                pb.Top += pb_Tp; // Y
+
                 gl = sender;
             }
            
@@ -603,13 +621,6 @@ namespace testsim
             bit.Show();
         }
 
-        //DB Test in Menu
-        /*  private void testToolStripMenuItem_Click(object sender, EventArgs e)
-          {
-              testsim.Database db = new testsim.Database();
-
-              db.Show();
-          }*/
     }
 
 }
