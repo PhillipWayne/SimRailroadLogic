@@ -25,12 +25,11 @@ namespace testsim
         public Form2()
         {
             InitializeComponent();
+            
         }
         
-        //1
-
-        //int temp = 0;
-        Form3 f31 = new Form3();
+        
+        
         bool capture = false;
         bool copy = false;
         private Point MouseDownLocation;
@@ -49,8 +48,9 @@ namespace testsim
         // string file_name;
         // string text_read;
         static string[] bitsass;
+        private int boundary;
+        private int directxcheck;
 
-       
         private void Form3_bridggap(object sender, EventArgs e)
         {
             if (simstart == false)
@@ -93,7 +93,7 @@ namespace testsim
 
         void pb_MouseMove(object sender, MouseEventArgs e)
         {
-            
+
             if (capture == true)
             {
                 // Code to move GUI Components    
@@ -107,11 +107,26 @@ namespace testsim
                 // Converts Double to Integer
                 int pb_Lf = Convert.ToInt32(Lf);
                 int pb_Tp = Convert.ToInt32(Tp);
-
+                directxcheck = e.X - MouseDownLocation.X;
                 // New Component Location
-                pb.Left += pb_Lf; // X
-                pb.Top += pb_Tp; // Y
 
+
+
+                // pb_Lf < this.Size.Width
+               // if (pb.Left > 0)
+               // {
+                    pb.Left += pb_Lf; // X
+
+               // }
+                
+               // = e.Y - MouseDownLocation.Y;
+              // else if (directxcheck<0)
+              //  {
+                    pb.Left += pb_Lf;
+               // }
+                
+                    pb.Top += pb_Tp; // Y
+                
                 gl = sender;
             }
            
@@ -365,7 +380,7 @@ namespace testsim
         //Undo Button
         private void undoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            f31.Show();
+           
         }
 
         //Redo Button
