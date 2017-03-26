@@ -53,7 +53,8 @@ namespace testsim
         // string file_name;
         // string text_read;
         static string[] bitsass;
-
+        private int directxcheck;
+        private int directycheck;
 
         private void Form3_bridggap(object sender, EventArgs e)
         {
@@ -122,8 +123,7 @@ namespace testsim
         {
             if (capture == true)
             {
-                if (simstart == false)
-                {
+                
                     // Code to move GUI Components    
 
                     PictureBox pb = (PictureBox)sender;
@@ -136,16 +136,50 @@ namespace testsim
                     int pb_Lf = Convert.ToInt32(Lf);
                     int pb_Tp = Convert.ToInt32(Tp);
 
+                    directxcheck = e.X - MouseDownLocation.X;
+                    directycheck = e.Y - MouseDownLocation.Y;
                     // New Component Location
-                    pb.Left += pb_Lf; // X
-                    pb.Top += pb_Tp; // Y
 
+
+
+                    // pb_Lf < this.Size.Width
+                     if (pb.Left > 0 && pb.Right<this.ClientSize.Width)
+                     {
+                        pb.Left += pb_Lf;
+                        
+
+                    }
+                     
+                    // = e.Y - MouseDownLocation.Y;
+                     else if (directxcheck>0&&pb.Left<=0)
+                      {
+                        pb.Left += pb_Lf;
+                    }
+                  else if(pb.Left>0&&directxcheck<0  )
+                {
+                    pb.Left += pb_Lf;
+                }
+                // Y
+                // New Component Location
+                // pb.Left += pb_Lf; // X
+                if (pb.Top > 24.5&&pb.Bottom<this.ClientSize.Height)
+                {
+                    pb.Top += pb_Tp; // Y
+                }
+                else if(directycheck>0 &&pb.Top<= 25)
+                {
+                    pb.Top += pb_Tp;
+                }
+                else if (directycheck < 0&&pb.Top>25)
+                {
+                    pb.Top += pb_Tp;
+                }
                     gl = sender;
                 }
 
                 gl = sender;
             }
-        }
+        
 
         void pb_MouseButtonUp(object sender, MouseEventArgs e)
         {
@@ -583,12 +617,11 @@ namespace testsim
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            if(simstart == false)
-            {
+            
                 MakeBackgroundGrid(); //Loads Background Grid
 
-                {
-                }
+                
+                
                     /* Simulation sim = new Simulation();
 
                      // sim.Hide();
@@ -615,7 +648,7 @@ namespace testsim
                         }
                     }
                 }
-                    }
+                    
 
         private void assignBitToolStripMenuItem_Click(object sender, EventArgs e)
         {
