@@ -28,6 +28,7 @@ namespace testsim
         public Form2()
         {
             InitializeComponent();
+            this.DoubleBuffered = true;
         }
 
         //1
@@ -245,7 +246,7 @@ namespace testsim
             // If the user presses Yes to load previous data 
             if (result == DialogResult.Yes)
             {
-                if (xmlfilesave == null)
+                if (xmlfile == null)
                 {
                     SaveFileDialog saveFileDialog = new SaveFileDialog();
 
@@ -254,11 +255,13 @@ namespace testsim
                     if (saveFileDialog.ShowDialog() == DialogResult.OK)
                     {
                         /*file_name = dialog.SafeFileName;*/
-                        xmlfilesave = saveFileDialog.FileName;
+                        xmlfile = saveFileDialog.FileName;
 
-                        if (File.Exists(xmlfilesave))
+                        if (File.Exists(xmlfile))
                         {
-
+                            System.GC.Collect();
+                            System.GC.WaitForPendingFinalizers();
+                            File.Delete(xmlfile);
 
                         }
                         //This gets a collection of controls in this form and places them in an array
@@ -286,7 +289,7 @@ namespace testsim
                                 work1.Add(go1);
 
                                 // stores all the string values in the list go1
-                                SaveXML.SaveData(work1, xmlfilesave);
+                                SaveXML.SaveData(work1, xmlfile);
                             }
                             catch (Exception ex)
                             {
@@ -300,13 +303,13 @@ namespace testsim
                         return;
                     }
                 }
-                 if (File.Exists(xmlfilesave))
+                if (File.Exists(xmlfile))
                 {
-                     
+
                     System.GC.Collect();
                     System.GC.WaitForPendingFinalizers();
-                    File.Delete(xmlfilesave);
-                }
+                    File.Delete(xmlfile);
+
 
                     //This gets a collection of controls in this form and places them in an array
                     var pBoxes = this.Controls.OfType<PictureBox>().ToArray();
@@ -333,7 +336,7 @@ namespace testsim
                             work.Add(go1);
 
                             // stores all the string values in the list go1
-                            SaveXML.SaveData(work, placesave);
+                            SaveXML.SaveData(work, xmlfile);
                         }
                         catch (Exception ex)
                         {
@@ -344,7 +347,13 @@ namespace testsim
                     f2.Show();
                     this.Close();
                 }
+
             }
+
+          
+            
+
+        }
         
         //Open Button
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
@@ -398,7 +407,7 @@ namespace testsim
         private void saveToolStripMenuItem1_Click(object sender, EventArgs e)
         {
 
-            if (xmlfilesave == null)
+            if (xmlfile == null)
             {
 
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -410,7 +419,7 @@ namespace testsim
                     /*file_name = dialog.SafeFileName;*/
                     xmlfilesave = saveFileDialog.FileName;
 
-                    if (File.Exists(xmlfilesave))
+                    if (File.Exists(xmlfile))
                     {
                         saveFileDialog.OverwritePrompt = true;
 
@@ -441,7 +450,7 @@ namespace testsim
                             work1.Add(go1);
 
                             // stores all the string values in the list go1
-                            SaveXML.SaveData(work1, xmlfilesave);
+                            SaveXML.SaveData(work1, xmlfile);
                         }
                         catch (Exception ex)
                         {
@@ -453,12 +462,12 @@ namespace testsim
 
                 return;
             }
-                if (File.Exists(xmlfilesave))
+                if (File.Exists(xmlfile))
                 {
 
                     System.GC.Collect();
                     System.GC.WaitForPendingFinalizers();
-                    File.Delete(xmlfilesave);
+                    File.Delete(xmlfile);
                 }
 
                 //This gets a collection of controls in this form and places them in an array
@@ -486,7 +495,7 @@ namespace testsim
                         work.Add(go1);
 
                         // stores all the string values in the list go1
-                        SaveXML.SaveData(work, "data.xml");
+                        SaveXML.SaveData(work, xmlfile);
                     }
                     catch (Exception ex)
                     {
@@ -553,9 +562,9 @@ namespace testsim
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 /*file_name = dialog.SafeFileName;*/
-                xmlfilesave = saveFileDialog.FileName;
+                xmlfile = saveFileDialog.FileName;
 
-                if (File.Exists(xmlfilesave))
+                if (File.Exists(xmlfile))
                 {
                     saveFileDialog.OverwritePrompt = true;
                    
@@ -585,12 +594,8 @@ namespace testsim
                         work.Add(go1);
 
                         // stores all the string values in the list go1
-                        SaveXML.SaveData(work, xmlfilesave);
-                        //After each component is saved it is removed of it's eventhandlers and contextmenu
-                        pBoxes[i].MouseMove -= new MouseEventHandler(pb_MouseMove);
-                        pBoxes[i].MouseDown -= new MouseEventHandler(pb_MouseDown);
-                        pBoxes[i].MouseUp -= new MouseEventHandler(pb_MouseButtonUp);
-                        pBoxes[i].ContextMenuStrip = null;
+                        SaveXML.SaveData(work, xmlfile);
+                        
                     }
                     catch (Exception ex)
                     {
