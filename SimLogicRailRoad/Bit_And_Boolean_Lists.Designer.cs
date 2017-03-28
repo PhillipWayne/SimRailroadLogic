@@ -46,7 +46,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(265, 31);
+            this.label2.Location = new System.Drawing.Point(342, 31);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(116, 17);
             this.label2.TabIndex = 8;
@@ -58,23 +58,23 @@
             this.listBox1.ItemHeight = 16;
             this.listBox1.Location = new System.Drawing.Point(24, 67);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(206, 212);
+            this.listBox1.Size = new System.Drawing.Size(293, 308);
             this.listBox1.TabIndex = 9;
             // 
             // listBox2
             // 
             this.listBox2.FormattingEnabled = true;
             this.listBox2.ItemHeight = 16;
-            this.listBox2.Location = new System.Drawing.Point(268, 67);
+            this.listBox2.Location = new System.Drawing.Point(345, 67);
             this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(172, 212);
+            this.listBox2.Size = new System.Drawing.Size(187, 308);
             this.listBox2.TabIndex = 10;
             // 
             // Bit_And_Boolean_Lists
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(467, 313);
+            this.ClientSize = new System.Drawing.Size(565, 386);
             this.Controls.Add(this.listBox2);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.label2);
