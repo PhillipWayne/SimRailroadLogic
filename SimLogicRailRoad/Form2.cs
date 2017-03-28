@@ -59,6 +59,8 @@ namespace testsim
         private bool drophapp=false;
         private object pbloc;
         private bool checkcomp = false;
+        
+
         private void pictureBox_Drag_enter(object sender, DragEventArgs e)
         {
 
@@ -73,6 +75,7 @@ namespace testsim
             pb1.Image = (Image)e.Data.GetData(DataFormats.Bitmap);
             // pb1.BackColor = (Color.Black);
             pb1.SizeMode = PictureBoxSizeMode.Normal;
+            pb1.Cursor = Cursors.SizeAll;
             pb1.MouseMove += new MouseEventHandler(pb_MouseMove);
             pb1.MouseDown += new MouseEventHandler(pb_MouseDown);
             pb1.MouseUp += new MouseEventHandler(pb_MouseButtonUp);
@@ -96,6 +99,7 @@ namespace testsim
             {
                 PictureBox pb = (PictureBox)sender;
                 pb.BorderStyle = BorderStyle.FixedSingle;
+                pb.Cursor = Cursors.SizeAll;
             }
         }
         void pb_MouseLeave(object sender, EventArgs e)
