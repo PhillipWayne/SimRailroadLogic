@@ -148,7 +148,7 @@
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
             this.newToolStripMenuItem.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(190, 26);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.newToolStripMenuItem.Text = "New";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
@@ -160,7 +160,7 @@
             this.openToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(190, 26);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
@@ -170,7 +170,7 @@
             this.saveToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("saveToolStripMenuItem1.Image")));
             this.saveToolStripMenuItem1.Name = "saveToolStripMenuItem1";
             this.saveToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(190, 26);
+            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(186, 22);
             this.saveToolStripMenuItem1.Text = "Save";
             this.saveToolStripMenuItem1.Click += new System.EventHandler(this.saveToolStripMenuItem1_Click);
             // 
@@ -181,20 +181,20 @@
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
             this.saveAsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.S)));
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(190, 26);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.saveAsToolStripMenuItem.Text = "Save As";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(187, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(183, 6);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.BackColor = System.Drawing.Color.Transparent;
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(190, 26);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(186, 22);
             this.toolStripMenuItem2.Text = "Exit";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
@@ -309,14 +309,14 @@
             // ladderLogicToolStripMenuItem
             // 
             this.ladderLogicToolStripMenuItem.Name = "ladderLogicToolStripMenuItem";
-            this.ladderLogicToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ladderLogicToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.ladderLogicToolStripMenuItem.Text = "Ladder logic";
             this.ladderLogicToolStripMenuItem.Click += new System.EventHandler(this.ladderLogicToolStripMenuItem_Click);
             // 
             // componentsToolStripMenuItem
             // 
             this.componentsToolStripMenuItem.Name = "componentsToolStripMenuItem";
-            this.componentsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.componentsToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.componentsToolStripMenuItem.Text = "Components";
             this.componentsToolStripMenuItem.Click += new System.EventHandler(this.componentsToolStripMenuItem_Click);
             // 
@@ -333,7 +333,7 @@
             // bitListsToolStripMenuItem
             // 
             this.bitListsToolStripMenuItem.Name = "bitListsToolStripMenuItem";
-            this.bitListsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.bitListsToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
             this.bitListsToolStripMenuItem.Text = "Bit lists";
             this.bitListsToolStripMenuItem.Click += new System.EventHandler(this.bitListsToolStripMenuItem_Click);
             // 
@@ -352,7 +352,7 @@
             this.startToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("startToolStripMenuItem.Image")));
             this.startToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.startToolStripMenuItem.Name = "startToolStripMenuItem";
-            this.startToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.startToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
             this.startToolStripMenuItem.Text = "Start";
             this.startToolStripMenuItem.Click += new System.EventHandler(this.startToolStripMenuItem_Click);
             // 
@@ -361,7 +361,7 @@
             this.stopToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("stopToolStripMenuItem.Image")));
             this.stopToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.stopToolStripMenuItem.Name = "stopToolStripMenuItem";
-            this.stopToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.stopToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
             this.stopToolStripMenuItem.Text = "Stop";
             this.stopToolStripMenuItem.Click += new System.EventHandler(this.stopToolStripMenuItem_Click);
             // 
@@ -395,6 +395,9 @@
             this.Name = "Form2";
             this.Text = "Railroad Logic Sim";
             this.Load += new System.EventHandler(this.Form2_Load);
+            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.pictureBox_Drag_Drop);
+            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.pictureBox_Drag_enter);
+         
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.formmousemove);
             this.contextMenuStrip1.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);

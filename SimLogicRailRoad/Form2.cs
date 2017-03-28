@@ -17,9 +17,7 @@ using System.Xml.Linq;
 using System.Data.Sql;
 using SimLogicRailRoad;
 using RailRoadLogicSim;
-
-
-
+using System.Reflection;
 
 namespace testsim
 {
@@ -57,16 +55,48 @@ namespace testsim
         static string[] bitsass;
         private int directxcheck;
         private int directycheck;
+        private int fl;
+        private bool drophapp=false;
+        private object pbloc;
+        private bool checkcomp = false;
+        private void pictureBox_Drag_enter(object sender, DragEventArgs e)
+        {
 
-        private void Form3_bridggap(object sender, EventArgs e)
+            e.Effect = DragDropEffects.Copy;
+        }
+
+        private void pictureBox_Drag_Drop(object sender, DragEventArgs e)
+        {
+
+            checkcomp = Form3.trk;
+            PictureBox pb1 = new PictureBox();
+            pb1.Image = (Image)e.Data.GetData(DataFormats.Bitmap);
+            // pb1.BackColor = (Color.Black);
+            pb1.SizeMode = PictureBoxSizeMode.Normal;
+            pb1.MouseMove += new MouseEventHandler(pb_MouseMove);
+            pb1.MouseDown += new MouseEventHandler(pb_MouseDown);
+            pb1.MouseUp += new MouseEventHandler(pb_MouseButtonUp);
+            pb1.MouseEnter += new EventHandler(pb_MouseEnter);
+            pb1.MouseLeave += new EventHandler(pb_MouseLeave);
+            pb1.ContextMenuStrip = contextMenuStrip1;
+            pbloc = pb1;
+            if (checkcomp == true)
+            {
+                pb1.Name = "Track";
+            }
+            Controls.Add(pb1);
+            drophapp = true;
+        }
+
+      /*  private void Form3_bridggap(object sender, EventArgs e)
         {
             if (simstart == false)
             {
                 int temp = Form3.trkw;
 
-                /* Random rn = new Random();
+                 Random rn = new Random();
                  int rnx=rn.Next(0,740);
-                 int rny = rn.Next(26, 425);*/
+                 int rny = rn.Next(26, 425);
                 PictureBox pb = new PictureBox();
                 pb.SizeMode = PictureBoxSizeMode.Normal;
                 pb.Location = new Point(100, 75);
@@ -75,6 +105,7 @@ namespace testsim
                 pb.MouseUp += new MouseEventHandler(pb_MouseButtonUp);
                 pb.MouseEnter += new EventHandler(pb_MouseEnter);
                 pb.MouseLeave += new EventHandler(pb_MouseLeave);
+
 
                 switch (temp)
                 {
@@ -100,8 +131,8 @@ namespace testsim
 
 
             }
-        }
-
+        }*/
+        
         //Creates a Box Around Image When Mouse is Over the Image
         void pb_MouseEnter(object sender, EventArgs e)
         {
@@ -143,44 +174,48 @@ namespace testsim
                 directxcheck = e.X - MouseDownLocation.X;
                 directycheck = e.Y - MouseDownLocation.Y;
                 // New Component Location
+                 
+
+               // if (e.X > 0 && e.X < this.ClientSize.Width)
+               // {
 
 
 
-                // pb_Lf < this.Size.Width
-                if (pb.Left > 0 && pb.Right < this.ClientSize.Width)
-                {
-                    pb.Left += pb_Lf;
+                    // pb_Lf < this.Size.Width
+                    if (pb.Left > 0 && pb.Right < this.ClientSize.Width)
+                    {
+                        pb.Left += pb_Lf;
 
 
+                    }
+
+                    // = e.Y - MouseDownLocation.Y;
+                    else if (directxcheck > 0 && pb.Left <= 0)
+                    {
+                        pb.Left += pb_Lf;
+                    }
+                    else if (pb.Left > 0 && directxcheck < 0)
+                    {
+                        pb.Left += pb_Lf;
+                    }
+                    // Y
+                    // New Component Location
+                    // pb.Left += pb_Lf; // X
+                    if (pb.Top > 24.5 && pb.Bottom < this.ClientSize.Height)
+                    {
+                        pb.Top += pb_Tp; // Y
+                    }
+                    else if (directycheck > 0 && pb.Top <= 25)
+                    {
+                        pb.Top += pb_Tp;
+                    }
+                    else if (directycheck < 0 && pb.Top > 25)
+                    {
+                        pb.Top += pb_Tp;
+                    }
+                    gl = sender;
                 }
-
-                // = e.Y - MouseDownLocation.Y;
-                else if (directxcheck > 0 && pb.Left <= 0)
-                {
-                    pb.Left += pb_Lf;
-                }
-                else if (pb.Left > 0 && directxcheck < 0)
-                {
-                    pb.Left += pb_Lf;
-                }
-                // Y
-                // New Component Location
-                // pb.Left += pb_Lf; // X
-                if (pb.Top > 24.5 && pb.Bottom < this.ClientSize.Height)
-                {
-                    pb.Top += pb_Tp; // Y
-                }
-                else if (directycheck > 0 && pb.Top <= 25)
-                {
-                    pb.Top += pb_Tp;
-                }
-                else if (directycheck < 0 && pb.Top > 25)
-                {
-                    pb.Top += pb_Tp;
-                }
-                gl = sender;
-            }
-
+           // }
             gl = sender;
         }
 
@@ -198,6 +233,7 @@ namespace testsim
                 capture = true;
                 gl = sender;
             }
+            
             gl = sender;
         }
 
@@ -205,6 +241,14 @@ namespace testsim
         {
             x = e.X;
             y = e.Y;
+            if (drophapp == true)
+            {
+                PictureBox pb = (PictureBox)pbloc;
+                pb.Left = e.X;
+                pb.Top = e.Y;
+                drophapp = false;
+            }
+
         }
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -864,7 +908,7 @@ namespace testsim
         private void componentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form3 f3 = new testsim.Form3();
-            f3.commbetween += new Comm(Form3_bridggap);
+           // f3.commbetween += new Comm(Form3_bridggap);
             //f3.ControlAdded += new ControlEventHandler(this.Form3_FormControlAdd);
 
             f3.Show();
@@ -902,5 +946,7 @@ namespace testsim
                 }
                 BackgroundImage = bm;
             }
-        }
+
+        
+    }
 }

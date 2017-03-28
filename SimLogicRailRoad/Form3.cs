@@ -24,10 +24,31 @@ namespace testsim
         
         public int track;
         public event Comm commbetween;
-        public static int trkw = 0;
+        public static bool trk = false;
         int i = 0;
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            trk = true;
+            pictureBox1.DoDragDrop(pictureBox1.Image, DragDropEffects.Copy);
+        }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void pictureBox2_MouseDown(object sender, MouseEventArgs e)
+        {
+            trk = true;
+            pictureBox2.DoDragDrop(pictureBox2.Image, DragDropEffects.Copy);
+        }
+        private void pictureBox3_MouseDown(object sender, MouseEventArgs e)
+        {
+            trk = true;
+            pictureBox3.DoDragDrop(pictureBox3.Image, DragDropEffects.Copy);
+        }
+        private void pictureBox4_MouseDown(object sender, MouseEventArgs e)
+        {
+            trk = true;
+            pictureBox4.DoDragDrop(pictureBox4.Image, DragDropEffects.Copy);
+        }
+
+      /*  private void pictureBox1_Click(object sender, EventArgs e)
         {
            trkw = 45;
 
@@ -43,9 +64,7 @@ namespace testsim
             selLocY = 0;
             sel.ForeColor = Color.Red;
             this.Controls.Add(sel);
-            /* Form4 f4 = new Form4();
-            f4.Show();*/
-
+            
 
             if (i >= 1)
             {
@@ -115,7 +134,7 @@ namespace testsim
             i++;
 
         }
-
+        */
         private void tableLayoutPanel4_Paint(object sender, PaintEventArgs e)
         {
 
