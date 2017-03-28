@@ -119,8 +119,6 @@
             this.pictureBox1.Size = new System.Drawing.Size(51, 38);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-          //  this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-          //  this.pictureBox1.DoubleClick += new System.EventHandler(this.pictureBox1_Click);
             this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
             // 
             // pictureBox2
@@ -131,8 +129,6 @@
             this.pictureBox2.Size = new System.Drawing.Size(51, 38);
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
-         //   this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
-         //   this.pictureBox2.DoubleClick += new System.EventHandler(this.pictureBox2_Click);
             this.pictureBox2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox2_MouseDown);
             // 
             // pictureBox3
@@ -143,8 +139,6 @@
             this.pictureBox3.Size = new System.Drawing.Size(51, 38);
             this.pictureBox3.TabIndex = 2;
             this.pictureBox3.TabStop = false;
-        //    this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
-        //    this.pictureBox3.DoubleClick += new System.EventHandler(this.pictureBox3_Click);
             this.pictureBox3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox3_MouseDown);
             // 
             // pictureBox4
@@ -337,7 +331,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form3";
             this.Text = "Toolbox";
-            this.TransparencyKey = System.Drawing.Color.Transparent;
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
