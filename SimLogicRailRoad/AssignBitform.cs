@@ -54,6 +54,7 @@ namespace RailRoadLogicSim
 
                     listBox1.Items.AddRange(allbits);
 
+
                     return;
                 }
 
