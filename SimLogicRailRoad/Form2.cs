@@ -88,52 +88,7 @@ namespace testsim
             drophapp = true;
         }
 
-      /*  private void Form3_bridggap(object sender, EventArgs e)
-        {
-            if (simstart == false)
-            {
-                int temp = Form3.trkw;
-
-                 Random rn = new Random();
-                 int rnx=rn.Next(0,740);
-                 int rny = rn.Next(26, 425);
-                PictureBox pb = new PictureBox();
-                pb.SizeMode = PictureBoxSizeMode.Normal;
-                pb.Location = new Point(100, 75);
-                pb.MouseMove += new MouseEventHandler(pb_MouseMove);
-                pb.MouseDown += new MouseEventHandler(pb_MouseDown);
-                pb.MouseUp += new MouseEventHandler(pb_MouseButtonUp);
-                pb.MouseEnter += new EventHandler(pb_MouseEnter);
-                pb.MouseLeave += new EventHandler(pb_MouseLeave);
-
-
-                switch (temp)
-                {
-                    case 45:
-                        pb.Image = SimLogicRailRoad.Properties.Resources.track_45;
-                        pb.Name = "Track";
-                        pb.ContextMenuStrip = contextMenuStrip1;
-                        this.Controls.Add(pb);
-                        break;
-                    case 90:
-                        pb.Image = SimLogicRailRoad.Properties.Resources.track_90;
-                        pb.Name = "Track";
-                        pb.ContextMenuStrip = contextMenuStrip1;
-                        this.Controls.Add(pb);
-                        break;
-                    case 135:
-                        pb.Image = SimLogicRailRoad.Properties.Resources.track_135;
-                        pb.Name = "Track";
-                        pb.ContextMenuStrip = contextMenuStrip1;
-                        this.Controls.Add(pb);
-                        break;
-                }
-
-
-            }
-        }*/
-        
-        //Creates a Box Around Image When Mouse is Over the Image
+  
         void pb_MouseEnter(object sender, EventArgs e)
         {
             if (simstart == false)
