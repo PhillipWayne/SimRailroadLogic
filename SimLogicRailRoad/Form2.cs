@@ -17,9 +17,7 @@ using System.Xml.Linq;
 using System.Data.Sql;
 using SimLogicRailRoad;
 using RailRoadLogicSim;
-
-
-
+using System.Reflection;
 
 namespace testsim
 {
@@ -28,6 +26,7 @@ namespace testsim
         public Form2()
         {
             InitializeComponent();
+            this.DoubleBuffered = true;
         }
 
         //1
@@ -48,18 +47,56 @@ namespace testsim
         bool simstart = false;
         public static string[] assinbits;
         private const int GridGap = 8;
-
-
+        public string xmlfile;
+        public string xmlfilesave;
+        public string placesave;
         // string file_name;
         // string text_read;
         static string[] bitsass;
-        private void Form3_bridggap(object sender, EventArgs e)
+        private int directxcheck;
+        private int directycheck;
+        private int fl;
+        private bool drophapp=false;
+        private object pbloc;
+        private bool checkcomp = false;
+        private void pictureBox_Drag_enter(object sender, DragEventArgs e)
+        {
+
+            e.Effect = DragDropEffects.Copy;
+        }
+
+        private void pictureBox_Drag_Drop(object sender, DragEventArgs e)
+        {
+
+            checkcomp = Form3.trk;
+            PictureBox pb1 = new PictureBox();
+            pb1.Image = (Image)e.Data.GetData(DataFormats.Bitmap);
+            // pb1.BackColor = (Color.Black);
+            pb1.SizeMode = PictureBoxSizeMode.Normal;
+            pb1.MouseMove += new MouseEventHandler(pb_MouseMove);
+            pb1.MouseDown += new MouseEventHandler(pb_MouseDown);
+            pb1.MouseUp += new MouseEventHandler(pb_MouseButtonUp);
+            pb1.MouseEnter += new EventHandler(pb_MouseEnter);
+            pb1.MouseLeave += new EventHandler(pb_MouseLeave);
+            pb1.ContextMenuStrip = contextMenuStrip1;
+            pbloc = pb1;
+            if (checkcomp == true)
+            {
+                pb1.Name = "Track";
+            }
+            Controls.Add(pb1);
+            drophapp = true;
+        }
+
+      /*  private void Form3_bridggap(object sender, EventArgs e)
         {
             if (simstart == false)
             {
                 int temp = Form3.trkw;
 
-
+                 Random rn = new Random();
+                 int rnx=rn.Next(0,740);
+                 int rny = rn.Next(26, 425);
                 PictureBox pb = new PictureBox();
                 pb.SizeMode = PictureBoxSizeMode.Normal;
                 pb.Location = new Point(100, 75);
@@ -68,6 +105,7 @@ namespace testsim
                 pb.MouseUp += new MouseEventHandler(pb_MouseButtonUp);
                 pb.MouseEnter += new EventHandler(pb_MouseEnter);
                 pb.MouseLeave += new EventHandler(pb_MouseLeave);
+
 
                 switch (temp)
                 {
@@ -93,8 +131,8 @@ namespace testsim
 
 
             }
-        }
-
+        }*/
+        
         //Creates a Box Around Image When Mouse is Over the Image
         void pb_MouseEnter(object sender, EventArgs e)
         {
@@ -120,30 +158,67 @@ namespace testsim
         {
             if (capture == true)
             {
-                if (simstart == false)
-                {
-                    // Code to move GUI Components    
 
-                    PictureBox pb = (PictureBox)sender;
-                    //pb.Left += e.X - MouseDownLocation.X;
-                    //pb.Top += e.Y - MouseDownLocation.Y;
-                    double Lf = Math.Round((e.X - MouseDownLocation.X) / 10.0) * 10; // Rounds X Mouse/Component Location
-                    double Tp = Math.Round((e.Y - MouseDownLocation.Y) / 10.0) * 10; // Rounds Y Mouse/Component Location
+                // Code to move GUI Components    
 
-                    // Converts Double to Integer
-                    int pb_Lf = Convert.ToInt32(Lf);
-                    int pb_Tp = Convert.ToInt32(Tp);
+                PictureBox pb = (PictureBox)sender;
+                //pb.Left += e.X - MouseDownLocation.X;
+                //pb.Top += e.Y - MouseDownLocation.Y;
+                double Lf = Math.Round((e.X - MouseDownLocation.X) / 10.0) * 10; // Rounds X Mouse/Component Location
+                double Tp = Math.Round((e.Y - MouseDownLocation.Y) / 10.0) * 10; // Rounds Y Mouse/Component Location
 
+                // Converts Double to Integer
+                int pb_Lf = Convert.ToInt32(Lf);
+                int pb_Tp = Convert.ToInt32(Tp);
+
+                directxcheck = e.X - MouseDownLocation.X;
+                directycheck = e.Y - MouseDownLocation.Y;
+                // New Component Location
+                 
+
+               // if (e.X > 0 && e.X < this.ClientSize.Width)
+               // {
+
+
+
+                    // pb_Lf < this.Size.Width
+                    if (pb.Left > 0 && pb.Right < this.ClientSize.Width)
+                    {
+                        pb.Left += pb_Lf;
+
+
+                    }
+
+                    // = e.Y - MouseDownLocation.Y;
+                    else if (directxcheck > 0 && pb.Left <= 0)
+                    {
+                        pb.Left += pb_Lf;
+                    }
+                    else if (pb.Left > 0 && directxcheck < 0)
+                    {
+                        pb.Left += pb_Lf;
+                    }
+                    // Y
                     // New Component Location
-                    pb.Left += pb_Lf; // X
-                    pb.Top += pb_Tp; // Y
-
+                    // pb.Left += pb_Lf; // X
+                    if (pb.Top > 24.5 && pb.Bottom < this.ClientSize.Height)
+                    {
+                        pb.Top += pb_Tp; // Y
+                    }
+                    else if (directycheck > 0 && pb.Top <= 25)
+                    {
+                        pb.Top += pb_Tp;
+                    }
+                    else if (directycheck < 0 && pb.Top > 25)
+                    {
+                        pb.Top += pb_Tp;
+                    }
                     gl = sender;
                 }
-
-                gl = sender;
-            }
+           // }
+            gl = sender;
         }
+
 
         void pb_MouseButtonUp(object sender, MouseEventArgs e)
         {
@@ -158,6 +233,7 @@ namespace testsim
                 capture = true;
                 gl = sender;
             }
+            
             gl = sender;
         }
 
@@ -165,6 +241,14 @@ namespace testsim
         {
             x = e.X;
             y = e.Y;
+            if (drophapp == true)
+            {
+                PictureBox pb = (PictureBox)pbloc;
+                pb.Left = e.X;
+                pb.Top = e.Y;
+                drophapp = false;
+            }
+
         }
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -177,7 +261,7 @@ namespace testsim
             {
 
                 PictureBox pb = (PictureBox)gl;
-                
+
                 Controls.Remove(pb);
                 pb.Dispose();
                 pb = null;
@@ -206,12 +290,228 @@ namespace testsim
             // If the user presses Yes to load previous data 
             if (result == DialogResult.Yes)
             {
-                if (File.Exists("data.xml"))
+                if (xmlfile == null)
+                {
+                    SaveFileDialog saveFileDialog = new SaveFileDialog();
+
+                    saveFileDialog.Filter = "xml files (*.xml)|*.xml|All files (*.*)|*.*";
+
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        /*file_name = dialog.SafeFileName;*/
+                        xmlfile = saveFileDialog.FileName;
+
+                        if (File.Exists(xmlfile))
+                        {
+                            System.GC.Collect();
+                            System.GC.WaitForPendingFinalizers();
+                            File.Delete(xmlfile);
+
+                        }
+                        //This gets a collection of controls in this form and places them in an array
+                        var pBoxes1 = this.Controls.OfType<PictureBox>().ToArray();
+
+                        //This creates a list which passes the values of pBoxes to it
+                        List<PictureBox> pbList1 = new List<PictureBox>(pBoxes1);
+                        List<Information> work1 = new List<Information>();
+
+                        // This is created so the string values are stored in the list Information
+                        for (int i = 0; i < pbList1.Count; i++)
+                        {
+                            MemoryStream ms = new MemoryStream();
+                            pBoxes1[i].Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                            Byte[] a = ms.ToArray();
+
+                            String text = Convert.ToBase64String(a);
+                            try
+                            {
+                                Information go1 = new Information();
+                                go1.Trk1 = text;
+
+                                go1.Piclocx = pBoxes1[i].Location.X.ToString();
+                                go1.Piclocy = pBoxes1[i].Location.Y.ToString();
+                                work1.Add(go1);
+
+                                // stores all the string values in the list go1
+                                SaveXML.SaveData(work1, xmlfile);
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message);
+                            }
+                        }
+                        Form2 f21 = new Form2();
+                        f21.Show();
+                        this.Close();
+
+                        return;
+                    }
+                }
+                if (File.Exists(xmlfile))
                 {
 
                     System.GC.Collect();
                     System.GC.WaitForPendingFinalizers();
-                    File.Delete("data.xml");
+                    File.Delete(xmlfile);
+
+
+                    //This gets a collection of controls in this form and places them in an array
+                    var pBoxes = this.Controls.OfType<PictureBox>().ToArray();
+
+                    //This creates a list which passes the values of pBoxes to it
+                    List<PictureBox> pbList = new List<PictureBox>(pBoxes);
+                    List<Information> work = new List<Information>();
+
+                    // This is created so the string values are stored in the list Information
+                    for (int i = 0; i < pbList.Count; i++)
+                    {
+                        MemoryStream ms = new MemoryStream();
+                        pBoxes[i].Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                        Byte[] a = ms.ToArray();
+
+                        String text = Convert.ToBase64String(a);
+                        try
+                        {
+                            Information go1 = new Information();
+                            go1.Trk1 = text;
+
+                            go1.Piclocx = pBoxes[i].Location.X.ToString();
+                            go1.Piclocy = pBoxes[i].Location.Y.ToString();
+                            work.Add(go1);
+
+                            // stores all the string values in the list go1
+                            SaveXML.SaveData(work, xmlfile);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                    }
+                    Form2 f2 = new Form2();
+                    f2.Show();
+                    this.Close();
+                }
+
+            }
+
+          
+            
+
+        }
+        
+        //Open Button
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            /* Form1 f1 = new Form1();
+                        f1.Close();
+                        this.Close();*/
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter =
+               "xml files (*.xml)|*.xml|All files (*.*)|*.*";
+            dialog.Title = "Pick your xml file to load";
+
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                /*file_name = dialog.SafeFileName;*/
+                xmlfile = dialog.FileName;
+
+                if (File.Exists(xmlfile))
+                {
+                    var result = MessageBox.Show("Do you want to load last saved data", "Data load?",
+                                     MessageBoxButtons.YesNo,
+                                     MessageBoxIcon.Question);
+
+                    // If the no button was pressed ...
+                    if (result == DialogResult.No)
+                    {
+                        // leave the method
+                        return;
+                    }
+                    // If the user presses Yes to load previous data 
+                    if (result == DialogResult.Yes)
+                    {
+                        var delpics = this.Controls.OfType<PictureBox>().ToArray();
+                        List<PictureBox> deletepic = new List<PictureBox>(delpics);
+                        for (int i = 0; i < deletepic.Count; i++)
+                        {
+                            Controls.Remove(delpics[i]);
+                            delpics[i].Dispose();
+                            delpics[i] = null;
+                        }
+                        // A new instance of the class is made into a list
+                        List<Information> go12 = new List<Information>();
+
+                        // This passes to the method deserialize the values go12 and string "data.xml"
+                        Deserialize(go12, xmlfile);
+                    }
+                }
+            }
+        }
+        //Save Button
+        private void saveToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+            if (xmlfile == null)
+            {
+
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+
+                saveFileDialog.Filter = "xml files (*.xml)|*.xml|All files (*.*)|*.*";
+                // saveFileDialog.CreatePrompt = true;
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    /*file_name = dialog.SafeFileName;*/
+                    xmlfilesave = saveFileDialog.FileName;
+
+                    if (File.Exists(xmlfile))
+                    {
+                        saveFileDialog.OverwritePrompt = true;
+
+
+                    }
+                    //This gets a collection of controls in this form and places them in an array
+                    var pBoxes1 = this.Controls.OfType<PictureBox>().ToArray();
+
+                    //This creates a list which passes the values of pBoxes to it
+                    List<PictureBox> pbList1 = new List<PictureBox>(pBoxes1);
+                    List<Information> work1 = new List<Information>();
+
+                    // This is created so the string values are stored in the list Information
+                    for (int i = 0; i < pbList1.Count; i++)
+                    {
+                        MemoryStream ms = new MemoryStream();
+                        pBoxes1[i].Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                        Byte[] a = ms.ToArray();
+
+                        String text = Convert.ToBase64String(a);
+                        try
+                        {
+                            Information go1 = new Information();
+                            go1.Trk1 = text;
+
+                            go1.Piclocx = pBoxes1[i].Location.X.ToString();
+                            go1.Piclocy = pBoxes1[i].Location.Y.ToString();
+                            work1.Add(go1);
+
+                            // stores all the string values in the list go1
+                            SaveXML.SaveData(work1, xmlfile);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                    }
+                   
+                }
+
+                return;
+            }
+                if (File.Exists(xmlfile))
+                {
+
+                    System.GC.Collect();
+                    System.GC.WaitForPendingFinalizers();
+                    File.Delete(xmlfile);
                 }
 
                 //This gets a collection of controls in this form and places them in an array
@@ -239,147 +539,116 @@ namespace testsim
                         work.Add(go1);
 
                         // stores all the string values in the list go1
-                        SaveXML.SaveData(work, "data.xml");
+                        SaveXML.SaveData(work, xmlfile);
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message);
                     }
                 }
-                Form2 f2 = new Form2();
-                f2.Show();
-                this.Close();
             }
-        }
-
-        //Open Button
-        private void openToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            /* Form1 f1 = new Form1();
-                        f1.Close();
-                        this.Close();*/
-            if (File.Exists("data.xml"))
-            {
-                var result = MessageBox.Show("Do you want to load last saved data", "Data load?",
-                                 MessageBoxButtons.YesNo,
-                                 MessageBoxIcon.Question);
-
-                // If the no button was pressed ...
-                if (result == DialogResult.No)
-                {
-                    // leave the method
-                    return;
-                }
-                // If the user presses Yes to load previous data 
-                if (result == DialogResult.Yes)
-                {
-                    var delpics = this.Controls.OfType<PictureBox>().ToArray();
-                    List<PictureBox> deletepic = new List<PictureBox>(delpics);
-                    for (int i = 0; i < deletepic.Count; i++)
-                    {
-                        Controls.Remove(delpics[i]);
-                        delpics[i].Dispose();
-                        delpics[i] = null;
-                    }
-                    // A new instance of the class is made into a list
-                    List<Information> go12 = new List<Information>();
-
-                    // This passes to the method deserialize the values go12 and string "data.xml"
-                    Deserialize(go12, "data.xml");
-                }
-            }
-        }
-
-        //Save Button
-        private void saveToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            if (File.Exists("data.xml"))
-            {
-
-                System.GC.Collect();
-                System.GC.WaitForPendingFinalizers();
-                File.Delete("data.xml");
-            }
-
-            //This gets a collection of controls in this form and places them in an array
-            var pBoxes = this.Controls.OfType<PictureBox>().ToArray();
-
-            //This creates a list which passes the values of pBoxes to it
-            List<PictureBox> pbList = new List<PictureBox>(pBoxes);
-            List<Information> work = new List<Information>();
-
-            // This is created so the string values are stored in the list Information
-            for (int i = 0; i < pbList.Count; i++)
-            {
-                MemoryStream ms = new MemoryStream();
-                pBoxes[i].Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
-                Byte[] a = ms.ToArray();
-
-                String text = Convert.ToBase64String(a);
-                try
-                {
-                    Information go1 = new Information();
-                    go1.Trk1 = text;
-
-                    go1.Piclocx = pBoxes[i].Location.X.ToString();
-                    go1.Piclocy = pBoxes[i].Location.Y.ToString();
-                    work.Add(go1);
-
-                    // stores all the string values in the list go1
-                    SaveXML.SaveData(work, "data.xml");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
-        }
-
+        
         public void Deserialize(object obj, string fileName)
         {
             //This creates a new instance of xmlserializer which serializes the the obj but needs it's type
             var serializer = new XmlSerializer(obj.GetType());
 
-            // Opens and reads data.xml using filestream
-            using (var stream = File.OpenRead(fileName))
+            try
             {
-                //This deserializes the xml document in that current stream
-                var other = (List<Information>)(serializer.Deserialize(stream));
-
-                // This creates a new instance of the list Information and passes through the values in other
-                List<Information> goy = new List<Information>(other);
-
-                //This for loop goes until the number of items in other is reached
-                for (int i = 0; i < other.Count; i++)
+                // Opens and reads data.xml using filestream
+                using (var stream = File.OpenRead(fileName))
                 {
-                    f = goy[i].Trk1;
-                    rx = Int32.Parse(goy[i].Piclocx);
-                    ry = Int32.Parse(goy[i].Piclocy);
-                    byte[] imagebytes = Convert.FromBase64String(f);
-                    //
-                    MemoryStream ms = new MemoryStream(imagebytes, 0, imagebytes.Length);
-                    ms.Write(imagebytes, 0, imagebytes.Length);
-                    Image image = Image.FromStream(ms, true);
-                    PictureBox pb = new PictureBox();
+                    //This deserializes the xml document in that current stream
+                    var other = (List<Information>)(serializer.Deserialize(stream));
 
-                    pb.Image = image;
-                    pb.SizeMode = PictureBoxSizeMode.Normal;
-                    pb.Location = new Point(rx, ry);
-                    pb.MouseMove += new MouseEventHandler(pb_MouseMove);
-                    pb.MouseDown += new MouseEventHandler(pb_MouseDown);
-                    pb.MouseUp += new MouseEventHandler(pb_MouseButtonUp);
-                    pb.ContextMenuStrip = contextMenuStrip1;
-                    Controls.Add(pb);
+                    // This creates a new instance of the list Information and passes through the values in other
+                    List<Information> goy = new List<Information>(other);
+
+                    //This for loop goes until the number of items in other is reached
+                    for (int i = 0; i < other.Count; i++)
+                    {
+                        f = goy[i].Trk1;
+                        rx = Int32.Parse(goy[i].Piclocx);
+                        ry = Int32.Parse(goy[i].Piclocy);
+                        byte[] imagebytes = Convert.FromBase64String(f);
+                        //
+                        MemoryStream ms = new MemoryStream(imagebytes, 0, imagebytes.Length);
+                        ms.Write(imagebytes, 0, imagebytes.Length);
+                        Image image = Image.FromStream(ms, true);
+                        PictureBox pb = new PictureBox();
+
+                        pb.Image = image;
+                        pb.SizeMode = PictureBoxSizeMode.Normal;
+                        pb.Location = new Point(rx, ry);
+                        pb.MouseMove += new MouseEventHandler(pb_MouseMove);
+                        pb.MouseDown += new MouseEventHandler(pb_MouseDown);
+                        pb.MouseUp += new MouseEventHandler(pb_MouseButtonUp);
+                        pb.ContextMenuStrip = contextMenuStrip1;
+                        Controls.Add(pb);
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+
             }
         }
 
         //Save As Button
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
 
+            saveFileDialog.Filter = "xml files (*.xml)|*.xml|All files (*.*)|*.*";
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                /*file_name = dialog.SafeFileName;*/
+                xmlfile = saveFileDialog.FileName;
+
+                if (File.Exists(xmlfile))
+                {
+                    saveFileDialog.OverwritePrompt = true;
+                   
+                }
+                //This gets a collection of controls in this form and places them in an array
+                var pBoxes = this.Controls.OfType<PictureBox>().ToArray();
+
+                //This creates a list which passes the values of pBoxes to it
+                List<PictureBox> pbList = new List<PictureBox>(pBoxes);
+                List<Information> work = new List<Information>();
+
+                // This is created so the string values are stored in the list Information
+                for (int i = 0; i < pbList.Count; i++)
+                {
+                    MemoryStream ms = new MemoryStream();
+                    pBoxes[i].Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                    Byte[] a = ms.ToArray();
+
+                    String text = Convert.ToBase64String(a);
+                    try
+                    {
+                        Information go1 = new Information();
+                        go1.Trk1 = text;
+
+                        go1.Piclocx = pBoxes[i].Location.X.ToString();
+                        go1.Piclocy = pBoxes[i].Location.Y.ToString();
+                        work.Add(go1);
+
+                        // stores all the string values in the list go1
+                        SaveXML.SaveData(work, xmlfile);
+                        
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+
+                }
+            }
         }
-
         //Exit Button
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
@@ -581,12 +850,11 @@ namespace testsim
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            if(simstart == false)
-            {
+            
                 MakeBackgroundGrid(); //Loads Background Grid
 
-                {
-                }
+                
+                
                     /* Simulation sim = new Simulation();
 
                      // sim.Hide();
@@ -613,7 +881,7 @@ namespace testsim
                         }
                     }
                 }
-                    }
+                    
 
         private void assignBitToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -640,7 +908,7 @@ namespace testsim
         private void componentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form3 f3 = new testsim.Form3();
-            f3.commbetween += new Comm(Form3_bridggap);
+           // f3.commbetween += new Comm(Form3_bridggap);
             //f3.ControlAdded += new ControlEventHandler(this.Form3_FormControlAdd);
 
             f3.Show();
@@ -678,5 +946,7 @@ namespace testsim
                 }
                 BackgroundImage = bm;
             }
-        }
+
+        
+    }
 }
