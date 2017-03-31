@@ -15,35 +15,37 @@ namespace testsim
     public partial class  Simulation : Form
     {
    
-        string[] bits = new string[1000]; //bits and boolean logic
-        public string[] to_bits = new string[1000]; //here bits and boolean logic go
+        List<string> bits = new List<string>(); //bits and boolean logic
+        public List<string> to_bits = new List<string>(); //here bits and boolean logic go
 
         //display information
 
-        string[] disp_bits = new string[1000];
-        string[] disp_to_bits = new string[1000];
-        
+        List<string> disp_bits = new List<string>();
+        List<string> disp_to_bits = new List<string>();
+
         //boolean logic parsed
-        string[] boolean_parsed = new string[1000];
+        List<string> boolean_parsed = new List<string>();
 
         //user input
-        int[] user_input_num = new int[1000];
+        List<int> user_input_num = new List<int>();
+
 
         //ismails static bits
 
-        public static string[] bitassign;
-        public static string[] bitssofbits;
-        public static string[] lastofbit;
+
+        public static List<string> bitassign = new List<string>();
+        public static List<string> bitssofbits = new List<string>();
+        public static List<string> lastofbit = new List<string>();
 
         //jimmys static bits
+        public static List<string> disp_bits_static = new List<string>();
+        public static List<string> boolean_parsed_static = new List<string>();
+        public static List<int> user_input_num_static = new List<int>();
+        public static List<string> disp_to_bits_static = new List<string>();
+        public static List<string> to_bits_static = new List<string>();
+        public static List<string> bits_static = new List<string>();
+        public static List<int> string_array_cap_static = new List<int>();
 
-        public static string[] disp_bits_static;
-        public static string[] boolean_parsed_static;
-        public static int[] user_input_num_static;
-        public static string[] disp_to_bits_static;
-        public static string[] to_bits_static;
-        public static string[] bits_static;
-        public static int string_array_cap_static;
 
         public Simulation()
         {
@@ -101,8 +103,9 @@ namespace testsim
                             current_string = reader.ReadLine();
 
                             //read the rest of teh code and store it in teh string array
-                             
-                            bits[count] = boolean_first_half + current_string.Substring(7, current_string.IndexOf("TO")-7).Trim();
+
+                            bits.Add(boolean_first_half + current_string.Substring(7, current_string.IndexOf("TO") - 7).Trim());
+
 
                             index_to = (bits[count].IndexOf("TO"));
                             index_colon = (bits[count].IndexOf(";"));
@@ -111,14 +114,13 @@ namespace testsim
 
                             index_colon = current_string.IndexOf(";");
                             index_to = current_string.IndexOf("TO");
-                            to_bits[count] = current_string.Substring(index_to + 3, (index_colon - index_to) - 3);
-
+                            to_bits.Add(current_string.Substring(index_to + 3, (index_colon - index_to) - 3));
                         }
                     }
                     else if ((line.IndexOf("\t") == 6 || line.IndexOf(" ") == 6) && line.IndexOf("TO") != -1)
                     {
-                        bits[count] = line.Substring(7, line.IndexOf("TO") - 7).Trim();
-                        to_bits[count] = line.Substring(index_to + 3, (index_colon - index_to) - 3);
+                        bits.Add(line.Substring(7, line.IndexOf("TO") - 7).Trim());
+                        to_bits.Add(line.Substring(index_to + 3, (index_colon - index_to) - 3));
                     }
                     else
                     {
@@ -139,11 +141,10 @@ namespace testsim
 
                 else if (line.Length >= 9 && line.Substring(0, 9) == "NV.ASSIGN")
                 {
-                   
 
-                    bits[count] = line.Substring(9, line.IndexOf("TO") - 9).Trim();
-                    to_bits[count] = line.Substring(index_to+3, (index_colon - index_to) -3);
 
+                    bits.Add(line.Substring(9, line.IndexOf("TO") - 9).Trim());
+                    to_bits.Add(line.Substring(index_to + 3, (index_colon - index_to) - 3));
                     //increment textbox line and string array counter
 
                     textBox3.Text += to_bits[count] + Environment.NewLine;
@@ -162,7 +163,7 @@ namespace testsim
 
             //pass in count number to display_bits
 
-            string_array_cap_static = count;
+            string_array_cap_static.Add(count);
             display_bits(count);
 
         }
@@ -185,8 +186,8 @@ namespace testsim
                 if (bits[i].IndexOfAny(chars) >= 0)
                 {
 
-                    disp_bits[disp_count] = bits[i];
-                    disp_to_bits[disp_count] = to_bits[i];
+                    disp_bits.Add(bits[i]);
+                    disp_to_bits.Add(to_bits[i]);
                     disp_count++;
 
                 }         
@@ -194,11 +195,11 @@ namespace testsim
 
             //re seize string array to be displayed
 
-            Array.Resize(ref disp_to_bits, disp_count);
+            //Array.Resize(ref disp_to_bits, disp_count);
 
             //display in list box
 
-            Bit_List_Box.Items.AddRange(disp_to_bits);
+           //t_List_Box.Items.AddRange(disp_to_bits);
 
             //Call parse function
             boolean_logic_sort(disp_count);
@@ -241,6 +242,8 @@ namespace testsim
                 int string_num = 0;
 
                 //parses the boolean logic char by char
+
+                boolean_parsed.Add("");
                
                 foreach(char c in disp_bits[i])
             {
@@ -398,7 +401,7 @@ namespace testsim
                 lastofbit = disp_to_bits;
 
                 //store bit_num to record number of user inputs
-                user_input_num[i] = bit_num - 1;
+                user_input_num.Add(bit_num - 1);
             }
 
             disp_bits_static = disp_bits;

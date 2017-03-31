@@ -17,7 +17,7 @@ namespace testsim
         {
             InitializeComponent();
 
-            listBox1.Items.AddRange(Simulation.disp_to_bits_static);
+            listBox1.Items.AddRange(Simulation.disp_to_bits_static.ToArray());
         }
 
         private void listBox1_MouseClick(object sender, MouseEventArgs e)

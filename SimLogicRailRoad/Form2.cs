@@ -45,14 +45,14 @@ namespace testsim
         int x;
         int y;
         bool simstart = false;
-        public static string[] assinbits;
+       static public List<string> assinbits;
         private const int GridGap = 8;
         public string xmlfile;
         public string xmlfilesave;
         public string placesave;
         // string file_name;
         // string text_read;
-        static string[] bitsass;
+        static public List<string> bitsass;
         private int directxcheck;
         private int directycheck;
         private int fl;
@@ -822,7 +822,7 @@ namespace testsim
 
                     bitsass = Simulation.bitassign;
                     // int cnt = bitsass.Count;
-                    int n = Convert.ToInt32(bitsass.Length);
+                    int n = Convert.ToInt32(bitsass.Count);
 
                     for (int i = 0; i < n; i++)
                     {
@@ -833,7 +833,7 @@ namespace testsim
 
                         else
                         {
-                            Array.Resize<string>(ref bitsass, i);
+                           // List<string>.Resize<string>(ref bitsass, i);
                             assinbits = bitsass;
 
                             return;

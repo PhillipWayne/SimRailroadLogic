@@ -18,10 +18,10 @@ namespace SimLogicRailRoad
         {
             InitializeComponent();
         }
-        public string[] bitsin;
-        public string[] guibits;
+        public List <string> bitsin;
+        List<string> guibits;
         string[] allbits;
-        public string[] lastofbit1;
+        List<string>  lastofbit1;
         string assignbit;
         private object namebit;
         string check;
@@ -32,7 +32,7 @@ namespace SimLogicRailRoad
         {
 
             guibits = Simulation.bitssofbits;
-            int n = Convert.ToInt32(guibits.Length);
+            int n = Convert.ToInt32(guibits.Count);
 
             for (int i = 0; i < n; i++)
             {
@@ -43,7 +43,7 @@ namespace SimLogicRailRoad
 
                 else
                 {
-                    Array.Resize<string>(ref guibits, i);
+                   // Array.Resize<string>(ref guibits, i);
                     //  listBox2.Items.AddRange(guibits);
                     bitsin = Form2.assinbits;
                     //  listBox1.Items.AddRange(bitsin);

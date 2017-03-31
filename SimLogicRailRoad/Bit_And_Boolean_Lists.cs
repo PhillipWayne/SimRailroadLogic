@@ -22,18 +22,8 @@ namespace testsim
 
         void list_box_values()
         {
-            int data_limit = Simulation.string_array_cap_static;
-
-            string[] valid_to_bits = new string[data_limit];
-            string[] valid_bits = new string[data_limit];
-
-            for(int i = 0; i <= data_limit - 1; i++)
-            {
-                valid_bits[i] = Simulation.bits_static[i];
-                valid_to_bits[i] = Simulation.to_bits_static[i];
-            }
-            listBox1.Items.AddRange(valid_bits);
-            listBox2.Items.AddRange(valid_to_bits);
+            listBox1.Items.AddRange(Simulation.bits_static.ToArray());
+            listBox2.Items.AddRange(Simulation.to_bits_static.ToArray());
 
         }
 
