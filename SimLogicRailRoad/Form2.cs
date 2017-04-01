@@ -29,10 +29,7 @@ namespace testsim
             this.DoubleBuffered = true;
         }
 
-        //1
-
-        //int temp = 0;
-        Form3 f31 = new Form3();
+        
         bool capture = false;
         bool copy = false;
         private Point MouseDownLocation;
@@ -49,18 +46,14 @@ namespace testsim
         private const int GridGap = 8;
         public string xmlfile;
         public string xmlfilesave;
-        public string placesave;
-        // string file_name;
-        // string text_read;
+       
+        
         static string[] bitsass;
         private int directxcheck;
         private int directycheck;
-        private int fl;
         private bool drophapp=false;
         private object pbloc;
         private bool checkcomp = false;
-        
-
         private void pictureBox_Drag_enter(object sender, DragEventArgs e)
         {
 
@@ -75,7 +68,6 @@ namespace testsim
             pb1.Image = (Image)e.Data.GetData(DataFormats.Bitmap);
             // pb1.BackColor = (Color.Black);
             pb1.SizeMode = PictureBoxSizeMode.Normal;
-            pb1.Cursor = Cursors.SizeAll;
             pb1.MouseMove += new MouseEventHandler(pb_MouseMove);
             pb1.MouseDown += new MouseEventHandler(pb_MouseDown);
             pb1.MouseUp += new MouseEventHandler(pb_MouseButtonUp);
@@ -91,50 +83,7 @@ namespace testsim
             drophapp = true;
         }
 
-      /*  private void Form3_bridggap(object sender, EventArgs e)
-        {
-            if (simstart == false)
-            {
-                int temp = Form3.trkw;
-
-                 Random rn = new Random();
-                 int rnx=rn.Next(0,740);
-                 int rny = rn.Next(26, 425);
-                PictureBox pb = new PictureBox();
-                pb.SizeMode = PictureBoxSizeMode.Normal;
-                pb.Location = new Point(100, 75);
-                pb.MouseMove += new MouseEventHandler(pb_MouseMove);
-                pb.MouseDown += new MouseEventHandler(pb_MouseDown);
-                pb.MouseUp += new MouseEventHandler(pb_MouseButtonUp);
-                pb.MouseEnter += new EventHandler(pb_MouseEnter);
-                pb.MouseLeave += new EventHandler(pb_MouseLeave);
-
-
-                switch (temp)
-                {
-                    case 45:
-                        pb.Image = SimLogicRailRoad.Properties.Resources.track_45;
-                        pb.Name = "Track";
-                        pb.ContextMenuStrip = contextMenuStrip1;
-                        this.Controls.Add(pb);
-                        break;
-                    case 90:
-                        pb.Image = SimLogicRailRoad.Properties.Resources.track_90;
-                        pb.Name = "Track";
-                        pb.ContextMenuStrip = contextMenuStrip1;
-                        this.Controls.Add(pb);
-                        break;
-                    case 135:
-                        pb.Image = SimLogicRailRoad.Properties.Resources.track_135;
-                        pb.Name = "Track";
-                        pb.ContextMenuStrip = contextMenuStrip1;
-                        this.Controls.Add(pb);
-                        break;
-                }
-
-
-            }
-        }*/
+      
         
         //Creates a Box Around Image When Mouse is Over the Image
         void pb_MouseEnter(object sender, EventArgs e)
@@ -144,7 +93,6 @@ namespace testsim
             {
                 PictureBox pb = (PictureBox)sender;
                 pb.BorderStyle = BorderStyle.FixedSingle;
-                pb.Cursor = Cursors.SizeAll;
             }
         }
         void pb_MouseLeave(object sender, EventArgs e)
@@ -166,8 +114,7 @@ namespace testsim
                 // Code to move GUI Components    
 
                 PictureBox pb = (PictureBox)sender;
-                //pb.Left += e.X - MouseDownLocation.X;
-                //pb.Top += e.Y - MouseDownLocation.Y;
+               
                 double Lf = Math.Round((e.X - MouseDownLocation.X) / 10.0) * 10; // Rounds X Mouse/Component Location
                 double Tp = Math.Round((e.Y - MouseDownLocation.Y) / 10.0) * 10; // Rounds Y Mouse/Component Location
 
@@ -205,9 +152,10 @@ namespace testsim
                     // Y
                     // New Component Location
                     // pb.Left += pb_Lf; // X
-                    if (pb.Top > 24.5 && pb.Bottom < this.ClientSize.Height)
+                    if (pb.Top > 25 && pb.Bottom < this.ClientSize.Height)
                     {
                         pb.Top += pb_Tp; // Y
+                        
                     }
                     else if (directycheck > 0 && pb.Top <= 25)
                     {
@@ -219,7 +167,7 @@ namespace testsim
                     }
                     gl = sender;
                 }
-           // }
+           
             gl = sender;
         }
 
@@ -465,7 +413,7 @@ namespace testsim
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     /*file_name = dialog.SafeFileName;*/
-                    xmlfilesave = saveFileDialog.FileName;
+                    xmlfile = saveFileDialog.FileName;
 
                     if (File.Exists(xmlfile))
                     {
@@ -609,7 +557,7 @@ namespace testsim
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                /*file_name = dialog.SafeFileName;*/
+             
                 xmlfile = saveFileDialog.FileName;
 
                 if (File.Exists(xmlfile))
@@ -656,16 +604,13 @@ namespace testsim
         //Exit Button
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            //Form1 f1 = new Form1();
-            //f1.Close();
-            //this.Close();
             Application.Exit();
         }
 
         //Undo Button
         private void undoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            f31.Show();
+            
         }
 
         //Redo Button
@@ -733,12 +678,12 @@ namespace testsim
         //Start Sim Button
         private void startToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (File.Exists("data.xml"))
+            if (File.Exists(xmlfile))
             {
 
                 System.GC.Collect();
                 System.GC.WaitForPendingFinalizers();
-                File.Delete("data.xml");
+                File.Delete(xmlfile);
             }
 
             //This gets a collection of controls in this form and places them in an array
@@ -766,7 +711,7 @@ namespace testsim
                     work.Add(go1);
 
                     // stores all the string values in the list go1
-                    SaveXML.SaveData(work, "data.xml");
+                    SaveXML.SaveData(work, xmlfile);
                     //After each component is saved it is removed of it's eventhandlers and contextmenu
                     pBoxes[i].MouseMove -= new MouseEventHandler(pb_MouseMove);
                     pBoxes[i].MouseDown -= new MouseEventHandler(pb_MouseDown);
@@ -780,14 +725,7 @@ namespace testsim
 
             }
 
-            /*  for (int i = 0; i < pbList.Count; i++)
-              {
-
-                       pBoxes[i].MouseMove -= new MouseEventHandler(pb_MouseMove);
-                  pBoxes[i].MouseDown -= new MouseEventHandler(pb_MouseDown);
-                  pBoxes[i].MouseUp -= new MouseEventHandler(pb_MouseButtonUp);
-                  pBoxes[i].ContextMenuStrip = null;
-              }*/
+            
 
             simstart = true;
             MakeBackgroundGrid();
@@ -857,16 +795,8 @@ namespace testsim
             
                 MakeBackgroundGrid(); //Loads Background Grid
 
-                
-                
-                    /* Simulation sim = new Simulation();
-
-                     // sim.Hide();
-
-                     sim.text_file_parse(file_name, text_read);*/
-
                     bitsass = Simulation.bitassign;
-                    // int cnt = bitsass.Count;
+                    
                     int n = Convert.ToInt32(bitsass.Length);
 
                     for (int i = 0; i < n; i++)
@@ -898,9 +828,6 @@ namespace testsim
                 Track_Assign TA = new Track_Assign();
                 TA.Show();
             }
-            /* AssignBitform assbit = new AssignBitform();
-             assbit.Show();*/
-
         }
 
         private void ladderLogicToolStripMenuItem_Click(object sender, EventArgs e)
@@ -912,9 +839,6 @@ namespace testsim
         private void componentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form3 f3 = new testsim.Form3();
-           // f3.commbetween += new Comm(Form3_bridggap);
-            //f3.ControlAdded += new ControlEventHandler(this.Form3_FormControlAdd);
-
             f3.Show();
         }
 

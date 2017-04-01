@@ -397,7 +397,6 @@
             this.Load += new System.EventHandler(this.Form2_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.pictureBox_Drag_Drop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.pictureBox_Drag_enter);
-         
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.formmousemove);
             this.contextMenuStrip1.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
