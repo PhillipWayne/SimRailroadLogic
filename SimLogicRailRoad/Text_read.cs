@@ -20,6 +20,9 @@ namespace testsim
 
         //display information
 
+        //disp_bits contains all the boolean logic
+        //disp_to_bits are the output bits for the boolean logic
+
         List<string> disp_bits = new List<string>();
         List<string> disp_to_bits = new List<string>();
 
@@ -31,8 +34,6 @@ namespace testsim
 
 
         //ismails static bits
-
-
         public static List<string> bitassign = new List<string>();
         public static List<string> bitssofbits = new List<string>();
         public static List<string> lastofbit = new List<string>();
@@ -45,6 +46,18 @@ namespace testsim
         public static List<string> to_bits_static = new List<string>();
         public static List<string> bits_static = new List<string>();
         public static List<int> string_array_cap_static = new List<int>();
+
+
+        //Lists used to store unique bits in the input
+
+       //ISMAIL USE THIS ONE FOR ALL THE BITS YOU WANT
+       //DO IT FOR PAT
+        public static List<string> unique_bits = new List<string>();
+
+        public List<string> boolean_logic_edit = new List<string>();
+        public List<string> boolean_logic_bits = new List<string>();
+        public List<string> single_input_bits = new List<string>();
+        public List<string> input_bits = new List<string>();
 
 
         public Simulation()
@@ -203,8 +216,10 @@ namespace testsim
 
             //Call parse function
             boolean_logic_sort(disp_count);
+            unique_bit_sort();
+        
 
-        }
+            }
 
 
         private void Bit_List_Box_MouseClick(object sender, MouseEventArgs e)
@@ -411,6 +426,142 @@ namespace testsim
 
         }
         
-           
+
+        //check for unique bits
+        //finds bits in boolean logic
+        //Compares bits in boolean logic to single input bits
+        //stores unique input values
+        //Compares unique input values to ouput values and stores result in unique_bits
+
+        public void unique_bit_sort()
+        {
+
+            //disp_bits contains all the boolean logic
+            //to_bits are the output bits for the boolean logic
+            //bits are all the inputs
+
+
+            // unique_bits are all the unique bits
+            // boolean_logic_bits are the unique bits in the boolean logic
+            // single_input_bits are all the single input bits
+            // input_bits are the uinique input bits
+
+
+            string temp;
+            char[] chars = { '~', '*', '+' };
+
+            //----------------------------------------
+            //checks for the bits in the boolean logic
+            //----------------------------------------
+
+            for (int i = 0; i <= disp_bits.Count - 1; i++)
+            {
+                boolean_logic_edit.Add("");
+
+                boolean_logic_edit[i] = disp_bits[i];
+
+                //replace all boolean logic chars with spaces
+
+                do
+                {
+                    temp = boolean_logic_edit[i];
+                    boolean_logic_edit[i] = boolean_logic_edit[i].Replace('(', ' ');
+                    boolean_logic_edit[i] = boolean_logic_edit[i].Replace(')', ' ');
+                    boolean_logic_edit[i] = boolean_logic_edit[i].Replace('*', ' ');
+                    boolean_logic_edit[i] = boolean_logic_edit[i].Replace('+', ' ');
+                    boolean_logic_edit[i] = boolean_logic_edit[i].Replace('~', ' ');
+                }
+                while (temp != boolean_logic_edit[i]);
+
+
+                //replace two spaces and three spaces with one space
+
+                do
+                {
+                    temp = boolean_logic_edit[i];
+                    boolean_logic_edit[i] = boolean_logic_edit[i].Replace("  ", " ");
+                    boolean_logic_edit[i] = boolean_logic_edit[i].Replace("   ", " ");
+                    boolean_logic_edit[i] = boolean_logic_edit[i].Replace("    ", " ");
+                }
+                while (temp != boolean_logic_edit[i]);
+
+                if(boolean_logic_edit[i].StartsWith(" ") == true)
+                {
+                    boolean_logic_edit[i] = boolean_logic_edit[i].Remove(0, 1);
+                }
+                //split individual parts based upon spaces
+                //stores each bit in parts
+
+                var parts = boolean_logic_edit[i].Split(' ');
+
+                for (int j = 0; j <= parts.Length - 1; j++)
+                {
+                    //set bit check bool equal to ture
+
+                    bool bit_check = true;
+
+                    // compare each part bit to whats already in the boolean_logic bits class, then store it
+                    for (int a = 0; a < +boolean_logic_bits.Count; a++)
+                    {
+                        // if one of the btis in the boolean logic being evaluated is already int the boolean bits list
+                        //then dont add it
+
+                        if (parts[j] == boolean_logic_bits[a])
+                        {
+                            bit_check = false;
+                        }
+                        
+                        //if bit is null then dont include it (seems like a problem with a text file)
+
+                        if (parts[j] == "")
+                        {
+                            bit_check = false;
+                        }
+                    }
+
+                    // add bit if its not already in the list
+
+                    if(bit_check == true)
+                    {
+                        boolean_logic_bits.Add(parts[j]);
+                    }
+                    
+                }
+
+            }
+
+
+            //----------------------------------------
+            //checks for individual bits in the inputs
+            //----------------------------------------
+
+            for(int i = 0; i <= bits.Count - 1; i++)
+            {
+                if (bits[i].IndexOfAny(chars) >= 0)
+                {
+                    //do nothing
+
+                }
+                else
+                {
+                    single_input_bits.Add(bits[i]);
+                }
+            }
+
+            //----------------------------------------
+            //compare single input bits with the bits in the boolean logic
+            //----------------------------------------
+
+            input_bits = single_input_bits.Union(boolean_logic_bits).ToList();
+
+            //----------------------------------------
+            //compare input bits to to_bits and store it in uni_Que bits
+            //----------------------------------------
+
+            unique_bits = input_bits.Union(to_bits).ToList();
+
+
+        }
+
     }
 }
