@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using SimLogicRailRoad;
+using testsim;
+using RailRoadLogicSim;
 
 
 namespace testsim
@@ -33,10 +36,8 @@ namespace testsim
         List<int> user_input_num = new List<int>();
 
 
-        //ismails static bits
-        public static List<string> bitassign = new List<string>();
-        public static List<string> bitssofbits = new List<string>();
-        public static List<string> lastofbit = new List<string>();
+     
+        
 
         //jimmys static bits
         public static List<string> disp_bits_static = new List<string>();
@@ -411,9 +412,7 @@ namespace testsim
 
                 }
 
-                bitssofbits = bits;
-                bitassign = to_bits;
-                lastofbit = disp_to_bits;
+                
 
                 //store bit_num to record number of user inputs
                 user_input_num.Add(bit_num - 1);

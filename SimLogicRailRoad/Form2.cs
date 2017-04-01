@@ -42,14 +42,8 @@ namespace testsim
         int x;
         int y;
         bool simstart = false;
-       static public List<string> assinbits;
         private const int GridGap = 8;
         public string xmlfile;
-        public string xmlfilesave;
-        public string placesave;
-        // string file_name;
-        // string text_read;
-        static public List<string> bitsass;
         private int directxcheck;
         private int directycheck;
         private bool drophapp=false;
@@ -63,7 +57,7 @@ namespace testsim
 
         private void pictureBox_Drag_Drop(object sender, DragEventArgs e)
         {
-
+            
             checkcomp = Form3.trk;
             PictureBox pb1 = new PictureBox();
             pb1.Image = (Image)e.Data.GetData(DataFormats.Bitmap);
@@ -796,25 +790,7 @@ namespace testsim
             
                 MakeBackgroundGrid(); //Loads Background Grid
 
-                    bitsass = Simulation.bitassign;
-                    // int cnt = bitsass.Count;
-                    int n = Convert.ToInt32(bitsass.Length);
-
-                    for (int i = 0; i < n; i++)
-                    {
-                        if (bitsass[i] != null)
-                        {
-                            // bitsass[i]  = bitsass[i];
-                        }
-
-                        else
-                        {
-                           // List<string>.Resize<string>(ref bitsass, i);
-                           // assinbits = bitsass;
-
-                            return;
-                        }
-                    }
+                    
                 }
                     
 
