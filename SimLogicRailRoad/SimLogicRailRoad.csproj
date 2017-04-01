@@ -109,11 +109,11 @@
     <Compile Include="Signal_Assign.Designer.cs">
       <DependentUpon>Signal_Assign.cs</DependentUpon>
     </Compile>
-    <Compile Include="Simulation.cs">
+    <Compile Include="Text_read.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Simulation.designer.cs">
-      <DependentUpon>Simulation.cs</DependentUpon>
+    <Compile Include="Text_read.designer.cs">
+      <DependentUpon>Text_read.cs</DependentUpon>
     </Compile>
     <Compile Include="Switch_Assign.cs">
       <SubType>Form</SubType>
@@ -164,8 +164,8 @@
     <EmbeddedResource Include="Signal_Assign.resx">
       <DependentUpon>Signal_Assign.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Simulation.resx">
-      <DependentUpon>Simulation.cs</DependentUpon>
+    <EmbeddedResource Include="Text_read.resx">
+      <DependentUpon>Text_read.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Switch_Assign.resx">
       <DependentUpon>Switch_Assign.cs</DependentUpon>

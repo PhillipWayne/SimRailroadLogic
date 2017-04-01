@@ -42,13 +42,14 @@ namespace testsim
         int x;
         int y;
         bool simstart = false;
-        public static string[] assinbits;
+       static public List<string> assinbits;
         private const int GridGap = 8;
         public string xmlfile;
         public string xmlfilesave;
-       
-        
-        static string[] bitsass;
+        public string placesave;
+        // string file_name;
+        // string text_read;
+        static public List<string> bitsass;
         private int directxcheck;
         private int directycheck;
         private bool drophapp=false;
@@ -796,8 +797,8 @@ namespace testsim
                 MakeBackgroundGrid(); //Loads Background Grid
 
                     bitsass = Simulation.bitassign;
-                    
-                    int n = Convert.ToInt32(bitsass.Length);
+                    // int cnt = bitsass.Count;
+                    int n = Convert.ToInt32(bitsass.Count);
 
                     for (int i = 0; i < n; i++)
                     {
@@ -808,8 +809,8 @@ namespace testsim
 
                         else
                         {
-                            Array.Resize<string>(ref bitsass, i);
-                            assinbits = bitsass;
+                           // List<string>.Resize<string>(ref bitsass, i);
+                           // assinbits = bitsass;
 
                             return;
                         }

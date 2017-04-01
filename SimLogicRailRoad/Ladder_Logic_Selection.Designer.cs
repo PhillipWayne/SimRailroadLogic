@@ -37,7 +37,7 @@
             this.listBox1.ItemHeight = 16;
             this.listBox1.Location = new System.Drawing.Point(32, 25);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(175, 196);
+            this.listBox1.Size = new System.Drawing.Size(221, 292);
             this.listBox1.TabIndex = 0;
             this.listBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listBox1_MouseClick);
             // 
@@ -45,7 +45,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(282, 253);
+            this.ClientSize = new System.Drawing.Size(294, 340);
             this.Controls.Add(this.listBox1);
             this.Name = "Ladder_Logic_Selection";
             this.Text = "Ladder_Logic_Selection";

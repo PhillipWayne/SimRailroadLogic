@@ -18,10 +18,10 @@ namespace SimLogicRailRoad
         {
             InitializeComponent();
         }
-        public string[] bitsin;
-        public string[] guibits;
+        public List <string> bitsin;
+        List<string> guibits;
         string[] allbits;
-        public string[] lastofbit1;
+        List<string>  lastofbit1;
         string assignbit;
         private object namebit;
         string check;
@@ -32,37 +32,39 @@ namespace SimLogicRailRoad
         {
 
             guibits = Simulation.bitssofbits;
-            int n = Convert.ToInt32(guibits.Length);
+            int n = Convert.ToInt32(guibits.Count);
 
-            for (int i = 0; i < n; i++)
-            {
-                if (guibits[i] != null)
-                {
+            /*   for (int i = 0; i < n; i++)
+               {
+                   if (guibits[i] != null)
+                   {
 
-                }
+                   }
 
-                else
-                {
-                    Array.Resize<string>(ref guibits, i);
-                    //  listBox2.Items.AddRange(guibits);
-                    bitsin = Form2.assinbits;
-                    //  listBox1.Items.AddRange(bitsin);
-                    lastofbit1 = Simulation.lastofbit;
-                    List<String> bitsinas = new List<String>();
-                    bitsinas.AddRange(guibits);
-                    bitsinas.AddRange(bitsin);
-                    bitsinas.AddRange(lastofbit1);
-                    allbits = bitsinas.ToArray();
+                   else
+                   {
+                   }
+               }*/
+            // Array.Resize<string>(ref guibits, i);
+            //  listBox2.Items.AddRange(guibits);
+                 bitsin = Form2.bitsass;
+                //  listBox1.Items.AddRange(bitsin);
+                lastofbit1 = Simulation.lastofbit;
+                List<String> bitsinas = new List<String>();
+                bitsinas.AddRange(guibits);
+                bitsinas.AddRange(bitsin);
+                bitsinas.AddRange(lastofbit1);
+                allbits = bitsinas.ToArray();
 
-                    comboBox1.Items.AddRange(allbits);
-                    comboBox2.Items.AddRange(allbits);
-                    comboBox3.Items.AddRange(allbits);
-                    comboBox4.Items.AddRange(allbits);
-                    comboBox5.Items.AddRange(allbits);
+                comboBox1.Items.AddRange(allbits);
+                comboBox2.Items.AddRange(allbits);
+                comboBox3.Items.AddRange(allbits);
+                comboBox4.Items.AddRange(allbits);
+                comboBox5.Items.AddRange(allbits);
 
-                    namebit = Form2.knowbit;
-                    PictureBox pb = (PictureBox)namebit;
-                   
+                namebit = Form2.knowbit;
+                PictureBox pb = (PictureBox)namebit;
+            
                    if (pb.Tag !=null)
                     {
 
@@ -83,10 +85,10 @@ namespace SimLogicRailRoad
                     return;
                 }
 
-            }
+            
            
             //comboBox1.Items.Add
-        }
+        
 
         private void button1_Click(object sender, EventArgs e)
         {

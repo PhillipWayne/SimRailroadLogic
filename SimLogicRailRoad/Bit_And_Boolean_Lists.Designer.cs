@@ -32,6 +32,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.listBox2 = new System.Windows.Forms.ListBox();
+            this.listBox3 = new System.Windows.Forms.ListBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -46,7 +49,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(265, 31);
+            this.label2.Location = new System.Drawing.Point(342, 31);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(116, 17);
             this.label2.TabIndex = 8;
@@ -58,23 +61,53 @@
             this.listBox1.ItemHeight = 16;
             this.listBox1.Location = new System.Drawing.Point(24, 67);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(206, 212);
+            this.listBox1.Size = new System.Drawing.Size(293, 308);
             this.listBox1.TabIndex = 9;
             // 
             // listBox2
             // 
             this.listBox2.FormattingEnabled = true;
             this.listBox2.ItemHeight = 16;
-            this.listBox2.Location = new System.Drawing.Point(268, 67);
+            this.listBox2.Location = new System.Drawing.Point(345, 67);
             this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(172, 212);
+            this.listBox2.Size = new System.Drawing.Size(187, 308);
             this.listBox2.TabIndex = 10;
+            // 
+            // listBox3
+            // 
+            this.listBox3.FormattingEnabled = true;
+            this.listBox3.ItemHeight = 16;
+            this.listBox3.Location = new System.Drawing.Point(563, 67);
+            this.listBox3.Name = "listBox3";
+            this.listBox3.Size = new System.Drawing.Size(280, 308);
+            this.listBox3.TabIndex = 11;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(560, 31);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(79, 17);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Unique bits";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(645, 31);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(79, 17);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "Unique bits";
             // 
             // Bit_And_Boolean_Lists
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(467, 313);
+            this.ClientSize = new System.Drawing.Size(881, 386);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.listBox3);
             this.Controls.Add(this.listBox2);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.label2);
@@ -92,5 +125,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.ListBox listBox3;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }
