@@ -834,7 +834,7 @@ namespace testsim
                         else
                         {
                            // List<string>.Resize<string>(ref bitsass, i);
-                            assinbits = bitsass;
+                           // assinbits = bitsass;
 
                             return;
                         }
