@@ -798,7 +798,7 @@ namespace testsim
 
                     bitsass = Simulation.bitassign;
                     // int cnt = bitsass.Count;
-                    int n = Convert.ToInt32(bitsass.Count);
+                    int n = Convert.ToInt32(bitsass.Length);
 
                     for (int i = 0; i < n; i++)
                     {
