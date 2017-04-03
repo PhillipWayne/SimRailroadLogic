@@ -11,6 +11,7 @@ using System.IO;
 using SimLogicRailRoad;
 using testsim;
 using RailRoadLogicSim;
+using System.Text.RegularExpressions;
 
 
 namespace testsim
@@ -133,7 +134,7 @@ namespace testsim
                     }
                     else if ((line.IndexOf("\t") == 6 || line.IndexOf(" ") == 6) && line.IndexOf("TO") != -1)
                     {
-                        bits.Add(line.Substring(7, line.IndexOf("TO") - 7).Trim());
+                        bits.Add(line.Substring(7, line.LastIndexOf("TO") - 7).Trim());
                         to_bits.Add(line.Substring(index_to + 3, (index_colon - index_to) - 3));
                     }
                     else
