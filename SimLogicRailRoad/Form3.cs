@@ -25,7 +25,7 @@ namespace testsim
         public int track;
         public event Comm commbetween;
         public static bool trk = false;
-        int i = 0;
+      
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
             trk = true;
@@ -48,7 +48,7 @@ namespace testsim
             pictureBox4.DoDragDrop(pictureBox4.Image, DragDropEffects.Copy);
         }
 
- 
+     
         private void tableLayoutPanel4_Paint(object sender, PaintEventArgs e)
         {
 

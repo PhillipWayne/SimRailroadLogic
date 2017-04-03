@@ -29,10 +29,7 @@ namespace testsim
             this.DoubleBuffered = true;
         }
 
-        //1
-
-        //int temp = 0;
-        Form3 f31 = new Form3();
+        
         bool capture = false;
         bool copy = false;
         private Point MouseDownLocation;
@@ -45,22 +42,14 @@ namespace testsim
         int x;
         int y;
         bool simstart = false;
-       static public List<string> assinbits;
         private const int GridGap = 8;
         public string xmlfile;
-        public string xmlfilesave;
-        public string placesave;
-        // string file_name;
-        // string text_read;
-        static public List<string> bitsass;
         private int directxcheck;
         private int directycheck;
-        private int fl;
         private bool drophapp=false;
         private object pbloc;
         private bool checkcomp = false;
-        
-
+        private bool Exit = false;
         private void pictureBox_Drag_enter(object sender, DragEventArgs e)
         {
 
@@ -69,7 +58,7 @@ namespace testsim
 
         private void pictureBox_Drag_Drop(object sender, DragEventArgs e)
         {
-
+            
             checkcomp = Form3.trk;
             PictureBox pb1 = new PictureBox();
             pb1.Image = (Image)e.Data.GetData(DataFormats.Bitmap);
@@ -91,15 +80,17 @@ namespace testsim
             drophapp = true;
         }
 
-  
+      
+        
+        //Creates a Box Around Image When Mouse is Over the Image
         void pb_MouseEnter(object sender, EventArgs e)
         {
             if (simstart == false)
 
             {
                 PictureBox pb = (PictureBox)sender;
+                
                 pb.BorderStyle = BorderStyle.FixedSingle;
-                pb.Cursor = Cursors.SizeAll;
             }
         }
         void pb_MouseLeave(object sender, EventArgs e)
@@ -121,8 +112,7 @@ namespace testsim
                 // Code to move GUI Components    
 
                 PictureBox pb = (PictureBox)sender;
-                //pb.Left += e.X - MouseDownLocation.X;
-                //pb.Top += e.Y - MouseDownLocation.Y;
+               
                 double Lf = Math.Round((e.X - MouseDownLocation.X) / 10.0) * 10; // Rounds X Mouse/Component Location
                 double Tp = Math.Round((e.Y - MouseDownLocation.Y) / 10.0) * 10; // Rounds Y Mouse/Component Location
 
@@ -160,9 +150,10 @@ namespace testsim
                     // Y
                     // New Component Location
                     // pb.Left += pb_Lf; // X
-                    if (pb.Top > 24.5 && pb.Bottom < this.ClientSize.Height)
+                    if (pb.Top > 25 && pb.Bottom < this.ClientSize.Height)
                     {
                         pb.Top += pb_Tp; // Y
+                        
                     }
                     else if (directycheck > 0 && pb.Top <= 25)
                     {
@@ -174,7 +165,7 @@ namespace testsim
                     }
                     gl = sender;
                 }
-           // }
+           
             gl = sender;
         }
 
@@ -285,8 +276,9 @@ namespace testsim
                             try
                             {
                                 Information go1 = new Information();
-                                go1.Trk1 = text;
-
+                                go1.Componentpic = text;
+                                go1.Bitsofcomponents = (string[])pBoxes1[i].Tag;
+                                go1.Componentname = pBoxes1[i].Name;
                                 go1.Piclocx = pBoxes1[i].Location.X.ToString();
                                 go1.Piclocy = pBoxes1[i].Location.Y.ToString();
                                 work1.Add(go1);
@@ -332,8 +324,9 @@ namespace testsim
                         try
                         {
                             Information go1 = new Information();
-                            go1.Trk1 = text;
-
+                            go1.Componentpic = text;
+                            go1.Bitsofcomponents = (string[])pBoxes[i].Tag;
+                            go1.Componentname = pBoxes[i].Name;
                             go1.Piclocx = pBoxes[i].Location.X.ToString();
                             go1.Piclocy = pBoxes[i].Location.Y.ToString();
                             work.Add(go1);
@@ -361,9 +354,7 @@ namespace testsim
         //Open Button
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            /* Form1 f1 = new Form1();
-                        f1.Close();
-                        this.Close();*/
+            
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Filter =
                "xml files (*.xml)|*.xml|All files (*.*)|*.*";
@@ -420,7 +411,7 @@ namespace testsim
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     /*file_name = dialog.SafeFileName;*/
-                    xmlfilesave = saveFileDialog.FileName;
+                    xmlfile = saveFileDialog.FileName;
 
                     if (File.Exists(xmlfile))
                     {
@@ -446,8 +437,9 @@ namespace testsim
                         try
                         {
                             Information go1 = new Information();
-                            go1.Trk1 = text;
-
+                            go1.Componentpic = text;
+                            go1.Bitsofcomponents = (string[])pBoxes1[i].Tag;
+                            go1.Componentname = pBoxes1[i].Name;
                             go1.Piclocx = pBoxes1[i].Location.X.ToString();
                             go1.Piclocy = pBoxes1[i].Location.Y.ToString();
                             work1.Add(go1);
@@ -491,8 +483,9 @@ namespace testsim
                     try
                     {
                         Information go1 = new Information();
-                        go1.Trk1 = text;
-
+                        go1.Componentpic = text;
+                        go1.Bitsofcomponents = (string[])pBoxes[i].Tag;
+                        go1.Componentname = pBoxes[i].Name;
                         go1.Piclocx = pBoxes[i].Location.X.ToString();
                         go1.Piclocy = pBoxes[i].Location.Y.ToString();
                         work.Add(go1);
@@ -526,9 +519,10 @@ namespace testsim
                     //This for loop goes until the number of items in other is reached
                     for (int i = 0; i < other.Count; i++)
                     {
-                        f = goy[i].Trk1;
+                        f = goy[i].Componentpic;
                         rx = Int32.Parse(goy[i].Piclocx);
                         ry = Int32.Parse(goy[i].Piclocy);
+                        
                         byte[] imagebytes = Convert.FromBase64String(f);
                         //
                         MemoryStream ms = new MemoryStream(imagebytes, 0, imagebytes.Length);
@@ -537,6 +531,8 @@ namespace testsim
                         PictureBox pb = new PictureBox();
 
                         pb.Image = image;
+                        pb.Name= goy[i].Componentname;
+                        pb.Tag = goy[i].Bitsofcomponents;
                         pb.SizeMode = PictureBoxSizeMode.Normal;
                         pb.Location = new Point(rx, ry);
                         pb.MouseMove += new MouseEventHandler(pb_MouseMove);
@@ -564,7 +560,7 @@ namespace testsim
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                /*file_name = dialog.SafeFileName;*/
+             
                 xmlfile = saveFileDialog.FileName;
 
                 if (File.Exists(xmlfile))
@@ -590,8 +586,9 @@ namespace testsim
                     try
                     {
                         Information go1 = new Information();
-                        go1.Trk1 = text;
-
+                        go1.Componentpic = text;
+                        go1.Bitsofcomponents = (string[])pBoxes[i].Tag;
+                        go1.Componentname = pBoxes[i].Name;
                         go1.Piclocx = pBoxes[i].Location.X.ToString();
                         go1.Piclocy = pBoxes[i].Location.Y.ToString();
                         work.Add(go1);
@@ -611,16 +608,131 @@ namespace testsim
         //Exit Button
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            //Form1 f1 = new Form1();
-            //f1.Close();
-            //this.Close();
+            Exit = true;
+            var result = MessageBox.Show("Do you want to save before leaving the Simulation", "Leave Simulation without saving?",
+                                MessageBoxButtons.YesNo,
+                                MessageBoxIcon.Question);
+
+            // If the no button was pressed ...
+            if (result == DialogResult.No)
+            {
+                Application.Exit();
+
+                // leave the method
+                return;
+            }
+            // If the user presses Yes to load previous data 
+            if (result == DialogResult.Yes)
+            {
+                if (xmlfile == null)
+                {
+                    SaveFileDialog saveFileDialog = new SaveFileDialog();
+
+                    saveFileDialog.Filter = "xml files (*.xml)|*.xml|All files (*.*)|*.*";
+
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        /*file_name = dialog.SafeFileName;*/
+                        xmlfile = saveFileDialog.FileName;
+
+                        if (File.Exists(xmlfile))
+                        {
+                            System.GC.Collect();
+                            System.GC.WaitForPendingFinalizers();
+                            File.Delete(xmlfile);
+
+                        }
+                        //This gets a collection of controls in this form and places them in an array
+                        var pBoxes1 = this.Controls.OfType<PictureBox>().ToArray();
+
+                        //This creates a list which passes the values of pBoxes to it
+                        List<PictureBox> pbList1 = new List<PictureBox>(pBoxes1);
+                        List<Information> work1 = new List<Information>();
+
+                        // This is created so the string values are stored in the list Information
+                        for (int i = 0; i < pbList1.Count; i++)
+                        {
+                            MemoryStream ms = new MemoryStream();
+                            pBoxes1[i].Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                            Byte[] a = ms.ToArray();
+
+                            String text = Convert.ToBase64String(a);
+                            try
+                            {
+                                Information go1 = new Information();
+                                go1.Componentpic = text;
+                                go1.Bitsofcomponents = (string[])pBoxes1[i].Tag;
+                                go1.Componentname = pBoxes1[i].Name;
+                                go1.Piclocx = pBoxes1[i].Location.X.ToString();
+                                go1.Piclocy = pBoxes1[i].Location.Y.ToString();
+                                work1.Add(go1);
+
+                                // stores all the string values in the list go1
+                                SaveXML.SaveData(work1, xmlfile);
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message);
+                            }
+                        }
+                        Application.Exit();
+                        return;
+                    }
+                }
+                if (File.Exists(xmlfile))
+                {
+
+                    System.GC.Collect();
+                    System.GC.WaitForPendingFinalizers();
+                    File.Delete(xmlfile);
+
+
+                    //This gets a collection of controls in this form and places them in an array
+                    var pBoxes = this.Controls.OfType<PictureBox>().ToArray();
+
+                    //This creates a list which passes the values of pBoxes to it
+                    List<PictureBox> pbList = new List<PictureBox>(pBoxes);
+                    List<Information> work = new List<Information>();
+
+                    // This is created so the string values are stored in the list Information
+                    for (int i = 0; i < pbList.Count; i++)
+                    {
+                        MemoryStream ms = new MemoryStream();
+                        pBoxes[i].Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                        Byte[] a = ms.ToArray();
+
+                        String text = Convert.ToBase64String(a);
+                        try
+                        {
+                            Information go1 = new Information();
+                            go1.Componentpic = text;
+                            go1.Bitsofcomponents = (string[])pBoxes[i].Tag;
+                            go1.Componentname = pBoxes[i].Name;
+                            go1.Piclocx = pBoxes[i].Location.X.ToString();
+                            go1.Piclocy = pBoxes[i].Location.Y.ToString();
+                            work.Add(go1);
+
+                            // stores all the string values in the list go1
+                            SaveXML.SaveData(work, xmlfile);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                    }
+                   
+                }
+
+            }
+
+
             Application.Exit();
         }
 
         //Undo Button
         private void undoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            f31.Show();
+            
         }
 
         //Redo Button
@@ -688,12 +800,12 @@ namespace testsim
         //Start Sim Button
         private void startToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (File.Exists("data.xml"))
+            if (File.Exists(xmlfile))
             {
 
                 System.GC.Collect();
                 System.GC.WaitForPendingFinalizers();
-                File.Delete("data.xml");
+                File.Delete(xmlfile);
             }
 
             //This gets a collection of controls in this form and places them in an array
@@ -714,14 +826,14 @@ namespace testsim
                 try
                 {
                     Information go1 = new Information();
-                    go1.Trk1 = text;
+                    go1.Componentpic = text;
 
                     go1.Piclocx = pBoxes[i].Location.X.ToString();
                     go1.Piclocy = pBoxes[i].Location.Y.ToString();
                     work.Add(go1);
 
                     // stores all the string values in the list go1
-                    SaveXML.SaveData(work, "data.xml");
+                    SaveXML.SaveData(work, xmlfile);
                     //After each component is saved it is removed of it's eventhandlers and contextmenu
                     pBoxes[i].MouseMove -= new MouseEventHandler(pb_MouseMove);
                     pBoxes[i].MouseDown -= new MouseEventHandler(pb_MouseDown);
@@ -735,14 +847,7 @@ namespace testsim
 
             }
 
-            /*  for (int i = 0; i < pbList.Count; i++)
-              {
-
-                       pBoxes[i].MouseMove -= new MouseEventHandler(pb_MouseMove);
-                  pBoxes[i].MouseDown -= new MouseEventHandler(pb_MouseDown);
-                  pBoxes[i].MouseUp -= new MouseEventHandler(pb_MouseButtonUp);
-                  pBoxes[i].ContextMenuStrip = null;
-              }*/
+            
 
             simstart = true;
             MakeBackgroundGrid();
@@ -793,15 +898,15 @@ namespace testsim
                 PictureBox pb = (PictureBox)gl;
                 PictureBox kl = new PictureBox();
                 kl.Image = pb.Image;
-
-                /* kl.Left = MousePosition.X;
-                 kl.Top = MousePosition.Y;*/
                 kl.Left = x;
                 kl.Top = y;
-
+                kl.Name = pb.Name;
                 kl.MouseMove += new MouseEventHandler(pb_MouseMove);
                 kl.MouseDown += new MouseEventHandler(pb_MouseDown);
                 kl.MouseUp += new MouseEventHandler(pb_MouseButtonUp);
+                kl.Cursor = Cursors.SizeAll;
+                kl.MouseEnter += new EventHandler(pb_MouseEnter);
+                kl.MouseLeave += new EventHandler(pb_MouseLeave);
                 kl.ContextMenuStrip = contextMenuStrip1;
                 Controls.Add(kl);
             }
@@ -812,33 +917,7 @@ namespace testsim
             
                 MakeBackgroundGrid(); //Loads Background Grid
 
-                
-                
-                    /* Simulation sim = new Simulation();
-
-                     // sim.Hide();
-
-                     sim.text_file_parse(file_name, text_read);*/
-
-                    bitsass = Simulation.bitassign;
-                    // int cnt = bitsass.Count;
-                    int n = Convert.ToInt32(bitsass.Count);
-
-                    for (int i = 0; i < n; i++)
-                    {
-                        if (bitsass[i] != null)
-                        {
-                            // bitsass[i]  = bitsass[i];
-                        }
-
-                        else
-                        {
-                           // List<string>.Resize<string>(ref bitsass, i);
-                           // assinbits = bitsass;
-
-                            return;
-                        }
-                    }
+                    
                 }
                     
 
@@ -853,9 +932,6 @@ namespace testsim
                 Track_Assign TA = new Track_Assign();
                 TA.Show();
             }
-            /* AssignBitform assbit = new AssignBitform();
-             assbit.Show();*/
-
         }
 
         private void ladderLogicToolStripMenuItem_Click(object sender, EventArgs e)
@@ -867,9 +943,6 @@ namespace testsim
         private void componentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form3 f3 = new testsim.Form3();
-           // f3.commbetween += new Comm(Form3_bridggap);
-            //f3.ControlAdded += new ControlEventHandler(this.Form3_FormControlAdd);
-
             f3.Show();
         }
 
@@ -906,6 +979,23 @@ namespace testsim
                 BackgroundImage = bm;
             }
 
-        
+        private void Form2_FormClosing(object sender, FormClosingEventArgs e)
+        {
+          /*  if (Exit == false)
+            {
+                var result = MessageBox.Show("Do you want to save before leaving the Simulation", "Leave Simulation without saving?",
+                                     MessageBoxButtons.YesNo,
+                                     MessageBoxIcon.Question);
+
+                // If the no button was pressed ...
+                if (result == DialogResult.No)
+                {
+                    Application.Exit();
+
+                    // leave the method
+                    return;
+                }
+            }*/
+        }
     }
 }
