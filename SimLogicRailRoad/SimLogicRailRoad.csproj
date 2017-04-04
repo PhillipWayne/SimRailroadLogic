@@ -100,6 +100,9 @@
     <Compile Include="Ladder_Logic_Selection.Designer.cs">
       <DependentUpon>Ladder_Logic_Selection.cs</DependentUpon>
     </Compile>
+    <Compile Include="PB_Resize.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SaveXML.cs" />

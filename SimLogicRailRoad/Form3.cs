@@ -18,14 +18,37 @@ namespace testsim
         {
             
             InitializeComponent();
-            
 
         }
         
         public int track;
         public event Comm commbetween;
         public static bool trk = false;
-      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
             trk = true;
