@@ -27,6 +27,7 @@ namespace testsim
         {
             InitializeComponent();
             this.DoubleBuffered = true;
+            this.SetStyle(ControlStyles.ResizeRedraw, true);
         }
 
         
@@ -60,7 +61,7 @@ namespace testsim
         {
             
             checkcomp = Form3.trk;
-            PictureBox pb1 = new PictureBox();
+            SizeablePictureBox pb1 = new SizeablePictureBox();
             pb1.Image = (Image)e.Data.GetData(DataFormats.Bitmap);
             // pb1.BackColor = (Color.Black);
             pb1.SizeMode = PictureBoxSizeMode.Normal;
@@ -101,7 +102,6 @@ namespace testsim
                 pb.BorderStyle = BorderStyle.None;
             }
         }
-        /// //////////////////
 
 
         void pb_MouseMove(object sender, MouseEventArgs e)
@@ -193,9 +193,18 @@ namespace testsim
             y = e.Y;
             if (drophapp == true)
             {
+                // PictureBox location after it is dragged and dropped on the form
                 PictureBox pb = (PictureBox)pbloc;
-                pb.Left = e.X;
-                pb.Top = e.Y;
+                double Lf = Math.Round((e.X - MouseDownLocation.X) / 10.0) * 10; // Rounds X Mouse/Component Location
+                double Tp = Math.Round((e.Y - MouseDownLocation.Y) / 10.0) * 10; // Rounds Y Mouse/Component Location
+
+                // Converts Double to Integer
+                int pb_Lf = Convert.ToInt32(Lf);
+                int pb_Tp = Convert.ToInt32(Tp);
+
+                pb.Left = pb_Lf;
+                pb.Top = pb_Tp;
+
                 drophapp = false;
             }
 
@@ -397,6 +406,7 @@ namespace testsim
                 }
             }
         }
+        
         //Save Button
         private void saveToolStripMenuItem1_Click(object sender, EventArgs e)
         {
@@ -605,6 +615,7 @@ namespace testsim
                 }
             }
         }
+        
         //Exit Button
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
@@ -855,8 +866,6 @@ namespace testsim
             this.ContextMenuStrip = null;
         }
 
-
-
         //Stop Sim Button
         private void stopToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -879,6 +888,7 @@ namespace testsim
             MakeBackgroundGrid();
         }
 
+        //Copy
         private void copyToolStripMenuItem1_Click(object sender, EventArgs e)
         {
 
