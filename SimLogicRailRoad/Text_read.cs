@@ -224,6 +224,7 @@ namespace testsim
             }
 
 
+        //Listbox event
         private void Bit_List_Box_MouseClick(object sender, MouseEventArgs e)
         {
             int index = this.Bit_List_Box.IndexFromPoint(e.Location);
