@@ -28,6 +28,7 @@ namespace SimLogicRailRoad
 
             
             allbits = Simulation.unique_bits.ToArray();
+            
                 comboBox1.Items.AddRange(allbits);
                 comboBox2.Items.AddRange(allbits);
                 comboBox3.Items.AddRange(allbits);
@@ -39,7 +40,7 @@ namespace SimLogicRailRoad
             
                    if (pb.Tag !=null)
                     {
-
+                
                         string[] tagget = (string[])pb.Tag;
                      //   string[] tagget = pb.Tag.ToString();
 

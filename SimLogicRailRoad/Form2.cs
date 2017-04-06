@@ -50,6 +50,7 @@ namespace testsim
         private object pbloc;
         private bool checkcomp = false;
         private bool Exit = false;
+     //  private  List<object> bits;
         private void pictureBox_Drag_enter(object sender, DragEventArgs e)
         {
 
@@ -78,6 +79,7 @@ namespace testsim
             }
             Controls.Add(pb1);
             drophapp = true;
+            
         }
 
       
@@ -914,9 +916,15 @@ namespace testsim
 
         private void Form2_Load(object sender, EventArgs e)
         {
+            List<object> bits= new List<object>();
             
-                MakeBackgroundGrid(); //Loads Background Grid
+            MakeBackgroundGrid(); //Loads Background Grid
+         /*   for (int i = 0; i < Simulation.unique_bits.Count; i++)
+            {
+                bits.Add(Simulation.unique_bits[i]);
+                
 
+            }*/
                     
                 }
                     
