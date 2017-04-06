@@ -31,78 +31,59 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form3));
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.OH_E_Signal = new System.Windows.Forms.PictureBox();
+            this.H_Trk = new System.Windows.Forms.PictureBox();
+            this.TH_W_Signal = new System.Windows.Forms.PictureBox();
+            this.Switch_BL = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.OH_E_Signal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.H_Trk)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TH_W_Signal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Switch_BL)).BeginInit();
             this.SuspendLayout();
             // 
-            // tableLayoutPanel2
+            // OH_E_Signal
             // 
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Controls.Add(this.pictureBox1, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.pictureBox2, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.pictureBox3, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.pictureBox4, 1, 1);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(12, 12);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(120, 94);
-            this.tableLayoutPanel2.TabIndex = 0;
+            this.OH_E_Signal.BackColor = System.Drawing.Color.Black;
+            this.OH_E_Signal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.OH_E_Signal.Location = new System.Drawing.Point(15, 12);
+            this.OH_E_Signal.Name = "OH_E_Signal";
+            this.OH_E_Signal.Size = new System.Drawing.Size(100, 70);
+            this.OH_E_Signal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.OH_E_Signal.TabIndex = 1;
+            this.OH_E_Signal.TabStop = false;
             // 
-            // pictureBox4
+            // H_Trk
             // 
-            this.pictureBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox4.Image = global::SimLogicRailRoad.Properties.Resources.track_180;
-            this.pictureBox4.Location = new System.Drawing.Point(63, 50);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(51, 38);
-            this.pictureBox4.TabIndex = 3;
-            this.pictureBox4.TabStop = false;
-            this.pictureBox4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox4_MouseDown);
+            this.H_Trk.BackColor = System.Drawing.Color.Black;
+            this.H_Trk.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.H_Trk.Location = new System.Drawing.Point(15, 88);
+            this.H_Trk.Name = "H_Trk";
+            this.H_Trk.Size = new System.Drawing.Size(100, 70);
+            this.H_Trk.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.H_Trk.TabIndex = 2;
+            this.H_Trk.TabStop = false;
             // 
-            // pictureBox3
+            // TH_W_Signal
             // 
-            this.pictureBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox3.Image = global::SimLogicRailRoad.Properties.Resources.track_90;
-            this.pictureBox3.Location = new System.Drawing.Point(3, 50);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(51, 38);
-            this.pictureBox3.TabIndex = 2;
-            this.pictureBox3.TabStop = false;
-            this.pictureBox3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox3_MouseDown);
+            this.TH_W_Signal.BackColor = System.Drawing.Color.Black;
+            this.TH_W_Signal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TH_W_Signal.Location = new System.Drawing.Point(121, 12);
+            this.TH_W_Signal.Name = "TH_W_Signal";
+            this.TH_W_Signal.Size = new System.Drawing.Size(100, 70);
+            this.TH_W_Signal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.TH_W_Signal.TabIndex = 3;
+            this.TH_W_Signal.TabStop = false;
             // 
-            // pictureBox2
+            // Switch_BL
             // 
-            this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox2.Image = global::SimLogicRailRoad.Properties.Resources.track_135;
-            this.pictureBox2.Location = new System.Drawing.Point(63, 3);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(51, 38);
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox2_MouseDown);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Image = global::SimLogicRailRoad.Properties.Resources.track_45;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(51, 38);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
+            this.Switch_BL.BackColor = System.Drawing.Color.Black;
+            this.Switch_BL.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.Switch_BL.Location = new System.Drawing.Point(15, 164);
+            this.Switch_BL.Name = "Switch_BL";
+            this.Switch_BL.Size = new System.Drawing.Size(100, 140);
+            this.Switch_BL.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.Switch_BL.TabIndex = 4;
+            this.Switch_BL.TabStop = false;
             // 
             // Form3
             // 
@@ -110,29 +91,30 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(394, 433);
-            this.Controls.Add(this.tableLayoutPanel2);
+            this.BackColor = System.Drawing.Color.Black;
+            this.ClientSize = new System.Drawing.Size(394, 317);
+            this.Controls.Add(this.Switch_BL);
+            this.Controls.Add(this.TH_W_Signal);
+            this.Controls.Add(this.H_Trk);
+            this.Controls.Add(this.OH_E_Signal);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form3";
             this.Text = "Toolbox";
-            this.tableLayoutPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OH_E_Signal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.H_Trk)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TH_W_Signal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Switch_BL)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox OH_E_Signal;
+        private System.Windows.Forms.PictureBox H_Trk;
+        private System.Windows.Forms.PictureBox TH_W_Signal;
+        private System.Windows.Forms.PictureBox Switch_BL;
     }
 }
