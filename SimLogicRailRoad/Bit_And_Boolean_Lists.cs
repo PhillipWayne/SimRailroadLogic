@@ -24,6 +24,10 @@ namespace testsim
         {
             listBox1.Items.AddRange(Simulation.bits_static.ToArray());
             listBox2.Items.AddRange(Simulation.to_bits_static.ToArray());
+
+            //sorts list alphabetically
+            Simulation.unique_bits.Sort();
+
             listBox3.Items.AddRange(Simulation.unique_bits.ToArray());
             label4.Text = "Total number: " + Simulation.unique_bits.Count;
 

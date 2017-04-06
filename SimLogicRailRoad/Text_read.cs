@@ -11,6 +11,7 @@ using System.IO;
 using SimLogicRailRoad;
 using testsim;
 using RailRoadLogicSim;
+using System.Text.RegularExpressions;
 
 
 namespace testsim
@@ -133,7 +134,7 @@ namespace testsim
                     }
                     else if ((line.IndexOf("\t") == 6 || line.IndexOf(" ") == 6) && line.IndexOf("TO") != -1)
                     {
-                        bits.Add(line.Substring(7, line.IndexOf("TO") - 7).Trim());
+                        bits.Add(line.Substring(7, line.LastIndexOf("TO") - 7).Trim());
                         to_bits.Add(line.Substring(index_to + 3, (index_colon - index_to) - 3));
                     }
                     else
@@ -223,6 +224,7 @@ namespace testsim
             }
 
 
+        //Listbox event
         private void Bit_List_Box_MouseClick(object sender, MouseEventArgs e)
         {
             int index = this.Bit_List_Box.IndexFromPoint(e.Location);
@@ -558,6 +560,8 @@ namespace testsim
             //----------------------------------------
 
             unique_bits = input_bits.Union(to_bits).ToList();
+
+
 
 
         }
