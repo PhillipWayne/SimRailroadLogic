@@ -51,6 +51,7 @@ namespace testsim
         private object pbloc;
         private bool checkcomp = false;
         private bool Exit = false;
+
         private void pictureBox_Drag_enter(object sender, DragEventArgs e)
         {
 
@@ -59,18 +60,31 @@ namespace testsim
 
         private void pictureBox_Drag_Drop(object sender, DragEventArgs e)
         {
-            
-            checkcomp = Form3.trk;
+
+            //checkcomp = Form3.trk;
             SizeablePictureBox pb1 = new SizeablePictureBox();
             pb1.Image = (Image)e.Data.GetData(DataFormats.Bitmap);
-            // pb1.BackColor = (Color.Black);
+
+            if(Form3.sw == 1) //Switch
+            {
+                pb1.Width = 100;
+                pb1.Height = 140;
+                Form3.sw = 0; // Resets MouseDown in Form 3
+            }
+            if (Form3.trk_sig == 1) //Signal/Track
+            {
+                pb1.Width = 100;
+                pb1.Height = 70;
+                Form3.trk_sig = 0; // Resets MouseDown in Form 3
+            }
+            
             pb1.SizeMode = PictureBoxSizeMode.Normal;
             pb1.Cursor = Cursors.SizeAll;
             pb1.MouseMove += new MouseEventHandler(pb_MouseMove);
             pb1.MouseDown += new MouseEventHandler(pb_MouseDown);
             pb1.MouseUp += new MouseEventHandler(pb_MouseButtonUp);
-            pb1.MouseEnter += new EventHandler(pb_MouseEnter);
-            pb1.MouseLeave += new EventHandler(pb_MouseLeave);
+            //pb1.MouseEnter += new EventHandler(pb_MouseEnter);
+            //pb1.MouseLeave += new EventHandler(pb_MouseLeave);
             pb1.ContextMenuStrip = contextMenuStrip1;
             pbloc = pb1;
             if (checkcomp == true)
@@ -79,29 +93,30 @@ namespace testsim
             }
             Controls.Add(pb1);
             drophapp = true;
+            
         }
 
       
         
-        //Creates a Box Around Image When Mouse is Over the Image
-        void pb_MouseEnter(object sender, EventArgs e)
-        {
-            if (simstart == false)
+        ////Creates a Box Around Image When Mouse is Over the Image
+        //void pb_MouseEnter(object sender, EventArgs e)
+        //{
+        //    if (simstart == false)
 
-            {
-                PictureBox pb = (PictureBox)sender;
+        //    {
+        //        PictureBox pb = (PictureBox)sender;
                 
-                pb.BorderStyle = BorderStyle.FixedSingle;
-            }
-        }
-        void pb_MouseLeave(object sender, EventArgs e)
-        {
-            if (simstart == false)
-            {
-                PictureBox pb = (PictureBox)sender;
-                pb.BorderStyle = BorderStyle.None;
-            }
-        }
+        //        pb.BorderStyle = BorderStyle.FixedSingle;
+        //    }
+        //}
+        //void pb_MouseLeave(object sender, EventArgs e)
+        //{
+        //    if (simstart == false)
+        //    {
+        //        PictureBox pb = (PictureBox)sender;
+        //        pb.BorderStyle = BorderStyle.None;
+        //    }
+        //}
 
 
         void pb_MouseMove(object sender, MouseEventArgs e)
@@ -915,8 +930,8 @@ namespace testsim
                 kl.MouseDown += new MouseEventHandler(pb_MouseDown);
                 kl.MouseUp += new MouseEventHandler(pb_MouseButtonUp);
                 kl.Cursor = Cursors.SizeAll;
-                kl.MouseEnter += new EventHandler(pb_MouseEnter);
-                kl.MouseLeave += new EventHandler(pb_MouseLeave);
+                //kl.MouseEnter += new EventHandler(pb_MouseEnter);
+                //kl.MouseLeave += new EventHandler(pb_MouseLeave);
                 kl.ContextMenuStrip = contextMenuStrip1;
                 Controls.Add(kl);
             }
@@ -924,9 +939,15 @@ namespace testsim
 
         private void Form2_Load(object sender, EventArgs e)
         {
+            List<object> bits= new List<object>();
             
-                MakeBackgroundGrid(); //Loads Background Grid
+            MakeBackgroundGrid(); //Loads Background Grid
+         /*   for (int i = 0; i < Simulation.unique_bits.Count; i++)
+            {
+                bits.Add(Simulation.unique_bits[i]);
+                
 
+            }*/
                     
                 }
                     
@@ -952,6 +973,7 @@ namespace testsim
 
         private void componentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
             Form3 f3 = new testsim.Form3();
             f3.Show();
         }
