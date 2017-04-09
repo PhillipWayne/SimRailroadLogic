@@ -18,7 +18,8 @@ namespace testsim
 {
     public partial class  Simulation : Form
     {
-   
+
+
         List<string> bits = new List<string>(); //bits and boolean logic
         public List<string> to_bits = new List<string>(); //here bits and boolean logic go
 
@@ -41,9 +42,9 @@ namespace testsim
         
 
         //jimmys static bits
-        public static List<string> disp_bits_static = new List<string>();
-        public static List<string> boolean_parsed_static = new List<string>();
-        public static List<int> user_input_num_static = new List<int>();
+        public static List<string> disp_bits_static = new List<string>(); //boolean logic
+        public static List<string> boolean_parsed_static = new List<string>(); //boolean logic with placeholders
+        public static List<int> user_input_num_static = new List<int>(); //number of user inputs required
         public static List<string> disp_to_bits_static = new List<string>();
         public static List<string> to_bits_static = new List<string>();
         public static List<string> bits_static = new List<string>();
