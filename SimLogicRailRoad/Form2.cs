@@ -48,6 +48,8 @@ namespace testsim
         private int directxcheck;
         private int directycheck;
         private bool drophapp=false;
+        private bool drophapp1 = false;
+        private object ttxloc;
         private object pbloc;
         private bool checkcomp = false;
         private bool Exit = false;
@@ -58,54 +60,84 @@ namespace testsim
             e.Effect = DragDropEffects.Copy;
         }
 
+        // Drag & Drop for Form2 (Text & Picture Box)
         private void pictureBox_Drag_Drop(object sender, DragEventArgs e)
         {
 
-            //checkcomp = Form3.trk;
-            SizeablePictureBox pb1 = new SizeablePictureBox();
-            pb1.Image = (Image)e.Data.GetData(DataFormats.Bitmap);
+            if (Form3.txt == 1) // Ensures user selected Textbox
+            {
+                // Creates Textbox
+                TextBox text1 = new TextBox();
+                text1.Text = (string)e.Data.GetData(DataFormats.Text);
+                text1.MouseMove += new MouseEventHandler(text_MouseMove);
+                text1.MouseDown += new MouseEventHandler(pb_MouseDown);
+                text1.MouseUp += new MouseEventHandler(pb_MouseButtonUp);
+                text1.BorderStyle = BorderStyle.None;
+                text1.Size = new Size(300, 24);
+                text1.TextAlign = HorizontalAlignment.Center;
+                text1.Font = new Font("Arial", 12, FontStyle.Bold);
+                text1.BackColor = Color.Black;
+                text1.ForeColor = Color.White;
+                text1.Text = "TEXT";
+                ttxloc = text1;
 
-            if(Form3.sw == 1) //Switch
-            {
-                pb1.Width = 100;
-                pb1.Height = 140;
-                Form3.sw = 0; // Resets MouseDown in Form 3
+                Controls.Add(text1);
+                drophapp = true;
+                Form3.txt = 0; // Resets MouseDown in Form 3
             }
-            if (Form3.trk_sig == 1) //Signal/Track
+
             {
-                pb1.Width = 100;
-                pb1.Height = 70;
-                Form3.trk_sig = 0; // Resets MouseDown in Form 3
+                if (Form3.img == 1) // Ensures user selected Signal/Track and not a Textbox
+                {
+                    //checkcomp = Form3.trk;
+
+                    // Creates Tracks & Signals
+                    SizeablePictureBox pb1 = new SizeablePictureBox();
+                    pb1.Image = (Image)e.Data.GetData(DataFormats.Bitmap);
+
+                    if (Form3.sw == 1) //Switch
+                    {
+                        pb1.Width = 100;
+                        pb1.Height = 140;
+                        Form3.sw = 0; // Resets MouseDown in Form 3
+                    }
+
+                    if (Form3.trk_sig == 1) //Signal/Track
+                    {
+                        pb1.Width = 100;
+                        pb1.Height = 70;
+                        Form3.trk_sig = 0; // Resets MouseDown in Form 3
+                    }
+
+                    pb1.SizeMode = PictureBoxSizeMode.Normal;
+                    pb1.Cursor = Cursors.SizeAll;
+                    pb1.MouseMove += new MouseEventHandler(pb_MouseMove);
+                    pb1.MouseDown += new MouseEventHandler(pb_MouseDown);
+                    pb1.MouseUp += new MouseEventHandler(pb_MouseButtonUp);
+                    pb1.MouseDown += new MouseEventHandler(Focus_MouseDown);
+                    //pb1.MouseEnter += new EventHandler(pb_MouseEnter);
+                    //pb1.MouseLeave += new EventHandler(pb_MouseLeave);
+                    pb1.ContextMenuStrip = contextMenuStrip1;
+                    pbloc = pb1;
+                    if (checkcomp == true)
+                    {
+                        pb1.Name = "Track";
+                    }
+                    Controls.Add(pb1);
+                    drophapp1 = true;
+                    Form3.img = 0; // Resets MouseDown in for PictureBox (Track/Signal) Form 3
+                }
             }
-            
-            pb1.SizeMode = PictureBoxSizeMode.Normal;
-            pb1.Cursor = Cursors.SizeAll;
-            pb1.MouseMove += new MouseEventHandler(pb_MouseMove);
-            pb1.MouseDown += new MouseEventHandler(pb_MouseDown);
-            pb1.MouseUp += new MouseEventHandler(pb_MouseButtonUp);
-            //pb1.MouseEnter += new EventHandler(pb_MouseEnter);
-            //pb1.MouseLeave += new EventHandler(pb_MouseLeave);
-            pb1.ContextMenuStrip = contextMenuStrip1;
-            pbloc = pb1;
-            if (checkcomp == true)
-            {
-                pb1.Name = "Track";
-            }
-            Controls.Add(pb1);
-            drophapp = true;
-            
         }
 
-      
-        
-        ////Creates a Box Around Image When Mouse is Over the Image
+        ////Mouse Enter/Leave PictureBox Border
         //void pb_MouseEnter(object sender, EventArgs e)
         //{
         //    if (simstart == false)
 
         //    {
         //        PictureBox pb = (PictureBox)sender;
-                
+
         //        pb.BorderStyle = BorderStyle.FixedSingle;
         //    }
         //}
@@ -118,6 +150,7 @@ namespace testsim
         //    }
         //}
 
+        // Picture Box MouseMove
 
         void pb_MouseMove(object sender, MouseEventArgs e)
         {
@@ -184,12 +217,37 @@ namespace testsim
             gl = sender;
         }
 
+        // Text Box MouseMove
+        void text_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (capture == true)
+            {
 
+                // Code to move GUI Components    
+
+                TextBox text1 = (TextBox)sender;
+
+                double Lf = Math.Round((e.X - MouseDownLocation.X) / 10.0) * 10; // Rounds X Mouse/Component Location
+                double Tp = Math.Round((e.Y - MouseDownLocation.Y) / 10.0) * 10; // Rounds Y Mouse/Component Location
+
+                // Converts Double to Integer
+                int pb_Lf = Convert.ToInt32(Lf);
+                int pb_Tp = Convert.ToInt32(Tp);
+
+                text1.Left += pb_Lf;
+                text1.Top += pb_Tp;
+                gl = sender;
+            }
+            gl = sender;
+        }
+
+        // Picture Box Mouse Button Up
         void pb_MouseButtonUp(object sender, MouseEventArgs e)
         {
             capture = false;
         }
 
+        // Picture Box MouseDown
         void pb_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == System.Windows.Forms.MouseButtons.Left)
@@ -202,11 +260,29 @@ namespace testsim
             gl = sender;
         }
 
+        // Mouse Move (Picture Box & Text Box)
         void formmousemove(object send, MouseEventArgs e)
         {
             x = e.X;
             y = e.Y;
             if (drophapp == true)
+            {
+                // PictureBox location after it is dragged and dropped on the form
+                TextBox ttx = (TextBox)ttxloc;
+                double Lf = Math.Round((e.X - MouseDownLocation.X) / 10.0) * 10; // Rounds X Mouse/Component Location
+                double Tp = Math.Round((e.Y - MouseDownLocation.Y) / 10.0) * 10; // Rounds Y Mouse/Component Location
+
+                // Converts Double to Integer
+                int ttx_Lf = Convert.ToInt32(Lf);
+                int ttx_Tp = Convert.ToInt32(Tp);
+
+                ttx.Left = ttx_Lf;
+                ttx.Top = ttx_Tp;
+
+                drophapp = false;
+            }
+
+            if (drophapp1 == true)
             {
                 // PictureBox location after it is dragged and dropped on the form
                 PictureBox pb = (PictureBox)pbloc;
@@ -220,10 +296,11 @@ namespace testsim
                 pb.Left = pb_Lf;
                 pb.Top = pb_Tp;
 
-                drophapp = false;
+                drophapp1 = false;
             }
-
         }
+
+        // Delete Click
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //  temp = 0;
@@ -241,8 +318,6 @@ namespace testsim
                 pb = null;
             }
         }
-
-        //Toolbox Button
 
         //New Button
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
@@ -524,7 +599,8 @@ namespace testsim
                     }
                 }
             }
-        
+
+        // Deserialize
         public void Deserialize(object obj, string fileName)
         {
             //This creates a new instance of xmlserializer which serializes the the obj but needs it's type
@@ -911,8 +987,7 @@ namespace testsim
             // PictureBox pb = (PictureBox)gl;
         }
 
-
-
+        // Paste Tool Strip
         private void pasteToolStripMenuItem2_Click(object sender, EventArgs e)
         {
 
@@ -937,6 +1012,7 @@ namespace testsim
             }
         }
 
+        // Form2 Load
         private void Form2_Load(object sender, EventArgs e)
         {
             List<object> bits= new List<object>();
@@ -951,7 +1027,7 @@ namespace testsim
                     
                 }
                     
-
+        // Assign Tool Strip Event
         private void assignBitToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -965,12 +1041,14 @@ namespace testsim
             }
         }
 
+        // Ladder Logic Tool Strip
         private void ladderLogicToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Ladder_Logic_Selection ladder = new Ladder_Logic_Selection();
             ladder.Show();
         }
 
+        // Toolbox Tool Strip
         private void componentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -978,18 +1056,14 @@ namespace testsim
             f3.Show();
         }
 
-        private void toolboxToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        // Bit List Tool Strip
         private void bitListsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Bit_And_Boolean_Lists bit = new Bit_And_Boolean_Lists();
             bit.Show();
         }
 
-        //Grid Background for GUI - Form2
+        //Grid Background Method for GUI - Form2
         private void MakeBackgroundGrid()
         
             {
@@ -1011,6 +1085,7 @@ namespace testsim
                 BackgroundImage = bm;
             }
 
+        //Form2 Close Event
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
         {
           /*  if (Exit == false)
@@ -1029,5 +1104,12 @@ namespace testsim
                 }
             }*/
         }
+
+        // Form2 Focus on Label1 when MouseDown so cursor in Textbox will hide
+        private void Focus_MouseDown(object sender, MouseEventArgs e)
+        {
+            label1.Focus();
+        }
+
     }
 }
