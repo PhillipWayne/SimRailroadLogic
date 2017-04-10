@@ -404,7 +404,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form2";
-            this.Text = "Railroad Logic Sim";
+            this.Text = "File Name - Railroad Logic Sim";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form2_FormClosing);
             this.Load += new System.EventHandler(this.Form2_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.pictureBox_Drag_Drop);

@@ -97,16 +97,26 @@ namespace testsim
 
                     if (Form3.sw == 1) //Switch
                     {
+                        pb1.Name = "Switch";
                         pb1.Width = 100;
                         pb1.Height = 140;
                         Form3.sw = 0; // Resets MouseDown in Form 3
                     }
 
-                    if (Form3.trk_sig == 1) //Signal/Track
+                    if (Form3.sig == 1) //Signal
                     {
+                        pb1.Name = "Signal";
                         pb1.Width = 100;
                         pb1.Height = 70;
-                        Form3.trk_sig = 0; // Resets MouseDown in Form 3
+                        Form3.sig = 0; // Resets MouseDown in Form 3
+                    }
+
+                    if (Form3.trk == 1) //Track
+                    {
+                        pb1.Name = "Track";
+                        pb1.Width = 100;
+                        pb1.Height = 70;
+                        Form3.trk = 0; // Resets MouseDown in Form 3
                     }
 
                     pb1.SizeMode = PictureBoxSizeMode.Normal;
@@ -151,7 +161,6 @@ namespace testsim
         //}
 
         // Picture Box MouseMove
-
         void pb_MouseMove(object sender, MouseEventArgs e)
         {
             if (capture == true)
@@ -238,6 +247,7 @@ namespace testsim
                 text1.Top += pb_Tp;
                 gl = sender;
             }
+          
             gl = sender;
         }
 
@@ -600,7 +610,7 @@ namespace testsim
                 }
             }
 
-        // Deserialize
+        //Deserialize
         public void Deserialize(object obj, string fileName)
         {
             //This creates a new instance of xmlserializer which serializes the the obj but needs it's type
@@ -1031,13 +1041,24 @@ namespace testsim
         private void assignBitToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-
             knowbit = gl;
             PictureBox pb = (PictureBox)gl;
             if (pb.Name == "Track")
             {
-                Track_Assign TA = new Track_Assign();
-                TA.Show();
+                Coded_Tk_Assign CTrk = new Coded_Tk_Assign();
+                CTrk.Show();
+            }
+
+            if (pb.Name == "Switch")
+            {
+                Switch_Assign SW = new Switch_Assign();
+                SW.Show();
+            }
+
+            if (pb.Name == "Signal")
+            {
+                Signal_Assign SIG = new Signal_Assign();
+                SIG.Show();
             }
         }
 
@@ -1051,7 +1072,6 @@ namespace testsim
         // Toolbox Tool Strip
         private void componentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
             Form3 f3 = new testsim.Form3();
             f3.Show();
         }

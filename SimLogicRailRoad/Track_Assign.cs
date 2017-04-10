@@ -26,42 +26,12 @@ namespace SimLogicRailRoad
         private void Track_Assign_Load(object sender, EventArgs e)
         {
 
-            
-            allbits = Simulation.unique_bits.ToArray();
-            
-                comboBox1.Items.AddRange(allbits);
-                comboBox2.Items.AddRange(allbits);
-                comboBox3.Items.AddRange(allbits);
-                comboBox4.Items.AddRange(allbits);
-                comboBox5.Items.AddRange(allbits);
+        }
 
-                namebit = Form2.knowbit;
-                PictureBox pb = (PictureBox)namebit;
-            
-                   if (pb.Tag !=null)
-                    {
-                
-                        string[] tagget = (string[])pb.Tag;
-                     //   string[] tagget = pb.Tag.ToString();
 
-                        comboBox1.Text = tagget[0];
-                        comboBox2.Text = tagget[1];
-                        comboBox3.Text = tagget[2];
-                        comboBox4.Text = tagget[3];
-                        comboBox5.Text = tagget[4];
 
-                       
-                        //comboBox1.Text = reass1(0).t;
-                    }
-                    
-                
-                    return;
-                }
+        //comboBox1.Items.Add
 
-            
-           
-            //comboBox1.Items.Add
-        
 
         private void button1_Click(object sender, EventArgs e)
         {
