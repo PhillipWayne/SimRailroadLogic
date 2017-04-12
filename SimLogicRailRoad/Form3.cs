@@ -53,7 +53,8 @@ namespace testsim
 
         //public int track;
         public static int sw;
-        public static int trk_sig;
+        public static int sig;
+        public static int trk;
         public event Comm commbetween;
         //public static bool trk = false;
 
@@ -61,15 +62,11 @@ namespace testsim
         // One-Headed East Signal MouseDown
         private void pictureBox_OH_E_Signal_MouseDown(object sender, MouseEventArgs e)
         {
-            trk_sig = 1; // Changes Picturebox size in Form2
+            sig = 1; // Changes Picturebox size in Form2
             OH_E_Signal.DoDragDrop(OH_E_Signal.Image, DragDropEffects.Copy);
         }
 
-        // One-Headed East Signal Enter
-        private void pictureBox_OH_E_Signal_Drag_enter(object sender, DragEventArgs e)
-        {
-            e.Effect = DragDropEffects.Copy;
-        }
+      
 
         // One-Headed East Signal Paint
         private void OH_E_Signal_Paint(object sender, PaintEventArgs e)
@@ -125,15 +122,11 @@ namespace testsim
         // Horizontal Track MouseDown
         private void pictureBox_H_Trk_MouseDown(object sender, MouseEventArgs e)
         {
-            trk_sig = 1; // Changes Picturebox size in Form2
+            trk = 1; // Changes Picturebox size in Form2
             H_Trk.DoDragDrop(H_Trk.Image, DragDropEffects.Copy);
         }
 
-        // Horizontal Track Enter
-        private void pictureBox_H_Trk_Drag_enter(object sender, DragEventArgs e)
-        {
-            e.Effect = DragDropEffects.Copy;
-        }
+        
 
         // Horizontal Track Paint
         private void H_Trk_Paint(object sender, PaintEventArgs e)
@@ -158,15 +151,11 @@ namespace testsim
         // Two-Headed West Signal MouseDown
         private void pictureBox_TH_W_Signal_MouseDown(object sender, MouseEventArgs e)
         {
-            trk_sig = 1; // Changes Picturebox size in Form2
+            sig = 1; // Changes Picturebox size in Form2
             TH_W_Signal.DoDragDrop(TH_W_Signal.Image, DragDropEffects.Copy);
         }
 
-        // Two-Headed West Signal Enter
-        private void pictureBox_TH_W_Signal_Drag_enter(object sender, DragEventArgs e)
-        {
-            e.Effect = DragDropEffects.Copy;
-        }
+        
 
         // Two-Headed West Signal Paint
         private void TH_W_Signal_Paint(object sender, PaintEventArgs e)
@@ -225,12 +214,7 @@ namespace testsim
             Switch_BL.DoDragDrop(Switch_BL.Image, DragDropEffects.Copy);
         }
 
-        // Switch (Bottom Left) Enter
-        private void pictureBox_Switch_BL_Drag_enter(object sender, DragEventArgs e)
-        {
-            e.Effect = DragDropEffects.Copy;
-        }
-
+       
         // Switch (Bottom Left) Paint
         private void Switch_BL_Paint(object sender, PaintEventArgs e)
         {

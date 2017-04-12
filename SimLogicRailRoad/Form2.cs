@@ -51,40 +51,61 @@ namespace testsim
         private object pbloc;
         private bool checkcomp = false;
         private bool Exit = false;
+        private bool click = false;
 
         private void pictureBox_Drag_enter(object sender, DragEventArgs e)
         {
 
             e.Effect = DragDropEffects.Copy;
         }
+        private void changesizepic(object sender, EventArgs e)
+        {
+            /*var go = (PictureBox)sender;
+           
+            Bitmap bp = new Bitmap(go.ClientSize.Width,go.ClientSize.Height);
 
+            go.DrawToBitmap(bp, go.ClientRectangle);
+            go.Image = null;
+            go.Image = bp;*/
+           // go. = to;
+          
+        
+        }
         private void pictureBox_Drag_Drop(object sender, DragEventArgs e)
         {
 
             //checkcomp = Form3.trk;
             SizeablePictureBox pb1 = new SizeablePictureBox();
+            
             pb1.Image = (Image)e.Data.GetData(DataFormats.Bitmap);
-
+            pb1.ClientSizeChanged += new EventHandler(changesizepic);
             if(Form3.sw == 1) //Switch
             {
                 pb1.Width = 100;
                 pb1.Height = 140;
                 Form3.sw = 0; // Resets MouseDown in Form 3
             }
-            if (Form3.trk_sig == 1) //Signal/Track
+            if (Form3.sig == 1) //Signal/Track
             {
                 pb1.Width = 100;
                 pb1.Height = 70;
-                Form3.trk_sig = 0; // Resets MouseDown in Form 3
+                Form3.sig = 0; // Resets MouseDown in Form 3
             }
-            
+            if (Form3.trk == 1) //Signal/Track
+            {
+                pb1.Width = 100;
+                pb1.Height = 70;
+                pb1.Name = "Track";
+                Form3.trk = 0; // Resets MouseDown in Form 3
+            }
             pb1.SizeMode = PictureBoxSizeMode.Normal;
             pb1.Cursor = Cursors.SizeAll;
             pb1.MouseMove += new MouseEventHandler(pb_MouseMove);
             pb1.MouseDown += new MouseEventHandler(pb_MouseDown);
+           // pb1.Click += new EventHandler(Click_pb);
             pb1.MouseUp += new MouseEventHandler(pb_MouseButtonUp);
-            //pb1.MouseEnter += new EventHandler(pb_MouseEnter);
-            //pb1.MouseLeave += new EventHandler(pb_MouseLeave);
+            pb1.MouseEnter += new EventHandler(pb_MouseEnter);
+            pb1.MouseLeave += new EventHandler(pb_MouseLeave);
             pb1.ContextMenuStrip = contextMenuStrip1;
             pbloc = pb1;
             if (checkcomp == true)
@@ -93,41 +114,64 @@ namespace testsim
             }
             Controls.Add(pb1);
             drophapp = true;
-            
+
         }
 
-      
+      void Click_pb(object sender, EventArgs e)
+        {
+            var checkclick = this.Controls.OfType<PictureBox>().ToList();
+            for(int i =0; i < checkclick.Count; i++)
+            {
+                if(checkclick[i].BorderStyle == BorderStyle.FixedSingle)
+                {
+                    checkclick[i].BorderStyle = BorderStyle.None;
+                }
+
+            }
+            click = true;
+            PictureBox pb = (PictureBox)sender;
+            pb.BorderStyle = BorderStyle.FixedSingle;
+        }
         
         ////Creates a Box Around Image When Mouse is Over the Image
-        //void pb_MouseEnter(object sender, EventArgs e)
-        //{
-        //    if (simstart == false)
+        void pb_MouseEnter(object sender, EventArgs e)
+        {
+            if (simstart == false)
 
-        //    {
-        //        PictureBox pb = (PictureBox)sender;
+            {
+             var checkborder=   this.Controls.OfType<PictureBox>().ToList();
+                for(int i = 0; i < checkborder.Count; i++)
+                {
+                    if (checkborder[i].BorderStyle == BorderStyle.FixedSingle) {
+                        checkborder[i].BorderStyle = BorderStyle.None;
+                    }
+                }
                 
-        //        pb.BorderStyle = BorderStyle.FixedSingle;
-        //    }
-        //}
-        //void pb_MouseLeave(object sender, EventArgs e)
-        //{
-        //    if (simstart == false)
-        //    {
-        //        PictureBox pb = (PictureBox)sender;
-        //        pb.BorderStyle = BorderStyle.None;
-        //    }
-        //}
+                PictureBox pb = (PictureBox)sender;
+
+        pb.BorderStyle = BorderStyle.FixedSingle;
+            }
+}
+void pb_MouseLeave(object sender, EventArgs e)
+{
+    if (simstart == false && click==false)
+    {
+        PictureBox pb = (PictureBox)sender;
+        pb.BorderStyle = BorderStyle.None;
+    }
+}
 
 
-        void pb_MouseMove(object sender, MouseEventArgs e)
+
+void pb_MouseMove(object sender, MouseEventArgs e)
         {
             if (capture == true)
             {
 
                 // Code to move GUI Components    
-
+                
                 PictureBox pb = (PictureBox)sender;
-               
+                pb.BorderStyle = BorderStyle.FixedSingle;
                 double Lf = Math.Round((e.X - MouseDownLocation.X) / 10.0) * 10; // Rounds X Mouse/Component Location
                 double Tp = Math.Round((e.Y - MouseDownLocation.Y) / 10.0) * 10; // Rounds Y Mouse/Component Location
 
@@ -187,6 +231,10 @@ namespace testsim
 
         void pb_MouseButtonUp(object sender, MouseEventArgs e)
         {
+            //PictureBox pb = (PictureBox)sender;
+            
+           // pb.BorderStyle = BorderStyle.None;
+
             capture = false;
         }
 
@@ -202,10 +250,19 @@ namespace testsim
             gl = sender;
         }
 
-        void formmousemove(object send, MouseEventArgs e)
+        void formmousemove(object sender, MouseEventArgs e)
         {
             x = e.X;
             y = e.Y;
+           
+            /* var checkborder = this.Controls.OfType<PictureBox>().ToList();
+             for (int i = 0; i < checkborder.Count; i++)
+             {
+                 if (checkborder[i].BorderStyle == BorderStyle.FixedSingle)
+                 {
+                     checkborder[i].BorderStyle = BorderStyle.None;
+                 }
+             }*/
             if (drophapp == true)
             {
                 // PictureBox location after it is dragged and dropped on the form
@@ -1028,6 +1085,21 @@ namespace testsim
                     return;
                 }
             }*/
+        }
+
+        private void FormClick(object sender, EventArgs e)
+        {
+            var formclickcheck = this.Controls.OfType<PictureBox>().ToList();
+
+            for(int i = 0; i < formclickcheck.Count; i++)
+            {
+                
+               if(formclickcheck[i].BorderStyle == BorderStyle.FixedSingle)
+                {
+                    formclickcheck[i].BorderStyle = BorderStyle.None;
+                }
+            }
+
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SimLogicRailRoad
 {
-    class Simulation
+    class DoSimulation
     {
         
         public void GUI_Input(Object obj)
