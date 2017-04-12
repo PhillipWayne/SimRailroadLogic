@@ -212,7 +212,6 @@
             this.MinimizeBox = false;
             this.Name = "Track_Assign";
             this.Text = "Track Assignment";
-            this.Load += new System.EventHandler(this.Track_Assign_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
