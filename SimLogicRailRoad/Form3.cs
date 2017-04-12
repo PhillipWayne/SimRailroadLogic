@@ -63,7 +63,6 @@ namespace testsim
         public static int sig;
         public static int trk;
         public event Comm commbetween;
-        public static int trk;
         public static int signal;
         public static int txt;
         public static int img;
