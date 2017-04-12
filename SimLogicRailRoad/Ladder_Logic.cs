@@ -19,6 +19,7 @@ namespace testsim
         string bit_insert_result;
         string boolean_operator_convert;
 
+
         //List that tracks the numberupdowns
 
         List<NumericUpDown> num_list = new List<NumericUpDown>();
@@ -87,7 +88,6 @@ namespace testsim
             textBox1.Text = Evaluate(boolean_operator_convert);
 
         }
-
         //replace bit palce hodlers with 1s and 0s
 
         private void place_holder_replace(string bit_insert)
@@ -95,7 +95,7 @@ namespace testsim
             int char_value;
             int list_value = 0;
 
-            foreach (char c in boolean_placeholder_message)
+            foreach (char c in bit_insert)
             {
                 if (c == 'B')
                 {
@@ -129,6 +129,7 @@ namespace testsim
             // MessageBox.Show();
 
         }
+
 
         //replaced *,=,~ with &,|,!
         //replaed 1 and 0 with true and false

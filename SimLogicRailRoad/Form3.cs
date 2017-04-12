@@ -49,6 +49,13 @@ namespace testsim
             Switch_BL.DrawToBitmap(bmp3, Switch_BL.ClientRectangle);
             Switch_BL.Image = bmp3;
 
+            // Text Handlers & Bitmap
+            Text_pictureBox.Paint += new PaintEventHandler(Text_Paint); // Text
+            Text_pictureBox.MouseDown += new MouseEventHandler(Text_pb_MouseDown);
+            Bitmap bmp4 = new Bitmap(Text_pictureBox.ClientSize.Width, Text_pictureBox.ClientSize.Height);
+            Text_pictureBox.DrawToBitmap(bmp4, Text_pictureBox.ClientRectangle);
+            Text_pictureBox.Image = bmp4;
+
         }
 
         //public int track;
@@ -56,6 +63,10 @@ namespace testsim
         public static int sig;
         public static int trk;
         public event Comm commbetween;
+        public static int trk;
+        public static int signal;
+        public static int txt;
+        public static int img;
         //public static bool trk = false;
 
 
@@ -151,6 +162,7 @@ namespace testsim
         // Two-Headed West Signal MouseDown
         private void pictureBox_TH_W_Signal_MouseDown(object sender, MouseEventArgs e)
         {
+            img = 1; // Picturebox Component in Form2
             sig = 1; // Changes Picturebox size in Form2
             TH_W_Signal.DoDragDrop(TH_W_Signal.Image, DragDropEffects.Copy);
         }
@@ -210,6 +222,7 @@ namespace testsim
         // Switch (Bottom Left) MouseDown
         private void pictureBox_Switch_BL_MouseDown(object sender, MouseEventArgs e)
         {
+            img = 1; // Picturebox Component in Form2
             sw = 1; // Changes Picturebox size in Form2
             Switch_BL.DoDragDrop(Switch_BL.Image, DragDropEffects.Copy);
         }
@@ -231,6 +244,32 @@ namespace testsim
             e.Graphics.DrawLine(whitePen, 0, 105, 50, 45); // Angled Track Draw
 
         }
+
+        //TextBox MouseDown
+        private void Text_pb_MouseDown(object sender, MouseEventArgs e)
+        {
+            txt = 1;
+            Text_pictureBox.DoDragDrop(Text_pictureBox.Text, DragDropEffects.Copy);
+        }
+
+        // TextBox Paint
+        private void Text_Paint(object sender, PaintEventArgs e)
+        {
+            string text1 = "TEXT";
+            using (Font font1 = new Font("Arial", 12, FontStyle.Bold, GraphicsUnit.Point))
+            {
+                RectangleF rectF1 = new RectangleF(20, 5, 90, 30);
+                e.Graphics.DrawString(text1, font1, Brushes.White, rectF1);
+                //e.Graphics.DrawRectangle(Pens.Black, Rectangle.Round(rectF1));
+            }
+        }
+
+        // TextBox Enter
+        private void textBox1_Drag_enter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Copy;
+        }
+
     }
 }
 

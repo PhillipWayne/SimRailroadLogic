@@ -112,7 +112,7 @@
     <Compile Include="Signal_Assign.Designer.cs">
       <DependentUpon>Signal_Assign.cs</DependentUpon>
     </Compile>
-    <Compile Include="Simulation.cs" />
+    <Compile Include="Simulation_Logic.cs" />
     <Compile Include="Text_read.cs">
       <SubType>Form</SubType>
     </Compile>

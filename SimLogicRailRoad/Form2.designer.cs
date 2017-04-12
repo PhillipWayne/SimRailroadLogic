@@ -63,6 +63,7 @@
             this.stopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.deleteToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
@@ -304,7 +305,6 @@
             this.toolboxToolStripMenuItem.Name = "toolboxToolStripMenuItem";
             this.toolboxToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.toolboxToolStripMenuItem.Text = "Toolbox";
-            this.toolboxToolStripMenuItem.Click += new System.EventHandler(this.toolboxToolStripMenuItem_Click);
             // 
             // ladderLogicToolStripMenuItem
             // 
@@ -380,6 +380,16 @@
             this.deleteToolStripMenuItem2.Text = "Paste";
             this.deleteToolStripMenuItem2.Click += new System.EventHandler(this.pasteToolStripMenuItem2_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.Transparent;
+            this.label1.Location = new System.Drawing.Point(704, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "label1";
+            // 
             // Form2
             // 
             this.AllowDrop = true;
@@ -389,16 +399,18 @@
             this.ClientSize = new System.Drawing.Size(751, 432);
             this.ContextMenuStrip = this.contextMenuStrip2;
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.label1);
             this.ForeColor = System.Drawing.Color.Black;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form2";
-            this.Text = "Railroad Logic Sim";
+            this.Text = "File Name - Railroad Logic Sim";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form2_FormClosing);
             this.Load += new System.EventHandler(this.Form2_Load);
             this.Click += new System.EventHandler(this.FormClick);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.pictureBox_Drag_Drop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.pictureBox_Drag_enter);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Focus_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.formmousemove);
             this.contextMenuStrip1.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
@@ -444,5 +456,6 @@
         private System.Windows.Forms.ToolStripMenuItem ladderLogicToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem componentsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bitListsToolStripMenuItem;
+        private System.Windows.Forms.Label label1;
     }
 }
