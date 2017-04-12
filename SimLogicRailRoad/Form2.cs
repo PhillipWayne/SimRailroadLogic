@@ -54,7 +54,8 @@ namespace testsim
         private bool checkcomp = false;
         private bool Exit = false;
         private bool click = false;
-
+        public static Dictionary<string,string> Bitsref;
+        public static Dictionary<string, string> SimBits = new Dictionary<string, string>();
         private void pictureBox_Drag_enter(object sender, DragEventArgs e)
         {
 
@@ -130,7 +131,7 @@ namespace testsim
                         pb1.Height = 70;
                         Form3.trk = 0; // Resets MouseDown in Form 3
                     }
-
+                    pb1.Click += new EventHandler(PictureBox_Click);
                     pb1.SizeMode = PictureBoxSizeMode.Normal;
                     pb1.Cursor = Cursors.SizeAll;
                     pb1.MouseMove += new MouseEventHandler(pb_MouseMove);
@@ -151,7 +152,39 @@ namespace testsim
                 }
             }
         }
+        private void PictureBox_Click(object sender,EventArgs e)
+        {
+            if (simstart == true)
+            {
+                SizeablePictureBox pb = (SizeablePictureBox)sender;
+                List<string> bitval = new List<string>();
+                if (pb.Bitsofcomponents != null)
+                {
+                    bitval.AddRange(pb.Bitsofcomponents);
+                    for (int i = 0; i < bitval.Count; i++)
+                        if (bitval[i] != (""))
+                        {
+                            SimBits.Add(bitval[i], "1");
 
+
+                        }
+                }
+
+                Simulation_Logic Sl = new Simulation_Logic();
+              Dictionary<string,string> results=(Dictionary<string,string>)Sl.GUI_Input(SimBits);
+                SimBits.Clear();
+               /* var pboxes = this.Controls.OfType<SizeablePictureBox>().ToList();
+                for(int i = 0; i < pboxes.Count; i++)
+                {
+                    for(int n=0;n<pboxes[i].Bitsofcomponents.Length;n++)
+                   /* if (results.ContainsKey(pboxes[i].Bitsofcomponents[n]))
+                    {
+                            results.
+                           // results.TryGetValue(pboxes[i].Bitsofcomponents[n], out forvalbit);
+                        }
+                }*/
+            }
+        }
       void Click_pb(object sender, EventArgs e)
         {
             var checkclick = this.Controls.OfType<PictureBox>().ToList();
@@ -980,19 +1013,19 @@ void pb_MouseLeave(object sender, EventArgs e)
         //Start Sim Button
         private void startToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (File.Exists(xmlfile))
+          /*  if (File.Exists(xmlfile))
             {
 
                 System.GC.Collect();
                 System.GC.WaitForPendingFinalizers();
                 File.Delete(xmlfile);
-            }
+            }*/
 
             //This gets a collection of controls in this form and places them in an array
-            var pBoxes = this.Controls.OfType<PictureBox>().ToArray();
+            var pBoxes = this.Controls.OfType<SizeablePictureBox>().ToArray();
 
             //This creates a list which passes the values of pBoxes to it
-            List<PictureBox> pbList = new List<PictureBox>(pBoxes);
+            List<SizeablePictureBox> pbList = new List<SizeablePictureBox>(pBoxes);
             List<Information> work = new List<Information>();
 
             // This is created so the string values are stored in the list Information
@@ -1013,7 +1046,7 @@ void pb_MouseLeave(object sender, EventArgs e)
                     work.Add(go1);
 
                     // stores all the string values in the list go1
-                    SaveXML.SaveData(work, xmlfile);
+                   // SaveXML.SaveData(work, xmlfile);
                     //After each component is saved it is removed of it's eventhandlers and contextmenu
                     pBoxes[i].MouseMove -= new MouseEventHandler(pb_MouseMove);
                     pBoxes[i].MouseDown -= new MouseEventHandler(pb_MouseDown);
@@ -1038,10 +1071,10 @@ void pb_MouseLeave(object sender, EventArgs e)
         //Stop Sim Button
         private void stopToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var pBoxes = this.Controls.OfType<PictureBox>().ToArray();
+            var pBoxes = this.Controls.OfType<SizeablePictureBox>().ToArray();
 
             //This creates a list which passes the values of pBoxes to it
-            List<PictureBox> pbList = new List<PictureBox>(pBoxes);
+            List<SizeablePictureBox> pbList = new List<SizeablePictureBox>(pBoxes);
             for (int i = 0; i < pbList.Count; i++)
             {
                 //This adds all the event handlers back for each image and the contextmenustrip is added back
@@ -1094,14 +1127,20 @@ void pb_MouseLeave(object sender, EventArgs e)
         private void Form2_Load(object sender, EventArgs e)
         {
             List<object> bits= new List<object>();
+
+           // Simulation.unique_bits.ToArray();
+            string[] val = new string[Simulation.unique_bits.Count];
+            Bitsref = new Dictionary<string, string> ();
+            for (int i = 0; i < Simulation.unique_bits.Count; i++)
+            {
+                
+                val[i] = "null";
+                Bitsref.Add(Simulation.unique_bits[i], val[i]);
+            }
+
             
             MakeBackgroundGrid(); //Loads Background Grid
-         /*   for (int i = 0; i < Simulation.unique_bits.Count; i++)
-            {
-                bits.Add(Simulation.unique_bits[i]);
-                
-
-            }*/
+      
                     
                 }
                     
@@ -1113,8 +1152,8 @@ void pb_MouseLeave(object sender, EventArgs e)
             PictureBox pb = (PictureBox)gl;
             if (pb.Name == "Track")
             {
-                Coded_Tk_Assign CTrk = new Coded_Tk_Assign();
-                CTrk.Show();
+                Track_Assign Trk = new Track_Assign();
+                Trk.Show();
             }
 
             if (pb.Name == "Switch")
@@ -1192,6 +1231,8 @@ void pb_MouseLeave(object sender, EventArgs e)
                 }
             }*/
         }
+
+        
 
         // Form2 Focus on Label1 when MouseDown so cursor in Textbox will hide
         private void Focus_MouseDown(object sender, MouseEventArgs e)

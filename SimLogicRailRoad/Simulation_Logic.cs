@@ -21,20 +21,16 @@ namespace testsim
         string boolean_operator_convert;
 
 
-        public void GUI_Input(Object obj)
+        public object GUI_Input(Object obj)
         {
             //Sim occurs
             Console.WriteLine(obj);
 
+            Dictionary<string, string> gui_input_bits= new Dictionary<string, string>();
 
-            //example dictionary value
-            Dictionary<string, string> example = new Dictionary<string, string>()
-            {
-                {"A", "1"},
-                {"C", "1"},
-                {"E", "0"}
-            };
+            gui_input_bits = (Dictionary<string,string>)obj;
 
+            
             //dictionary of all unique bit values
 
             Dictionary<string, string> unique_bit_values_dict = new Dictionary<string, string>();
@@ -75,7 +71,7 @@ namespace testsim
 
             //change all of the values to the individual bits listed in the bit_values distronary
 
-            foreach(KeyValuePair<string,string> entry in example)
+            foreach(KeyValuePair<string,string> entry in gui_input_bits)
             {
                 unique_bit_values_dict[entry.Key] = entry.Value;
             }
@@ -166,6 +162,7 @@ namespace testsim
             //disable unique bits from being set as unoknown
 
             first_call = false;
+            return unique_bit_values_dict;
         }
 
 

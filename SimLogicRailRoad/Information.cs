@@ -61,6 +61,8 @@ namespace testsim
             get { return componentname; }
             set { componentname = value; }
         }
+
+        
     }
     
 }

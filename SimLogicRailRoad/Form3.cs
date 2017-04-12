@@ -63,7 +63,7 @@ namespace testsim
         public static int sig;
         public static int trk;
         public event Comm commbetween;
-        public static int trk;
+        
         public static int signal;
         public static int txt;
         public static int img;
@@ -73,6 +73,7 @@ namespace testsim
         // One-Headed East Signal MouseDown
         private void pictureBox_OH_E_Signal_MouseDown(object sender, MouseEventArgs e)
         {
+            img = 1;
             sig = 1; // Changes Picturebox size in Form2
             OH_E_Signal.DoDragDrop(OH_E_Signal.Image, DragDropEffects.Copy);
         }
@@ -133,6 +134,7 @@ namespace testsim
         // Horizontal Track MouseDown
         private void pictureBox_H_Trk_MouseDown(object sender, MouseEventArgs e)
         {
+            img = 1;
             trk = 1; // Changes Picturebox size in Form2
             H_Trk.DoDragDrop(H_Trk.Image, DragDropEffects.Copy);
         }
