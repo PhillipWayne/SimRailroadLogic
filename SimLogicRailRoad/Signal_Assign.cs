@@ -34,14 +34,19 @@ namespace SimLogicRailRoad
             comboBox3.Items.AddRange(allbits);
             comboBox4.Items.AddRange(allbits);
             comboBox5.Items.AddRange(allbits);
+            comboBox6.Items.AddRange(allbits);
+            comboBox7.Items.AddRange(allbits);
+            comboBox8.Items.AddRange(allbits);
+            comboBox9.Items.AddRange(allbits);
 
             namebit = Form2.knowbit;
-            PictureBox pb = (PictureBox)namebit;
+            SizeablePictureBox pb = (SizeablePictureBox)namebit;
 
-            if (pb.Tag != null)
+
+            if (pb.Bitsofcomponents != null)
             {
 
-                string[] tagget = (string[])pb.Tag;
+                string[] tagget = (string[])pb.Bitsofcomponents;
                 //   string[] tagget = pb.Tag.ToString();
 
                 comboBox1.Text = tagget[0];
@@ -49,7 +54,10 @@ namespace SimLogicRailRoad
                 comboBox3.Text = tagget[2];
                 comboBox4.Text = tagget[3];
                 comboBox5.Text = tagget[4];
-
+                comboBox6.Text = tagget[5];
+                comboBox7.Text = tagget[6];
+                comboBox8.Text = tagget[7];
+                comboBox9.Text = tagget[8];
 
                 //comboBox1.Text = reass1(0).t;
             }
@@ -66,7 +74,8 @@ namespace SimLogicRailRoad
         private void button1_Click(object sender, EventArgs e)
         {
             namebit = Form2.knowbit;
-            PictureBox pb = (PictureBox)namebit;
+            SizeablePictureBox pb = (SizeablePictureBox)namebit;
+
 
 
             List<string> refconver = new List<string>();
@@ -102,6 +111,31 @@ namespace SimLogicRailRoad
             }
             else
                 refconver.Add("");
+            if (comboBox6.SelectedItem != null)
+            {
+                refconver.Add(comboBox6.SelectedItem.ToString());
+            }
+            else
+            refconver.Add("");
+            if (comboBox7.SelectedItem != null)
+            {
+                refconver.Add(comboBox7.SelectedItem.ToString());
+            }
+            else
+                refconver.Add("");
+            if (comboBox8.SelectedItem != null)
+            {
+                refconver.Add(comboBox8.SelectedItem.ToString());
+            }
+            else
+                refconver.Add("");
+            if (comboBox9.SelectedItem != null)
+            {
+                refconver.Add(comboBox9.SelectedItem.ToString());
+            }
+            else
+                refconver.Add("");
+
             pb.Tag = refconver.ToArray();
 
             this.Close();

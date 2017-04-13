@@ -134,9 +134,16 @@ namespace testsim
         // Horizontal Track MouseDown
         private void pictureBox_H_Trk_MouseDown(object sender, MouseEventArgs e)
         {
+
+            PictureBox pb = (PictureBox)sender;
+            string[] indef = new string[2];
+            indef[0] = "trk";
+            indef[1] = "trk180";
+            pb.Tag = indef;
+            H_Trk.DoDragDrop(pb.Tag, DragDropEffects.Copy);
             img = 1;
             trk = 1; // Changes Picturebox size in Form2
-            H_Trk.DoDragDrop(H_Trk.Image, DragDropEffects.Copy);
+           // H_Trk.DoDragDrop(H_Trk.Image, DragDropEffects.Copy);
         }
 
         
@@ -164,6 +171,12 @@ namespace testsim
         // Two-Headed West Signal MouseDown
         private void pictureBox_TH_W_Signal_MouseDown(object sender, MouseEventArgs e)
         {
+            PictureBox pb = (PictureBox)sender;
+            string[] indef = new string[2];
+            indef[0] = "twoheadedsignal";
+            indef[1] = "TH_W_signal";
+            pb.Tag = indef;
+            TH_W_Signal.DoDragDrop(pb.Tag, DragDropEffects.Copy);
             img = 1; // Picturebox Component in Form2
             sig = 1; // Changes Picturebox size in Form2
             TH_W_Signal.DoDragDrop(TH_W_Signal.Image, DragDropEffects.Copy);
