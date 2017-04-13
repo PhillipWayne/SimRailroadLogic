@@ -196,6 +196,18 @@ namespace testsim
         }
         private void PictureBox_Click(object sender, EventArgs e)
         {
+            var checkclick = this.Controls.OfType<SizeablePictureBox>().ToList();
+            for (int i = 0; i < checkclick.Count; i++)
+            {
+                if (checkclick[i].BorderStyle == BorderStyle.FixedSingle)
+                {
+                    checkclick[i].BorderStyle = BorderStyle.None;
+                }
+
+            }
+           // click = true;
+            SizeablePictureBox pb1 = (SizeablePictureBox)sender;
+            pb1.BorderStyle = BorderStyle.FixedSingle;
             if (simstart == true)
             {
                 SizeablePictureBox pb = (SizeablePictureBox)sender;
@@ -227,21 +239,7 @@ namespace testsim
                  }*/
             }
         }
-        void Click_pb(object sender, EventArgs e)
-        {
-            var checkclick = this.Controls.OfType<PictureBox>().ToList();
-            for (int i = 0; i < checkclick.Count; i++)
-            {
-                if (checkclick[i].BorderStyle == BorderStyle.FixedSingle)
-                {
-                    checkclick[i].BorderStyle = BorderStyle.None;
-                }
-
-            }
-            click = true;
-            PictureBox pb = (PictureBox)sender;
-            pb.BorderStyle = BorderStyle.FixedSingle;
-        }
+       
 
         ////Creates a Box Around Image When Mouse is Over the Image
         void pb_MouseEnter(object sender, EventArgs e)
@@ -1166,8 +1164,9 @@ namespace testsim
         {
 
             knowbit = gl;
-            PictureBox pb = (PictureBox)gl;
-            if (pb.Name == "Track")
+            SizeablePictureBox pb = (SizeablePictureBox)gl;
+            string[] bitform = (string[])pb.Tag;
+            if (bitform[0] == "trk")
             {
                 Track_Assign Trk = new Track_Assign();
                 Trk.Show();
