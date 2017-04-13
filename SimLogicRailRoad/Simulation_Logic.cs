@@ -23,7 +23,7 @@ namespace testsim
 
         public object GUI_Input(Object obj)
         {
-            //Sim occurs
+            //test print
             Console.WriteLine(obj);
 
             Dictionary<string, string> gui_input_bits= new Dictionary<string, string>();
@@ -81,6 +81,8 @@ namespace testsim
             //and finds outputs based uppon inputs
             //for single inputs the value is made that same as the input
             //for boolean logic, the logic is executed and stored into the output
+            
+            //ADD IF HERE FOR OUTPUT BITS
 
             for (int i = 0;i <= input_bits.Count - 1; i++)
             {
@@ -108,7 +110,7 @@ namespace testsim
                             }
                             else  //if it is unknown, throw an error message
                             {
-                                MessageBox.Show("Bits is unknown:" + entry.Key);
+                                MessageBox.Show("Unkown bit:" + " " + entry.Key);
                                 break;
                             }
                         }
