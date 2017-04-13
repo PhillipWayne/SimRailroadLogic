@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using testsim;
-
+using System.Collections.Generic;
 class SizeablePictureBox : PictureBox
 {
 
@@ -13,6 +13,8 @@ class SizeablePictureBox : PictureBox
         this.DoubleBuffered = true;
         this.SetStyle(ControlStyles.ResizeRedraw, true);
     }
+
+   
 
     private const int
     HTLEFT = 10,
@@ -26,6 +28,21 @@ class SizeablePictureBox : PictureBox
 
     const int _ = 10; // you can rename this variable if you like
 
+    private string []  bitsofcomponents;
+    
+    public string[] Bitsofcomponents
+    {
+        get { return bitsofcomponents; }
+        set { bitsofcomponents = value; }
+    }
+
+    
+    private string [] componentval;
+    public string [] Componentval
+    {
+        get { return componentval; }
+        set { componentval = value; }
+    }
     Rectangle Top { get { return new Rectangle(0, 0, this.ClientSize.Width, _); } }
     Rectangle Left { get { return new Rectangle(0, 0, _, this.ClientSize.Height); } }
     Rectangle Bottom { get { return new Rectangle(0, this.ClientSize.Height - _, this.ClientSize.Width, _); } }

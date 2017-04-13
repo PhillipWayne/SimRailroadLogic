@@ -30,7 +30,7 @@ namespace testsim
             this.SetStyle(ControlStyles.ResizeRedraw, true);
         }
 
-        
+
         bool capture = false;
         bool copy = false;
         private Point MouseDownLocation;
@@ -47,14 +47,16 @@ namespace testsim
         public string xmlfile;
         private int directxcheck;
         private int directycheck;
-        private bool drophapp=false;
+        private bool drophapp = false;
         private bool drophapp1 = false;
         private object ttxloc;
         private object pbloc;
         private bool checkcomp = false;
         private bool Exit = false;
         private bool click = false;
-
+        public static Dictionary<string, string> Bitsref;
+        public static Dictionary<string, string> SimBits = new Dictionary<string, string>();
+        private bool mouseenter = false;
         private void pictureBox_Drag_enter(object sender, DragEventArgs e)
         {
 
@@ -69,9 +71,9 @@ namespace testsim
             go.DrawToBitmap(bp, go.ClientRectangle);
             go.Image = null;
             go.Image = bp;*/
-           // go. = to;
-          
-        
+            // go. = to;
+
+
         }
         private void pictureBox_Drag_Drop(object sender, DragEventArgs e)
         {
@@ -96,68 +98,141 @@ namespace testsim
                 Controls.Add(text1);
                 drophapp = true;
                 Form3.txt = 0; // Resets MouseDown in Form 3
+                return;
             }
 
             {
-                if (Form3.img == 1) // Ensures user selected Signal/Track and not a Textbox
-                {
-                    //checkcomp = Form3.trk;
+                  SizeablePictureBox pb1 = new SizeablePictureBox();
 
-                    // Creates Tracks & Signals
-                    SizeablePictureBox pb1 = new SizeablePictureBox();
-                    pb1.Image = (Image)e.Data.GetData(DataFormats.Bitmap);
+                   pb1.Tag = (string[])e.Data.GetData(typeof(string[]));
 
-                    if (Form3.sw == 1) //Switch
-                    {
-                        pb1.Name = "Switch";
-                        pb1.Width = 100;
-                        pb1.Height = 140;
-                        Form3.sw = 0; // Resets MouseDown in Form 3
-                    }
+                   string[] trk=(string[])pb1.Tag;
 
-                    if (Form3.sig == 1) //Signal
-                    {
-                        pb1.Name = "Signal";
-                        pb1.Width = 100;
-                        pb1.Height = 70;
-                        Form3.sig = 0; // Resets MouseDown in Form 3
-                    }
+                  switch(trk[1])
+                   {
+                       case "trk180":
+                           pb1.Width = 100;
+                           pb1.Height = 70;
+                            pb1.Paint += new PaintEventHandler(paintfortrack);
+                           break;
 
-                    if (Form3.trk == 1) //Track
-                    {
-                        pb1.Name = "Track";
-                        pb1.Width = 100;
-                        pb1.Height = 70;
-                        Form3.trk = 0; // Resets MouseDown in Form 3
-                    }
+                   }
+                   string[] twosignal = (string[])pb1.Tag;
 
-                    pb1.SizeMode = PictureBoxSizeMode.Normal;
-                    pb1.Cursor = Cursors.SizeAll;
-                    pb1.MouseMove += new MouseEventHandler(pb_MouseMove);
-                    pb1.MouseDown += new MouseEventHandler(pb_MouseDown);
-                    pb1.MouseUp += new MouseEventHandler(pb_MouseButtonUp);
-                    pb1.MouseDown += new MouseEventHandler(Focus_MouseDown);
-                    //pb1.MouseEnter += new EventHandler(pb_MouseEnter);
-                    //pb1.MouseLeave += new EventHandler(pb_MouseLeave);
-                    pb1.ContextMenuStrip = contextMenuStrip1;
-                    pbloc = pb1;
-                    if (checkcomp == true)
-                    {
-                        pb1.Name = "Track";
-                    }
-                    Controls.Add(pb1);
-                    drophapp1 = true;
-                    Form3.img = 0; // Resets MouseDown in for PictureBox (Track/Signal) Form 3
-                }
+                   switch (twosignal[1])
+                   {
+                       case "TH_W_signal":
+                           pb1.Width = 100;
+                           pb1.Height = 70;
+                           // pb1.Paint += new PaintEventHandler(paintforsignal);
+                           break;
+                   }
+                pb1.Click += new EventHandler(PictureBox_Click);
+                pb1.SizeMode = PictureBoxSizeMode.Normal;
+                pb1.Cursor = Cursors.SizeAll;
+                pb1.MouseMove += new MouseEventHandler(pb_MouseMove);
+                pb1.MouseDown += new MouseEventHandler(pb_MouseDown);
+                pb1.MouseUp += new MouseEventHandler(pb_MouseButtonUp);
+                pb1.MouseDown += new MouseEventHandler(Focus_MouseDown);
+                pb1.MouseEnter += new EventHandler(pb_MouseEnter);
+                pb1.MouseLeave += new EventHandler(pb_MouseLeave);
+                pb1.ContextMenuStrip = contextMenuStrip1;
+                pbloc = pb1;
+               
+                Controls.Add(pb1);
+                drophapp1 = true;
+                /*
+             if (Form3.img == 1) // Ensures user selected Signal/Track and not a Textbox
+             {
+                 //checkcomp = Form3.trk;
+
+                 // Creates Tracks & Signals
+                 SizeablePictureBox pb1 = new SizeablePictureBox();
+                 pb1.Image = (Image)e.Data.GetData(DataFormats.Bitmap);
+
+                 if (Form3.sw == 1) //Switch
+                 {
+                     pb1.Name = "Switch";
+                     pb1.Width = 100;
+                     pb1.Height = 140;
+                     Form3.sw = 0; // Resets MouseDown in Form 3
+                 }
+
+                 if (Form3.sig == 1) //Signal
+                 {
+                     pb1.Name = "Signal";
+                     pb1.Width = 100;
+                     pb1.Height = 70;
+                     Form3.sig = 0; // Resets MouseDown in Form 3
+                 }
+
+                 if (Form3.trk == 1) //Track
+                 {
+                     pb1.Name = "Track";
+                     pb1.Width = 100;
+                     pb1.Height = 70;
+                     Form3.trk = 0; // Resets MouseDown in Form 3
+                 }*/
+                //pb1.Click += new EventHandler(PictureBox_Click);
+                //    pb1.SizeMode = PictureBoxSizeMode.Normal;
+                //    pb1.Cursor = Cursors.SizeAll;
+                //    pb1.MouseMove += new MouseEventHandler(pb_MouseMove);
+                //    pb1.MouseDown += new MouseEventHandler(pb_MouseDown);
+                //    pb1.MouseUp += new MouseEventHandler(pb_MouseButtonUp);
+                //    pb1.MouseDown += new MouseEventHandler(Focus_MouseDown);
+                //    //pb1.MouseEnter += new EventHandler(pb_MouseEnter);
+                //    //pb1.MouseLeave += new EventHandler(pb_MouseLeave);
+                //    pb1.ContextMenuStrip = contextMenuStrip1;
+                //    pbloc = pb1;
+                //    if (checkcomp == true)
+                //    {
+                //        pb1.Name = "Track";
+                //    }
+                //    Controls.Add(pb1);
+                //    drophapp1 = true;
+                //    Form3.img = 0; // Resets MouseDown in for PictureBox (Track/Signal) Form 3
+              //  }
             }
         }
+        private void PictureBox_Click(object sender, EventArgs e)
+        {
+            if (simstart == true)
+            {
+                SizeablePictureBox pb = (SizeablePictureBox)sender;
+                List<string> bitval = new List<string>();
+                if (pb.Bitsofcomponents != null)
+                {
+                    bitval.AddRange(pb.Bitsofcomponents);
+                    for (int i = 0; i < bitval.Count; i++)
+                        if (bitval[i] != (""))
+                        {
+                            SimBits.Add(bitval[i], "1");
 
-      void Click_pb(object sender, EventArgs e)
+
+                        }
+                }
+
+                Simulation_Logic Sl = new Simulation_Logic();
+                Dictionary<string, string> results = (Dictionary<string, string>)Sl.GUI_Input(SimBits);
+                SimBits.Clear();
+                /* var pboxes = this.Controls.OfType<SizeablePictureBox>().ToList();
+                 for(int i = 0; i < pboxes.Count; i++)
+                 {
+                     for(int n=0;n<pboxes[i].Bitsofcomponents.Length;n++)
+                    /* if (results.ContainsKey(pboxes[i].Bitsofcomponents[n]))
+                     {
+                             results.
+                            // results.TryGetValue(pboxes[i].Bitsofcomponents[n], out forvalbit);
+                         }
+                 }*/
+            }
+        }
+        void Click_pb(object sender, EventArgs e)
         {
             var checkclick = this.Controls.OfType<PictureBox>().ToList();
-            for(int i =0; i < checkclick.Count; i++)
+            for (int i = 0; i < checkclick.Count; i++)
             {
-                if(checkclick[i].BorderStyle == BorderStyle.FixedSingle)
+                if (checkclick[i].BorderStyle == BorderStyle.FixedSingle)
                 {
                     checkclick[i].BorderStyle = BorderStyle.None;
                 }
@@ -167,52 +242,27 @@ namespace testsim
             PictureBox pb = (PictureBox)sender;
             pb.BorderStyle = BorderStyle.FixedSingle;
         }
-        
+
         ////Creates a Box Around Image When Mouse is Over the Image
         void pb_MouseEnter(object sender, EventArgs e)
         {
-            if (simstart == false)
+            mouseenter = true;
+            SizeablePictureBox pb = (SizeablePictureBox)sender;
+            pb.Refresh();
 
-            {
-             var checkborder=   this.Controls.OfType<PictureBox>().ToList();
-                for(int i = 0; i < checkborder.Count; i++)
-                {
-                    if (checkborder[i].BorderStyle == BorderStyle.FixedSingle) {
-                        checkborder[i].BorderStyle = BorderStyle.None;
-                    }
-                }
-                
-                PictureBox pb = (PictureBox)sender;
-        ////Mouse Enter/Leave PictureBox Border
-        //void pb_MouseEnter(object sender, EventArgs e)
-        //{
-        //    if (simstart == false)
 
-        //    {
-        //        PictureBox pb = (PictureBox)sender;
+        }
 
-        //        pb.BorderStyle = BorderStyle.FixedSingle;
-        //    }
-        //}
-        //void pb_MouseLeave(object sender, EventArgs e)
-        //{
-        //    if (simstart == false)
-        //    {
-        //        PictureBox pb = (PictureBox)sender;
-        //        pb.BorderStyle = BorderStyle.None;
-        //    }
-        //}
-        pb.BorderStyle = BorderStyle.FixedSingle;
-            }
-}
-void pb_MouseLeave(object sender, EventArgs e)
-{
-    if (simstart == false && click==false)
-    {
-        PictureBox pb = (PictureBox)sender;
-        pb.BorderStyle = BorderStyle.None;
-    }
-}
+
+
+        void pb_MouseLeave(object sender, EventArgs e)
+        {
+            mouseenter = false;
+            SizeablePictureBox pb = (SizeablePictureBox)sender;
+            pb.Refresh();
+
+        }
+
 
 
         // Picture Box MouseMove
@@ -222,7 +272,7 @@ void pb_MouseLeave(object sender, EventArgs e)
             {
 
                 // Code to move GUI Components    
-                
+
                 PictureBox pb = (PictureBox)sender;
                 pb.BorderStyle = BorderStyle.FixedSingle;
                 double Lf = Math.Round((e.X - MouseDownLocation.X) / 10.0) * 10; // Rounds X Mouse/Component Location
@@ -235,49 +285,49 @@ void pb_MouseLeave(object sender, EventArgs e)
                 directxcheck = e.X - MouseDownLocation.X;
                 directycheck = e.Y - MouseDownLocation.Y;
                 // New Component Location
-                 
-
-               // if (e.X > 0 && e.X < this.ClientSize.Width)
-               // {
 
 
-
-                    // pb_Lf < this.Size.Width
-                    if (pb.Left > 0 && pb.Right < this.ClientSize.Width)
-                    {
-                        pb.Left += pb_Lf;
+                // if (e.X > 0 && e.X < this.ClientSize.Width)
+                // {
 
 
-                    }
 
-                    // = e.Y - MouseDownLocation.Y;
-                    else if (directxcheck > 0 && pb.Left <= 0)
-                    {
-                        pb.Left += pb_Lf;
-                    }
-                    else if (pb.Left > 0 && directxcheck < 0)
-                    {
-                        pb.Left += pb_Lf;
-                    }
-                    // Y
-                    // New Component Location
-                    // pb.Left += pb_Lf; // X
-                    if (pb.Top > 25 && pb.Bottom < this.ClientSize.Height)
-                    {
-                        pb.Top += pb_Tp; // Y
-                        
-                    }
-                    else if (directycheck > 0 && pb.Top <= 25)
-                    {
-                        pb.Top += pb_Tp;
-                    }
-                    else if (directycheck < 0 && pb.Top > 25)
-                    {
-                        pb.Top += pb_Tp;
-                    }
-                    gl = sender;
+                // pb_Lf < this.Size.Width
+                if (pb.Left > 0 && pb.Right < this.ClientSize.Width)
+                {
+                    pb.Left += pb_Lf;
+
+
                 }
-           
+
+                // = e.Y - MouseDownLocation.Y;
+                else if (directxcheck > 0 && pb.Left <= 0)
+                {
+                    pb.Left += pb_Lf;
+                }
+                else if (pb.Left > 0 && directxcheck < 0)
+                {
+                    pb.Left += pb_Lf;
+                }
+                // Y
+                // New Component Location
+                // pb.Left += pb_Lf; // X
+                if (pb.Top > 25 && pb.Bottom < this.ClientSize.Height)
+                {
+                    pb.Top += pb_Tp; // Y
+
+                }
+                else if (directycheck > 0 && pb.Top <= 25)
+                {
+                    pb.Top += pb_Tp;
+                }
+                else if (directycheck < 0 && pb.Top > 25)
+                {
+                    pb.Top += pb_Tp;
+                }
+                gl = sender;
+            }
+
             gl = sender;
         }
 
@@ -302,7 +352,7 @@ void pb_MouseLeave(object sender, EventArgs e)
                 text1.Top += pb_Tp;
                 gl = sender;
             }
-          
+
             gl = sender;
         }
 
@@ -310,8 +360,8 @@ void pb_MouseLeave(object sender, EventArgs e)
         void pb_MouseButtonUp(object sender, MouseEventArgs e)
         {
             //PictureBox pb = (PictureBox)sender;
-            
-           // pb.BorderStyle = BorderStyle.None;
+
+            // pb.BorderStyle = BorderStyle.None;
 
             capture = false;
         }
@@ -325,7 +375,7 @@ void pb_MouseLeave(object sender, EventArgs e)
                 capture = true;
                 gl = sender;
             }
-            
+
             gl = sender;
         }
 
@@ -334,7 +384,7 @@ void pb_MouseLeave(object sender, EventArgs e)
         {
             x = e.X;
             y = e.Y;
-           
+
             /* var checkborder = this.Controls.OfType<PictureBox>().ToList();
              for (int i = 0; i < checkborder.Count; i++)
              {
@@ -523,15 +573,15 @@ void pb_MouseLeave(object sender, EventArgs e)
 
             }
 
-          
-            
+
+
 
         }
-        
+
         //Open Button
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Filter =
                "xml files (*.xml)|*.xml|All files (*.*)|*.*";
@@ -574,7 +624,7 @@ void pb_MouseLeave(object sender, EventArgs e)
                 }
             }
         }
-        
+
         //Save Button
         private void saveToolStripMenuItem1_Click(object sender, EventArgs e)
         {
@@ -630,53 +680,53 @@ void pb_MouseLeave(object sender, EventArgs e)
                             MessageBox.Show(ex.Message);
                         }
                     }
-                   
+
                 }
 
                 return;
             }
-                if (File.Exists(xmlfile))
-                {
+            if (File.Exists(xmlfile))
+            {
 
-                    System.GC.Collect();
-                    System.GC.WaitForPendingFinalizers();
-                    File.Delete(xmlfile);
+                System.GC.Collect();
+                System.GC.WaitForPendingFinalizers();
+                File.Delete(xmlfile);
+            }
+
+            //This gets a collection of controls in this form and places them in an array
+            var pBoxes = this.Controls.OfType<PictureBox>().ToArray();
+
+            //This creates a list which passes the values of pBoxes to it
+            List<PictureBox> pbList = new List<PictureBox>(pBoxes);
+            List<Information> work = new List<Information>();
+
+            // This is created so the string values are stored in the list Information
+            for (int i = 0; i < pbList.Count; i++)
+            {
+                MemoryStream ms = new MemoryStream();
+                pBoxes[i].Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                Byte[] a = ms.ToArray();
+
+                String text = Convert.ToBase64String(a);
+                try
+                {
+                    Information go1 = new Information();
+                    go1.Componentpic = text;
+                    go1.Bitsofcomponents = (string[])pBoxes[i].Tag;
+                    go1.Componentname = pBoxes[i].Name;
+                    go1.Piclocx = pBoxes[i].Location.X.ToString();
+                    go1.Piclocy = pBoxes[i].Location.Y.ToString();
+                    work.Add(go1);
+
+                    // stores all the string values in the list go1
+                    SaveXML.SaveData(work, xmlfile);
                 }
-
-                //This gets a collection of controls in this form and places them in an array
-                var pBoxes = this.Controls.OfType<PictureBox>().ToArray();
-
-                //This creates a list which passes the values of pBoxes to it
-                List<PictureBox> pbList = new List<PictureBox>(pBoxes);
-                List<Information> work = new List<Information>();
-
-                // This is created so the string values are stored in the list Information
-                for (int i = 0; i < pbList.Count; i++)
+                catch (Exception ex)
                 {
-                    MemoryStream ms = new MemoryStream();
-                    pBoxes[i].Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
-                    Byte[] a = ms.ToArray();
-
-                    String text = Convert.ToBase64String(a);
-                    try
-                    {
-                        Information go1 = new Information();
-                        go1.Componentpic = text;
-                        go1.Bitsofcomponents = (string[])pBoxes[i].Tag;
-                        go1.Componentname = pBoxes[i].Name;
-                        go1.Piclocx = pBoxes[i].Location.X.ToString();
-                        go1.Piclocy = pBoxes[i].Location.Y.ToString();
-                        work.Add(go1);
-
-                        // stores all the string values in the list go1
-                        SaveXML.SaveData(work, xmlfile);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
+                    MessageBox.Show(ex.Message);
                 }
             }
+        }
 
         //Deserialize
         public void Deserialize(object obj, string fileName)
@@ -701,7 +751,7 @@ void pb_MouseLeave(object sender, EventArgs e)
                         f = goy[i].Componentpic;
                         rx = Int32.Parse(goy[i].Piclocx);
                         ry = Int32.Parse(goy[i].Piclocy);
-                        
+
                         byte[] imagebytes = Convert.FromBase64String(f);
                         //
                         MemoryStream ms = new MemoryStream(imagebytes, 0, imagebytes.Length);
@@ -710,7 +760,7 @@ void pb_MouseLeave(object sender, EventArgs e)
                         PictureBox pb = new PictureBox();
 
                         pb.Image = image;
-                        pb.Name= goy[i].Componentname;
+                        pb.Name = goy[i].Componentname;
                         pb.Tag = goy[i].Bitsofcomponents;
                         pb.SizeMode = PictureBoxSizeMode.Normal;
                         pb.Location = new Point(rx, ry);
@@ -739,13 +789,13 @@ void pb_MouseLeave(object sender, EventArgs e)
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-             
+
                 xmlfile = saveFileDialog.FileName;
 
                 if (File.Exists(xmlfile))
                 {
                     saveFileDialog.OverwritePrompt = true;
-                   
+
                 }
                 //This gets a collection of controls in this form and places them in an array
                 var pBoxes = this.Controls.OfType<PictureBox>().ToArray();
@@ -774,7 +824,7 @@ void pb_MouseLeave(object sender, EventArgs e)
 
                         // stores all the string values in the list go1
                         SaveXML.SaveData(work, xmlfile);
-                        
+
                     }
                     catch (Exception ex)
                     {
@@ -784,7 +834,7 @@ void pb_MouseLeave(object sender, EventArgs e)
                 }
             }
         }
-        
+
         //Exit Button
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
@@ -900,7 +950,7 @@ void pb_MouseLeave(object sender, EventArgs e)
                             MessageBox.Show(ex.Message);
                         }
                     }
-                   
+
                 }
 
             }
@@ -912,7 +962,7 @@ void pb_MouseLeave(object sender, EventArgs e)
         //Undo Button
         private void undoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         //Redo Button
@@ -960,7 +1010,7 @@ void pb_MouseLeave(object sender, EventArgs e)
             if (result1 == DialogResult.Yes)
             {
 
-                
+
 
                 Controls.Remove(pb);
                 pb.Dispose();
@@ -980,19 +1030,19 @@ void pb_MouseLeave(object sender, EventArgs e)
         //Start Sim Button
         private void startToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (File.Exists(xmlfile))
-            {
+            /*  if (File.Exists(xmlfile))
+              {
 
-                System.GC.Collect();
-                System.GC.WaitForPendingFinalizers();
-                File.Delete(xmlfile);
-            }
+                  System.GC.Collect();
+                  System.GC.WaitForPendingFinalizers();
+                  File.Delete(xmlfile);
+              }*/
 
             //This gets a collection of controls in this form and places them in an array
-            var pBoxes = this.Controls.OfType<PictureBox>().ToArray();
+            var pBoxes = this.Controls.OfType<SizeablePictureBox>().ToArray();
 
             //This creates a list which passes the values of pBoxes to it
-            List<PictureBox> pbList = new List<PictureBox>(pBoxes);
+            List<SizeablePictureBox> pbList = new List<SizeablePictureBox>(pBoxes);
             List<Information> work = new List<Information>();
 
             // This is created so the string values are stored in the list Information
@@ -1013,7 +1063,7 @@ void pb_MouseLeave(object sender, EventArgs e)
                     work.Add(go1);
 
                     // stores all the string values in the list go1
-                    SaveXML.SaveData(work, xmlfile);
+                    // SaveXML.SaveData(work, xmlfile);
                     //After each component is saved it is removed of it's eventhandlers and contextmenu
                     pBoxes[i].MouseMove -= new MouseEventHandler(pb_MouseMove);
                     pBoxes[i].MouseDown -= new MouseEventHandler(pb_MouseDown);
@@ -1027,7 +1077,7 @@ void pb_MouseLeave(object sender, EventArgs e)
 
             }
 
-            
+
 
             simstart = true;
             MakeBackgroundGrid();
@@ -1038,10 +1088,10 @@ void pb_MouseLeave(object sender, EventArgs e)
         //Stop Sim Button
         private void stopToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var pBoxes = this.Controls.OfType<PictureBox>().ToArray();
+            var pBoxes = this.Controls.OfType<SizeablePictureBox>().ToArray();
 
             //This creates a list which passes the values of pBoxes to it
-            List<PictureBox> pbList = new List<PictureBox>(pBoxes);
+            List<SizeablePictureBox> pbList = new List<SizeablePictureBox>(pBoxes);
             for (int i = 0; i < pbList.Count; i++)
             {
                 //This adds all the event handlers back for each image and the contextmenustrip is added back
@@ -1093,18 +1143,24 @@ void pb_MouseLeave(object sender, EventArgs e)
         // Form2 Load
         private void Form2_Load(object sender, EventArgs e)
         {
-            List<object> bits= new List<object>();
-            
-            MakeBackgroundGrid(); //Loads Background Grid
-         /*   for (int i = 0; i < Simulation.unique_bits.Count; i++)
-            {
-                bits.Add(Simulation.unique_bits[i]);
-                
+            List<object> bits = new List<object>();
 
-            }*/
-                    
-                }
-                    
+            // Simulation.unique_bits.ToArray();
+            string[] val = new string[Simulation.unique_bits.Count];
+            Bitsref = new Dictionary<string, string>();
+            for (int i = 0; i < Simulation.unique_bits.Count; i++)
+            {
+
+                val[i] = "null";
+                Bitsref.Add(Simulation.unique_bits[i], val[i]);
+            }
+
+
+            MakeBackgroundGrid(); //Loads Background Grid
+
+
+        }
+
         // Assign Tool Strip Event
         private void assignBitToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1113,8 +1169,8 @@ void pb_MouseLeave(object sender, EventArgs e)
             PictureBox pb = (PictureBox)gl;
             if (pb.Name == "Track")
             {
-                Coded_Tk_Assign CTrk = new Coded_Tk_Assign();
-                CTrk.Show();
+                Track_Assign Trk = new Track_Assign();
+                Trk.Show();
             }
 
             if (pb.Name == "Switch")
@@ -1153,13 +1209,13 @@ void pb_MouseLeave(object sender, EventArgs e)
 
         //Grid Background Method for GUI - Form2
         private void MakeBackgroundGrid()
-        
+
+        {
+            Bitmap bm = new Bitmap(ClientSize.Width, ClientSize.Height);
+            for (int x = 0; x < ClientSize.Width; x += GridGap)
             {
-                Bitmap bm = new Bitmap(ClientSize.Width, ClientSize.Height);
-                for (int x = 0; x < ClientSize.Width; x += GridGap)
+                for (int y = 0; y < ClientSize.Height; y += GridGap)
                 {
-                    for (int y = 0; y < ClientSize.Height; y += GridGap)
-                    {
                     if (simstart == true)
                     {
                         bm.SetPixel(x, y, Color.Black);
@@ -1169,37 +1225,112 @@ void pb_MouseLeave(object sender, EventArgs e)
                         bm.SetPixel(x, y, Color.White);
                     }
                 }
-                }
-                BackgroundImage = bm;
             }
+            BackgroundImage = bm;
+        }
 
         //Form2 Close Event
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
         {
-          /*  if (Exit == false)
-            {
-                var result = MessageBox.Show("Do you want to save before leaving the Simulation", "Leave Simulation without saving?",
-                                     MessageBoxButtons.YesNo,
-                                     MessageBoxIcon.Question);
+            /*  if (Exit == false)
+              {
+                  var result = MessageBox.Show("Do you want to save before leaving the Simulation", "Leave Simulation without saving?",
+                                       MessageBoxButtons.YesNo,
+                                       MessageBoxIcon.Question);
 
-                // If the no button was pressed ...
-                if (result == DialogResult.No)
-                {
-                    Application.Exit();
+                  // If the no button was pressed ...
+                  if (result == DialogResult.No)
+                  {
+                      Application.Exit();
 
-                    // leave the method
-                    return;
-                }
-            }*/
+                      // leave the method
+                      return;
+                  }
+              }*/
         }
+
+
 
         // Form2 Focus on Label1 when MouseDown so cursor in Textbox will hide
         private void Focus_MouseDown(object sender, MouseEventArgs e)
         {
             label1.Focus();
         }
+        private void paintfortrack(object sender, PaintEventArgs e)
+        {
 
 
+
+            Rectangle rect = new Rectangle();
+            rect.Location = new Point(5, 30);
+            rect.Height = 5;
+
+            if (copy == false)
+            {
+                SizeablePictureBox pb = (SizeablePictureBox)sender;
+                rect.Width = pb.ClientRectangle.Width;
+                e.Graphics.FillRectangle(Brushes.White, rect);
+
+
+            }
+            if (copy == true)
+            {
+                SizeablePictureBox pb = (SizeablePictureBox)gl;
+                rect.Width = pb.ClientRectangle.Width;
+                e.Graphics.FillRectangle(Brushes.White, rect);
+            }
+
+            if (mouseenter == true)
+            {
+                SizeablePictureBox pb1 = (SizeablePictureBox)sender;
+                Rectangle rect1 = new Rectangle();
+                rect1.Location = new Point(0, 0);
+                rect1.Width = 5;
+                rect1.Height = 5;
+
+                Rectangle rect2 = new Rectangle();
+                rect2.Location = new Point(pb1.ClientRectangle.Width - 5, 0);
+                rect2.Width = 5;
+                rect2.Height = 5;
+
+                Rectangle rect4 = new Rectangle();
+                rect4.Location = new Point(0, pb1.ClientRectangle.Height - 5);
+                rect4.Width = 5;
+                rect4.Height = 5;
+
+                Rectangle rect5 = new Rectangle();
+                rect5.Location = new Point(pb1.ClientRectangle.Width - 5, pb1.ClientRectangle.Height - 5);
+                rect5.Width = 5;
+                rect5.Height = 5;
+                e.Graphics.FillRectangle(Brushes.White, rect1);
+                e.Graphics.FillRectangle(Brushes.White, rect2);
+                e.Graphics.FillRectangle(Brushes.White, rect4);
+                e.Graphics.FillRectangle(Brushes.White, rect5);
+            }
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+
+
+
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            //This will be a bit that the user assigns the tracktrain
+            SizeablePictureBox pb2 = (SizeablePictureBox)sender;
+            if (pb2.Bitsofcomponents != null)
+            {
+                if (pb2.Bitsofcomponents[2] == "0")
+                {
+                    e.Graphics.FillRectangle(Brushes.Red, rect);
+                }
+                else
+                {
+                    e.Graphics.FillRectangle(Brushes.White, rect);
+                }
+                
+            }
+            else {
+                e.Graphics.FillRectangle(Brushes.White, rect);
+            }
+                }
+    
         private void FormClick(object sender, EventArgs e)
         {
             var formclickcheck = this.Controls.OfType<PictureBox>().ToList();

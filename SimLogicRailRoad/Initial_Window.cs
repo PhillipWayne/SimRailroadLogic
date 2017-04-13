@@ -63,9 +63,9 @@ namespace testsim
             f2.Show();
             this.Hide();
 
-            // TEST CODE FOR SIMULATION
+           /* // TEST CODE FOR SIMULATION
             Simulation_Logic sim_test = new Simulation_Logic();
-            sim_test.GUI_Input("TEST");
+            sim_test.GUI_Input("TEST");*/
 
 
         }
