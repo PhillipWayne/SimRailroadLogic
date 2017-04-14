@@ -21,7 +21,7 @@ namespace SimLogicRailRoad
 
         string[] allbits;
         private object namebit;
-
+        string forvalbit;  
 
         private void Track_Assign_Load(object sender, EventArgs e)
         {
@@ -37,6 +37,7 @@ namespace SimLogicRailRoad
             comboBox6.Items.AddRange(allbits);
             comboBox7.Items.AddRange(allbits);
             comboBox8.Items.AddRange(allbits);
+            comboBox9.Items.AddRange(allbits);
             comboBox9.Items.AddRange(allbits);
 
             namebit = Form2.knowbit;
@@ -136,7 +137,23 @@ namespace SimLogicRailRoad
             else
                 refconver.Add("");
 
-            pb.Tag = refconver.ToArray();
+            pb.Bitsofcomponents = refconver.ToArray();
+            List<string> placeforval = new List<string>();
+
+            for (int i = 0; i < pb.Bitsofcomponents.Length; i++)
+            {
+
+                if (Form2.Bitsref.ContainsKey(pb.Bitsofcomponents[i]))
+                {
+                    Form2.Bitsref.TryGetValue(pb.Bitsofcomponents[i], out forvalbit);
+                    placeforval.Add(forvalbit);
+
+                }
+                else
+                    placeforval.Add("");
+            }
+
+            pb.Componentval = placeforval.ToArray();
 
             this.Close();
 
