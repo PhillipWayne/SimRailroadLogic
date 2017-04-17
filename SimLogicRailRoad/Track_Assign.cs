@@ -22,7 +22,7 @@ namespace SimLogicRailRoad
         string[] allbits;       
         private object namebit;
         string forvalbit;
-        List<string> placeforval;
+        
         private void Track_Assign_Load(object sender, EventArgs e)
         {
             allbits = Simulation.unique_bits.ToArray();
@@ -159,21 +159,22 @@ namespace SimLogicRailRoad
                 refconver.Add("");
             }
             pb.Bitsofcomponents= refconver.ToArray();
-       
-            
-          /*  for (int i = 0; i < pb.Bitsofcomponents.Length; i++)
+            List<string> placeforval = new List<string>();
+
+            for (int i = 0; i < pb.Bitsofcomponents.Length; i++)
             {
 
                 if (Form2.Bitsref.ContainsKey(pb.Bitsofcomponents[i]))
                 {
                     Form2.Bitsref.TryGetValue(pb.Bitsofcomponents[i], out forvalbit);
                     placeforval.Add(forvalbit);
-                   
+
                 }
-               
+                else
+                    placeforval.Add("");
              }
 
-            pb.Componentval = placeforval.ToArray();*/
+            pb.Componentval = placeforval.ToArray();
             this.Close();
             
 

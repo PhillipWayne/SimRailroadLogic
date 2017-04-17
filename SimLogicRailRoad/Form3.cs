@@ -179,7 +179,7 @@ namespace testsim
             TH_W_Signal.DoDragDrop(pb.Tag, DragDropEffects.Copy);
             img = 1; // Picturebox Component in Form2
             sig = 1; // Changes Picturebox size in Form2
-            TH_W_Signal.DoDragDrop(TH_W_Signal.Image, DragDropEffects.Copy);
+           // TH_W_Signal.DoDragDrop(TH_W_Signal.Image, DragDropEffects.Copy);
         }
 
         

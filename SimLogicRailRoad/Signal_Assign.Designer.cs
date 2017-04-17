@@ -293,6 +293,7 @@
             this.MinimizeBox = false;
             this.Name = "Signal_Assign";
             this.Text = "Signal Assignment";
+            this.Load += new System.EventHandler(this.Track_Assign_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
