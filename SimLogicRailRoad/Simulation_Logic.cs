@@ -20,30 +20,30 @@ namespace testsim
 
         string boolean_operator_convert;
 
+        Dictionary<string, string> gui_input_bits = new Dictionary<string, string>();
+
+            
+       //dictionary of all unique bit values
+
+        Dictionary<string, string> unique_bit_values_dict = new Dictionary<string, string>();
+
+        //dictionary of all inputs and outputs from file
+
+        Dictionary<string, string> inputs_and_outputs = new Dictionary<string, string>();
+
+        List<string> input_bits = new List<string>();
+        List<string> output_bits = new List<string>();
+        List<string> individual_bits = new List<string>();
+        List<string> boolean_logic = new List<string>();
+        List<string> boolean_logic_placeholders = new List<string>();
+
 
         public object GUI_Input(Object obj)
         {
             //test print
             Console.WriteLine(obj);
 
-            Dictionary<string, string> gui_input_bits= new Dictionary<string, string>();
-
-            gui_input_bits = (Dictionary<string,string>)obj;
-
-            
-            //dictionary of all unique bit values
-
-            Dictionary<string, string> unique_bit_values_dict = new Dictionary<string, string>();
-
-            //dictionary of all inputs and outputs from file
-
-            Dictionary<string, string> inputs_and_outputs = new Dictionary<string, string>();
-
-            List<string> input_bits = new List<string>();
-            List<string> output_bits = new List<string>();
-            List<string> individual_bits = new List<string>();
-            List<string> boolean_logic = new List<string>();
-            List<string> boolean_logic_placeholders = new List<string>();
+            gui_input_bits = (Dictionary<string, string>)obj;
 
             //resets the inputs and outputs everytime the method is called
 
