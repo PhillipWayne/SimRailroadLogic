@@ -81,6 +81,7 @@
     <Compile Include="Form3.designer.cs">
       <DependentUpon>Form3.cs</DependentUpon>
     </Compile>
+    <Compile Include="GettingPaintevent.cs" />
     <Compile Include="Information.cs" />
     <Compile Include="Initial_Window.cs">
       <SubType>Form</SubType>
