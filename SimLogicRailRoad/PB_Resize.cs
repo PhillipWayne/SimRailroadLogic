@@ -57,7 +57,7 @@ class SizeablePictureBox : PictureBox
     {
         base.WndProc(ref message);
 
-        if (message.Msg == 0x84) // WM_NCHITTEST
+        if (message.Msg == 0x84&&Form2.simstart==false) // WM_NCHITTEST
         {
             
                 var cursor = this.PointToClient(Cursor.Position);
@@ -75,6 +75,8 @@ class SizeablePictureBox : PictureBox
 
         
             {
+            if (Form2.simstart == false)
+            {
                 var cursor = this.PointToClient(Cursor.Position);
 
                 if (TopLeft.Contains(cursor)) message.Result = (IntPtr)HTTOPLEFT;
@@ -86,6 +88,7 @@ class SizeablePictureBox : PictureBox
                 else if (Left.Contains(cursor)) message.Result = (IntPtr)HTLEFT;
                 else if (Right.Contains(cursor)) message.Result = (IntPtr)HTRIGHT;
                 else if (Bottom.Contains(cursor)) message.Result = (IntPtr)HTBOTTOM;
+            }
             }
         }
         }

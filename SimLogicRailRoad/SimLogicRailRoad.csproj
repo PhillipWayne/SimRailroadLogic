@@ -57,6 +57,7 @@
     <Compile Include="Bit_And_Boolean_Lists.Designer.cs">
       <DependentUpon>Bit_And_Boolean_Lists.cs</DependentUpon>
     </Compile>
+    <Compile Include="Choosingtrack.cs" />
     <Compile Include="Coded_Tk_Assign.cs">
       <SubType>Form</SubType>
     </Compile>

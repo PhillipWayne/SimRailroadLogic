@@ -179,7 +179,7 @@ namespace testsim
         {
             PictureBox pb = (PictureBox)sender;
             string[] indef = new string[2];
-            indef[0] = "twoheadedsignal";
+            indef[0] = "twoheadsignal";
             indef[1] = "TH_W_signal";
             pb.Tag = indef;
             TH_W_Signal.DoDragDrop(pb.Tag, DragDropEffects.Copy);
@@ -247,7 +247,7 @@ namespace testsim
             sw = 1; // Changes Picturebox size in Form2
             PictureBox pb = (PictureBox)sender;
             string[] indef = new string[2];
-            indef[0] = "Switch";
+            indef[0] = "switch";
             indef[1] = "SwitchBL";
             pb.Tag = indef;
             Switch_BL.DoDragDrop(pb.Tag, DragDropEffects.Copy);

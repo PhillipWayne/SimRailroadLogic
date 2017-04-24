@@ -60,7 +60,7 @@ namespace testsim
         public List<string> boolean_logic_edit = new List<string>();
         public List<string> boolean_logic_bits = new List<string>();
         public List<string> single_input_bits = new List<string>();
-        public List<string> input_bits = new List<string>();
+        public  List<string> input_bits = new List<string>();
 
 
         public Simulation()
@@ -554,7 +554,7 @@ namespace testsim
             //compare single input bits with the bits in the boolean logic
             //----------------------------------------
 
-            input_bits = single_input_bits.Union(boolean_logic_bits).ToList();
+           input_bits = single_input_bits.Union(boolean_logic_bits).ToList();
 
             //----------------------------------------
             //compare input bits to to_bits and store it in uni_Que bits

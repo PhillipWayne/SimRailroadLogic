@@ -12,6 +12,7 @@ namespace SimLogicRailRoad
 {
    public class GettingPaintevent
     {
+        private bool onlyone = true;
 
         public void painting(object obj)
         {
@@ -71,12 +72,83 @@ namespace SimLogicRailRoad
             rect14.Location = new Point(0, 35);
             rect14.Width = 10000;
             rect14.Height = 1;
+            if (Form2.mouseenter == true )
+            {
+               
+                SizeablePictureBox pb1 = (SizeablePictureBox)sender;
+                Rectangle rect5 = new Rectangle();
+                rect5.Location = new Point(0, 0);
+                rect5.Width = 5;
+                rect5.Height = 5;
 
+                Rectangle rect6 = new Rectangle();
+                rect6.Location = new Point(pb1.ClientRectangle.Width - 5, 0);
+                rect6.Width = 5;
+                rect6.Height = 5;
+
+                Rectangle rect7 = new Rectangle();
+                rect7.Location = new Point(0, pb1.ClientRectangle.Height - 5);
+                rect7.Width = 5;
+                rect7.Height = 5;
+
+                Rectangle rect1 = new Rectangle();
+                rect1.Location = new Point(pb1.ClientRectangle.Width - 5, pb1.ClientRectangle.Height - 5);
+                rect1.Width = 5;
+                rect1.Height = 5;
+                e.Graphics.FillRectangle(Brushes.White, rect5);
+                e.Graphics.FillRectangle(Brushes.White, rect6);
+                e.Graphics.FillRectangle(Brushes.White, rect7);
+                e.Graphics.FillRectangle(Brushes.White, rect1);
+                
+            }
             Pen whitePen = new Pen(Color.White, 1); // Angled Track
 
             e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
             e.Graphics.FillRectangle(Brushes.White, rect14);
             e.Graphics.DrawLine(whitePen, 0, 105, 50, 45); // Angled Track Draw
+
+            
+            
+                SizeablePictureBox pb = (SizeablePictureBox)sender;
+            if (pb.Componentval != null)
+            {
+                if (pb.Componentval[6]=="1")
+                {
+                    e.Graphics.FillRectangle(Brushes.Red, rect14);
+                   // Pen redPen = new Pen(Color.Red, 1);
+                   // e.Graphics.DrawLine(redPen, 0, 105, 50, 45);
+                }
+                if (pb.Componentval[13] == "1")
+                {
+
+
+
+                    SizeablePictureBox pb1 = (SizeablePictureBox)sender;
+                    pb1.Invalidate();
+
+                
+                    Rectangle rect15 = new Rectangle(); // Horizontal Track
+                    rect15.Location = new Point(0, 35);
+                   
+                    rect15.Width = 5000;
+                    rect14.Height = 1;
+                    Rectangle rect16 = new Rectangle(); // Horizontal Track
+                    rect16.Location = new Point(rect15.Width +20, 35);
+                    rect16.Width = 5000;
+                    rect14.Height = 1;
+                    e.Graphics.FillRectangle(Brushes.Red, rect15);
+                    e.Graphics.FillRectangle(Brushes.Red, rect16);
+                    Pen white1Pen = new Pen(Color.White, 1); // Angled Track
+                   
+
+                    
+                   
+                    e.Graphics.DrawLine(white1Pen, 0, 105, 50, 45); // Angled Track Draw
+                }
+
+
+            }
+
 
         }
 
@@ -153,6 +225,7 @@ namespace SimLogicRailRoad
                 e.Graphics.FillRectangle(Brushes.White, rect6);
                 e.Graphics.FillRectangle(Brushes.White, rect7);
                 e.Graphics.FillRectangle(Brushes.White, rect1);
+                
             }
 
             using (Pen pen = new Pen(Color.White, 2))
@@ -172,47 +245,47 @@ namespace SimLogicRailRoad
             e.Graphics.FillRectangle(Brushes.White, rect13);
             if (pb.Componentval != null)
             {
-                if (pb.Componentval[6] == "0")
+                if (pb.Componentval[6] == "1")
                 {
                     e.Graphics.FillRectangle(Brushes.Red, rect11);
                 }
 
                 if (pb.Componentval[2] == "1")
                 {
-                    e.Graphics.FillEllipse(Brushes.Green, rect12);
+                    e.Graphics.FillEllipse(Brushes.Green, rect8);
                 }
 
                 if (pb.Componentval[3] == "1")
                 {
-                    e.Graphics.FillEllipse(Brushes.Yellow, rect12);
+                    e.Graphics.FillEllipse(Brushes.Yellow, rect8);
                 }
 
 
                 if (pb.Componentval[5] == "1")
                 {
-                    e.Graphics.FillEllipse(Brushes.Red, rect12);
+                    e.Graphics.FillEllipse(Brushes.Red, rect8);
                 }
 
                 if (pb.Componentval[8] == "1")
                 {
-                    e.Graphics.FillEllipse(Brushes.Gray, rect12);
+                    e.Graphics.FillEllipse(Brushes.Gray, rect8);
                 }
 
-                if (pb.Componentval[0] == "1")
+                if (pb.Componentval[16] == "1")
                 {
-                    e.Graphics.FillEllipse(Brushes.Green, rect8);
+                    e.Graphics.FillEllipse(Brushes.Green, rect12);
                 }
-                if (pb.Componentval[1] == "1")
+                if (pb.Componentval[14] == "1")
                 {
-                    e.Graphics.FillEllipse(Brushes.Yellow, rect8);
+                    e.Graphics.FillEllipse(Brushes.Yellow, rect12);
                 }
-                if (pb.Componentval[4] == "1")
+                if (pb.Componentval[12] == "1")
                 {
-                    e.Graphics.FillEllipse(Brushes.Red, rect8);
+                    e.Graphics.FillEllipse(Brushes.Red, rect12);
                 }
-                if (pb.Componentval[7] == "1")
+                if (pb.Componentval[10] == "1")
                 {
-                    e.Graphics.FillEllipse(Brushes.Gray, rect8);
+                    e.Graphics.FillEllipse(Brushes.Gray, rect12);
                 }
             }
 
@@ -269,6 +342,7 @@ namespace SimLogicRailRoad
                 e.Graphics.FillRectangle(Brushes.White, rect2);
                 e.Graphics.FillRectangle(Brushes.White, rect4);
                 e.Graphics.FillRectangle(Brushes.White, rect5);
+               
             }
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
 
@@ -292,6 +366,7 @@ namespace SimLogicRailRoad
         }
         private void OH_E_Signal_Paint(object sender, PaintEventArgs e)
         {
+            
 
             Rectangle rect = new Rectangle(); //Lamp 1
             rect.Location = new Point(27, 45);
@@ -349,6 +424,7 @@ namespace SimLogicRailRoad
                 e.Graphics.FillRectangle(Brushes.White, rect7);
                 e.Graphics.FillRectangle(Brushes.White, rect8);
                 e.Graphics.FillRectangle(Brushes.White, rect9);
+                
             }
             using (Pen pen = new Pen(Color.White, 2))
             {
@@ -364,7 +440,78 @@ namespace SimLogicRailRoad
             e.Graphics.FillRectangle(Brushes.White, rect3);
             //e.Graphics.FillEllipse(Brushes.Black, rect4);
             e.Graphics.FillRectangle(Brushes.White, rect5);
+            if (Form2.copy == false)
+            {
+                SizeablePictureBox pb = (SizeablePictureBox)sender;
+                if (pb.Componentval != null)
+                {
+
+
+                    if (pb.Componentval[2] == "1")
+                    {
+                        e.Graphics.FillEllipse(Brushes.Green, rect);
+                    }
+
+                    if (pb.Componentval[3] == "1")
+                    {
+                        e.Graphics.FillEllipse(Brushes.Yellow, rect);
+                    }
+
+                    if (pb.Componentval[6] == "1")
+                    {
+                        e.Graphics.FillRectangle(Brushes.Red, rect3);
+                    }
+
+                    if (pb.Componentval[5] == "1")
+                    {
+                        e.Graphics.FillEllipse(Brushes.Red, rect);
+                    }
+
+                    if (pb.Componentval[8] == "1")
+                    {
+                        e.Graphics.FillEllipse(Brushes.Gray, rect);
+                    }
+
+
+
+                }
+            }
+                if (Form2.copy == true) { 
+                SizeablePictureBox pb = (SizeablePictureBox)Form2.gl;
+                    if (pb.Componentval != null)
+                    {
+
+
+                        if (pb.Componentval[2] == "1")
+                        {
+                            e.Graphics.FillEllipse(Brushes.Green, rect);
+                        }
+
+                        if (pb.Componentval[3] == "1")
+                        {
+                            e.Graphics.FillEllipse(Brushes.Yellow, rect);
+                        }
+
+
+                        if (pb.Componentval[5] == "1")
+                        {
+                            e.Graphics.FillEllipse(Brushes.Red, rect);
+                        }
+                    if (pb.Componentval[6] == "1")
+                    {
+                        e.Graphics.FillRectangle(Brushes.Red, rect3);
+                    }
+                    if (pb.Componentval[8] == "1")
+                        {
+                            e.Graphics.FillEllipse(Brushes.Gray, rect);
+                        }
+
+                    }
+
+                }
+            }
+           
         }
 
     }
-}
+

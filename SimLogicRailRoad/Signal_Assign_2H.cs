@@ -39,6 +39,12 @@ namespace SimLogicRailRoad
             comboBox8.Items.AddRange(allbits);
             comboBox9.Items.AddRange(allbits);
             comboBox9.Items.AddRange(allbits);
+            comboBox10.Items.AddRange(allbits);
+            comboBox11.Items.AddRange(allbits);
+            comboBox13.Items.AddRange(allbits);
+            comboBox15.Items.AddRange(allbits);
+            comboBox16.Items.AddRange(allbits);
+            comboBox17.Items.AddRange(allbits);
 
             namebit = Form2.knowbit;
             SizeablePictureBox pb = (SizeablePictureBox)namebit;
@@ -59,8 +65,15 @@ namespace SimLogicRailRoad
                 comboBox7.Text = tagget[6];
                 comboBox8.Text = tagget[7];
                 comboBox9.Text = tagget[8];
-
-                //comboBox1.Text = reass1(0).t;
+                comboBox10.Text = tagget[9];
+                comboBox11.Text = tagget[10];
+                comboBox12.Text = tagget[11];
+                comboBox13.Text = tagget[12];
+                comboBox14.Text = tagget[13];
+                comboBox15.Text = tagget[14];
+                comboBox16.Text = tagget[15];
+                comboBox17.Text = tagget[16];
+                
             }
 
 
@@ -136,7 +149,54 @@ namespace SimLogicRailRoad
             }
             else
                 refconver.Add("");
-
+            if (comboBox10.SelectedItem != null)
+            {
+                refconver.Add(comboBox10.SelectedItem.ToString());
+            }
+            else
+                refconver.Add("");
+            if (comboBox11.SelectedItem != null)
+            {
+                refconver.Add(comboBox11.SelectedItem.ToString());
+            }
+            else
+                refconver.Add("");
+            if (comboBox12.SelectedItem != null)
+            {
+                refconver.Add(comboBox12.SelectedItem.ToString());
+            }
+            else
+                refconver.Add("");
+            if (comboBox13.SelectedItem != null)
+            {
+                refconver.Add(comboBox13.SelectedItem.ToString());
+            }
+            else
+                refconver.Add("");
+            if (comboBox14.SelectedItem != null)
+            {
+                refconver.Add(comboBox14.SelectedItem.ToString());
+            }
+            else
+                refconver.Add("");
+            if (comboBox15.SelectedItem != null)
+            {
+                refconver.Add(comboBox15.SelectedItem.ToString());
+            }
+            else
+                refconver.Add("");
+            if (comboBox16.SelectedItem != null)
+            {
+                refconver.Add(comboBox16.SelectedItem.ToString());
+            }
+            else
+                refconver.Add("");
+            if (comboBox17.SelectedItem != null)
+            {
+                refconver.Add(comboBox17.SelectedItem.ToString());
+            }
+            else
+                refconver.Add("");
             pb.Bitsofcomponents = refconver.ToArray();
             List<string> placeforval = new List<string>();
 

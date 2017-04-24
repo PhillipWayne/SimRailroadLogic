@@ -31,33 +31,35 @@ namespace testsim
 
         Dictionary<string, string> inputs_and_outputs = new Dictionary<string, string>();
 
-        List<string> input_bits = new List<string>();
-        List<string> output_bits = new List<string>();
-        List<string> individual_bits = new List<string>();
-        List<string> boolean_logic = new List<string>();
-        List<string> boolean_logic_placeholders = new List<string>();
+        List<string> input_bits =   new List<string>(Simulation.bits_static);
+        List<string> output_bits = new List<string>(Simulation.to_bits_static);
+        List<string> individual_bits = new List<string>(Simulation.unique_bits);
+        List<string> boolean_logic = new List<string>(Simulation.disp_bits_static);
+        List<string> boolean_logic_placeholders = new List<string>(Simulation.boolean_parsed_static);
 
-
+        
         public object GUI_Input(Object obj)
         {
+            
             //test print
             Console.WriteLine(obj);
 
             gui_input_bits = (Dictionary<string, string>)obj;
 
             //resets the inputs and outputs everytime the method is called
-
-            input_bits = Simulation.bits_static;
-            output_bits = Simulation.to_bits_static;
+          
+           // input_bits = Simulation.bits_static;
+            
+          //  output_bits = Simulation.to_bits_static;
 
             //finds all unique bits
 
-            individual_bits = Simulation.unique_bits;
+         //   individual_bits = Simulation.unique_bits;
 
             //find all boolean logic and boolean logic with placeholders
 
-            boolean_logic = Simulation.disp_bits_static;
-            boolean_logic_placeholders = Simulation.boolean_parsed_static;
+         //   boolean_logic = Simulation.disp_bits_static;
+         //   boolean_logic_placeholders = Simulation.boolean_parsed_static;
 
             //only make unique bits unkown when the class is called
 
@@ -65,6 +67,7 @@ namespace testsim
             {
                 for (int i = 0; i <= individual_bits.Count - 1; i++)
                 {
+                    
                     unique_bit_values_dict.Add(individual_bits[i], "UNK");
                 }
             }
@@ -86,7 +89,7 @@ namespace testsim
 
             for (int i = 0;i <= input_bits.Count - 1; i++)
             {
-
+                
                 //if the input is boolean logic
                 if (input_bits[i].IndexOfAny(chars) >= 0)
                 {
@@ -141,9 +144,10 @@ namespace testsim
                     string temp_in = input_bits[i];
                     string temp_out = output_bits[i];
 
-                    //change input bit equal to assigned value
-                    input_bits[i] = unique_bit_values_dict[input_bits[i]];
-
+                    //change input bit equal to assigned 
+                    
+                     input_bits[i] = unique_bit_values_dict[input_bits[i]];
+                    
                     //make output equal to the assigned value
                     output_bits[i] = unique_bit_values_dict[temp_in];
 

@@ -540,6 +540,7 @@
             this.MinimizeBox = false;
             this.Name = "Switch_Assign";
             this.Text = "Switch Properties";
+            this.Load += new System.EventHandler(this.Track_Assign_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

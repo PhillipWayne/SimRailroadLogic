@@ -43,7 +43,7 @@ namespace testsim
         Image text;
         int x;
         int y;
-        bool simstart = false;
+        public static bool simstart = false;
         private const int GridGap = 8;
         public string xmlfile;
         private int directxcheck;
@@ -100,38 +100,6 @@ namespace testsim
                 pb1.Height = 70;
                 GettingPaintevent gpe = new GettingPaintevent();
                 gpe.painting(pb1);
-
-
-                /*   switch(trk[1])
-                    {
-                        case "trk180":
-                            pb1.Width = 100;
-                            pb1.Height = 70;
-                             pb1.Paint += new PaintEventHandler(paintfortrack);
-                            break;
-
-                    }
-                    string[] twosignal = (string[])pb1.Tag;
-
-                    switch (twosignal[1])
-                    {
-                        case "TH_W_signal":
-                            pb1.Width = 100;
-                            pb1.Height = 70;
-                             pb1.Paint += new PaintEventHandler(TH_W_Signal_Paint);
-                            break;
-                    }
-
-                 string[] onesignal = (string[])pb1.Tag;
-
-                 switch (onesignal[1])
-                 {
-                     case "OH_E_Signal":
-                         pb1.Width = 100;
-                         pb1.Height = 70;
-                         pb1.Paint += new PaintEventHandler(OH_E_Signal_Paint);
-                         break;
-                 }*/
                 pb1.Click += new EventHandler(PictureBox_Click);
                 pb1.SizeMode = PictureBoxSizeMode.Normal;
                 pb1.Cursor = Cursors.SizeAll;
@@ -172,21 +140,99 @@ namespace testsim
                 List<string> bitval = new List<string>();
                 if (pb.Bitsofcomponents != null)
                 {
-                    bitval.AddRange(pb.Bitsofcomponents);
-                    for (int i = 0; i < bitval.Count; i++)
-                    {
-                        if (bitval[i] != (""))
-                        {
-                            SimBits.Add(bitval[i], "1");
-                            pb.Componentval[i] = "1";
+                    string[] trk = (string[])pb.Tag;
 
-                        }
+                    switch (trk[1])
+                    {
+                        case "trk180":
+
+                            if (pb.Bitsofcomponents[2] != null && pb.Bitsofcomponents[2] != "")
+                            {
+                                if (pb.Componentval[2] != "1")
+                                    pb.Componentval[2] = "1";
+                                else
+                                    pb.Componentval[2] = "0";
+                            }
+                            SimBits.Add(pb.Bitsofcomponents[2], pb.Componentval[2]);
+                            break;
+
                     }
+                    string[] twosignal = (string[])pb.Tag;
+
+                    switch (twosignal[1])
+                    {
+                        case "TH_W_signal":
+
+                            if (pb.Bitsofcomponents[6] != null && pb.Bitsofcomponents[6] != "")
+                            {
+                                if (pb.Componentval[6] != "1")
+                                    pb.Componentval[6] = "1";
+                                else
+                                    pb.Componentval[6] = "0";
+                            }
+                            SimBits.Add(pb.Bitsofcomponents[6], pb.Componentval[6]);
+                            break;
+                    }
+
+                    string[] onesignal = (string[])pb.Tag;
+
+                    switch (onesignal[1])
+                    {
+                        case "OH_E_Signal":
+
+                            if (pb.Bitsofcomponents[6] != null && pb.Bitsofcomponents[6] != "")
+                            {
+                                if (pb.Componentval[6] != "1")
+                                    pb.Componentval[6] = "1";
+
+                                else
+                                    pb.Componentval[6] = "0";
+                            }
+                            SimBits.Add(pb.Bitsofcomponents[6], pb.Componentval[6]);
+                            break;
+                    }
+
+                    string[] switches = (string[])pb.Tag;
+
+                    switch (switches[1])
+                    {
+                        case "SwitchBL":
+                            if (pb.Bitsofcomponents[6] != null && pb.Bitsofcomponents[6] != "")
+                            {
+                                if (pb.Componentval[6] != "1")
+                                    pb.Componentval[6] = "1";
+
+                                else
+                                    pb.Componentval[6] = "0";
+
+                            }
+                            SimBits.Add(pb.Bitsofcomponents[6], pb.Componentval[6]);
+                            break;
+                    }
+                    Choosingtrack ct = new Choosingtrack();
+                    string []defaultbits=ct.whichcomponent(sender);
+                    for (int i = 0; i < defaultbits.Length; i++)
+                    {   if(defaultbits[i]!=null)
+                        SimBits.Add(defaultbits[i], "0");
+                    }
+                    
+                    /*  if (pb.Bitsofcomponents != null)
+                      {
+                          bitval.AddRange(pb.Bitsofcomponents);
+                          for (int i = 0; i < bitval.Count; i++)
+                          {
+                              if (bitval[i] != (""))
+                              {
+                                  SimBits.Add(bitval[i], "1");
+                                  pb.Componentval[i] = "1";
+
+                              }
+                          }*/
                     pb.Update();
                     Simulation_Logic Sl = new Simulation_Logic();
                     Dictionary<string, string> results = (Dictionary<string, string>)Sl.GUI_Input(SimBits);
                     SimBits.Clear();
-                    
+
                     List<string> placeforval = new List<string>();
                     var pboxes = this.Controls.OfType<SizeablePictureBox>().ToList();
                     for (int i = 0; i < pboxes.Count; i++)
@@ -215,15 +261,17 @@ namespace testsim
                         }
                     }
                 }
-                
-            }
 
+            }
         }
+        
         
 
         ////Creates a Box Around Image When Mouse is Over the Image
         void pb_MouseEnter(object sender, EventArgs e)
         {
+            
+            
             mouseenter = true;
             SizeablePictureBox pb = (SizeablePictureBox)sender;
             pb.Refresh();
@@ -246,6 +294,7 @@ namespace testsim
         // Picture Box MouseMove
         void pb_MouseMove(object sender, MouseEventArgs e)
         {
+            
             if (capture == true)
             {
 
@@ -340,13 +389,15 @@ namespace testsim
             //PictureBox pb = (PictureBox)sender;
 
             // pb.BorderStyle = BorderStyle.None;
-
+            
             capture = false;
         }
 
         // Picture Box MouseDown
         void pb_MouseDown(object sender, MouseEventArgs e)
         {
+            
+
             if (e.Button == System.Windows.Forms.MouseButtons.Left)
             {
                 MouseDownLocation = e.Location;
@@ -362,15 +413,12 @@ namespace testsim
         {
             x = e.X;
             y = e.Y;
-
-            /* var checkborder = this.Controls.OfType<PictureBox>().ToList();
-             for (int i = 0; i < checkborder.Count; i++)
+            mouseenter = false;
+             var pb1 = this.Controls.OfType<SizeablePictureBox>().ToList();
+             for (int i = 0; i < pb1.Count; i++)
              {
-                 if (checkborder[i].BorderStyle == BorderStyle.FixedSingle)
-                 {
-                     checkborder[i].BorderStyle = BorderStyle.None;
-                 }
-             }*/
+                 pb1[i].Refresh();
+             }
             if (drophapp == true)
             {
                 // PictureBox location after it is dragged and dropped on the form
@@ -1043,8 +1091,13 @@ namespace testsim
                     // stores all the string values in the list go1
                     // SaveXML.SaveData(work, xmlfile);
                     //After each component is saved it is removed of it's eventhandlers and contextmenu
-                    pBoxes[i].MouseEnter -= new EventHandler(pb_MouseEnter);
+                    if (pBoxes[i].BorderStyle == BorderStyle.Fixed3D)
+                    {
+                        pBoxes[i].BorderStyle = BorderStyle.None;
+                    }
 
+                    pBoxes[i].MouseEnter -= new EventHandler(pb_MouseEnter);
+                    pBoxes[i].Cursor = Cursors.Arrow;
                     pBoxes[i].MouseLeave -= new EventHandler(pb_MouseLeave);
                     pBoxes[i].MouseMove -= new MouseEventHandler(pb_MouseMove);
                     pBoxes[i].MouseDown -= new MouseEventHandler(pb_MouseDown);
@@ -1076,6 +1129,9 @@ namespace testsim
             for (int i = 0; i < pbList.Count; i++)
             {
                 //This adds all the event handlers back for each image and the contextmenustrip is added back
+                pBoxes[i].Cursor = Cursors.SizeAll;
+                pBoxes[i].MouseEnter += new EventHandler(pb_MouseEnter);
+                pBoxes[i].MouseLeave += new EventHandler(pb_MouseLeave);
                 pBoxes[i].MouseMove += new MouseEventHandler(pb_MouseMove);
                 pBoxes[i].MouseDown += new MouseEventHandler(pb_MouseDown);
                 pBoxes[i].MouseUp += new MouseEventHandler(pb_MouseButtonUp);
@@ -1106,18 +1162,21 @@ namespace testsim
 
                 PictureBox pb = (PictureBox)gl;
                 PictureBox kl = new PictureBox();
-                kl.Image = pb.Image;
+                var eventsField = typeof(Component).GetField("events", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+                var eventHandlerList = eventsField.GetValue(pb);
+                eventsField.SetValue(kl, eventHandlerList);
                 kl.Left = x;
                 kl.Top = y;
                 kl.Name = pb.Name;
-                kl.MouseMove += new MouseEventHandler(pb_MouseMove);
+              /*  kl.MouseMove += new MouseEventHandler(pb_MouseMove);
                 kl.MouseDown += new MouseEventHandler(pb_MouseDown);
-                kl.MouseUp += new MouseEventHandler(pb_MouseButtonUp);
+                kl.MouseUp += new MouseEventHandler(pb_MouseButtonUp);*/
                 kl.Cursor = Cursors.SizeAll;
-                //kl.MouseEnter += new EventHandler(pb_MouseEnter);
-                //kl.MouseLeave += new EventHandler(pb_MouseLeave);
                 kl.ContextMenuStrip = contextMenuStrip1;
                 Controls.Add(kl);
+                kl.Update();
+                copy = false;
+
             }
         }
 
@@ -1165,6 +1224,11 @@ namespace testsim
             {
                 Signal_Assign SIG = new Signal_Assign();
                 SIG.Show();
+            }
+            if (bitform[0] == "twoheadsignal")
+            {
+                Signal_Assign_2H SIG2H = new Signal_Assign_2H();
+                SIG2H.Show();
             }
         }
 
@@ -1238,307 +1302,7 @@ namespace testsim
         {
             label1.Focus();
         }
-        private void paintfortrack(object sender, PaintEventArgs e)
-        {
-
-
-
-            Rectangle rect = new Rectangle();
-            rect.Location = new Point(0, 35);
-            rect.Height = 1;
-
-            if (copy == false)
-            {
-                SizeablePictureBox pb = (SizeablePictureBox)sender;
-                rect.Width = pb.ClientRectangle.Width;
-                e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
-                e.Graphics.FillRectangle(Brushes.White, rect);
-
-
-            }
-            if (copy == true)
-            {
-                SizeablePictureBox pb = (SizeablePictureBox)gl;
-                rect.Width = pb.ClientRectangle.Width;
-                e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
-                e.Graphics.FillRectangle(Brushes.White, rect);
-            }
-
-            if (mouseenter == true)
-            {
-                SizeablePictureBox pb1 = (SizeablePictureBox)sender;
-                Rectangle rect1 = new Rectangle();
-                rect1.Location = new Point(0, 0);
-                rect1.Width = 5;
-                rect1.Height = 5;
-
-                Rectangle rect2 = new Rectangle();
-                rect2.Location = new Point(pb1.ClientRectangle.Width - 5, 0);
-                rect2.Width = 5;
-                rect2.Height = 5;
-
-                Rectangle rect4 = new Rectangle();
-                rect4.Location = new Point(0, pb1.ClientRectangle.Height - 5);
-                rect4.Width = 5;
-                rect4.Height = 5;
-
-                Rectangle rect5 = new Rectangle();
-                rect5.Location = new Point(pb1.ClientRectangle.Width - 5, pb1.ClientRectangle.Height - 5);
-                rect5.Width = 5;
-                rect5.Height = 5;
-                e.Graphics.FillRectangle(Brushes.White, rect1);
-                e.Graphics.FillRectangle(Brushes.White, rect2);
-                e.Graphics.FillRectangle(Brushes.White, rect4);
-                e.Graphics.FillRectangle(Brushes.White, rect5);
-            }
-            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-
-
-
-            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            //This will be a bit that the user assigns the tracktrain
-            SizeablePictureBox pb2 = (SizeablePictureBox)sender;
-            if (pb2.Bitsofcomponents != null)
-            {
-                if (pb2.Componentval[2] == "1")
-                {
-                    e.Graphics.FillRectangle(Brushes.Red, rect);
-                }
-                            
-            }
-            else {
-                e.Graphics.FillRectangle(Brushes.White, rect);
-            }
-                }
-        private void TH_W_Signal_Paint(object sender, PaintEventArgs e)
-        {
-            /* if (copy == false)
-             {
-                 SizeablePictureBox pb = (SizeablePictureBox)sender;
-                 rect.Width = pb.ClientRectangle.Width;
-                 e.Graphics.FillRectangle(Brushes.White, rect);
-
-
-             }
-             if (copy == true)
-             {
-                 SizeablePictureBox pb = (SizeablePictureBox)gl;
-                 rect.Width = pb.ClientRectangle.Width;
-                 e.Graphics.FillRectangle(Brushes.White, rect);
-             }
-             */
-            Rectangle rect8 = new Rectangle(); //Bottom Unit Lamp
-            rect8.Location = new Point(56, 45);
-            rect8.Width = 14;
-            rect8.Height = 14;
-
-            Rectangle rect9 = new Rectangle(); //Mast
-            rect9.Location = new Point(70, 52);
-            rect9.Width = 15;
-            rect9.Height = 1;
-
-            Rectangle rect10 = new Rectangle(); //IJ
-            rect10.Location = new Point(98, 30);
-            rect10.Width = 1;
-            rect10.Height = 12;
-
-            Rectangle rect11 = new Rectangle(); //Track
-            rect11.Location = new Point(0, 35);
-            rect11.Width = 100;
-            rect11.Height = 1;
-
-            Rectangle rect12 = new Rectangle(); //Top Unit Lamp 
-            rect12.Location = new Point(41, 45);
-            rect12.Width = 14;
-            rect12.Height = 14;
-
-            Rectangle rect13 = new Rectangle(); //Base
-            rect13.Location = new Point(85, 47);
-            rect13.Width = 1;
-            rect13.Height = 12;
-
-            if (mouseenter == true)
-            {
-                SizeablePictureBox pb1 = (SizeablePictureBox)sender;
-                Rectangle rect5 = new Rectangle();
-                rect5.Location = new Point(0, 0);
-                rect5.Width = 5;
-                rect5.Height = 5;
-
-                Rectangle rect6 = new Rectangle();
-                rect6.Location = new Point(pb1.ClientRectangle.Width - 5, 0);
-                rect6.Width = 5;
-                rect6.Height = 5;
-
-                Rectangle rect7 = new Rectangle();
-                rect7.Location = new Point(0, pb1.ClientRectangle.Height - 5);
-                rect7.Width = 5;
-                rect7.Height = 5;
-
-                Rectangle rect1 = new Rectangle();
-                rect1.Location = new Point(pb1.ClientRectangle.Width - 5, pb1.ClientRectangle.Height - 5);
-                rect1.Width = 5;
-                rect1.Height = 5;
-                e.Graphics.FillRectangle(Brushes.White, rect5);
-                e.Graphics.FillRectangle(Brushes.White, rect6);
-                e.Graphics.FillRectangle(Brushes.White, rect7);
-                e.Graphics.FillRectangle(Brushes.White, rect1);
-            }
-
-            using (Pen pen = new Pen(Color.White, 2))
-            {
-                e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
-                e.Graphics.DrawEllipse(pen, rect8);
-                e.Graphics.DrawEllipse(pen, rect12);
-
-            }
-            SizeablePictureBox pb = (SizeablePictureBox)sender;
-            e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
-            e.Graphics.FillEllipse(Brushes.Black, rect8);
-            e.Graphics.FillRectangle(Brushes.White, rect9);
-            e.Graphics.FillRectangle(Brushes.White, rect10);
-            e.Graphics.FillRectangle(Brushes.White, rect11);
-            e.Graphics.FillEllipse(Brushes.Black, rect12);
-            e.Graphics.FillRectangle(Brushes.White, rect13);
-            if (pb.Componentval != null)
-            {
-                if (pb.Componentval[6] == "0")
-                {
-                    e.Graphics.FillRectangle(Brushes.Red, rect11);
-                }
-
-                if (pb.Componentval[2] == "1")
-                {
-                    e.Graphics.FillEllipse(Brushes.Green, rect12);
-                }
-
-                if (pb.Componentval[3] == "1")
-                {
-                    e.Graphics.FillEllipse(Brushes.Yellow, rect12);
-                }
-
-
-                if (pb.Componentval[5] == "1")
-                {
-                    e.Graphics.FillEllipse(Brushes.Red, rect12);
-                }
-
-                if (pb.Componentval[8] == "1")
-                {
-                    e.Graphics.FillEllipse(Brushes.Gray, rect12);
-                }
-
-                if (pb.Componentval[0] == "1")
-                {
-                    e.Graphics.FillEllipse(Brushes.Green, rect8);
-                }
-                if (pb.Componentval[1] == "1")
-                {
-                    e.Graphics.FillEllipse(Brushes.Yellow, rect8);
-                }
-                if (pb.Componentval[4] == "1")
-                {
-                    e.Graphics.FillEllipse(Brushes.Red, rect8);
-                }
-                if (pb.Componentval[7] == "1")
-                {
-                    e.Graphics.FillEllipse(Brushes.Gray, rect8);
-                }
-            }
-
-        }
- private void Switch_BL_Paint(object sender, PaintEventArgs e)
-        {
-
-            Rectangle rect14 = new Rectangle(); // Horizontal Track
-            rect14.Location = new Point(0, 35);
-            rect14.Width = 10000;
-            rect14.Height = 1;
-
-            Pen whitePen = new Pen(Color.White, 1); // Angled Track
-
-            e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
-            e.Graphics.FillRectangle(Brushes.White, rect14);
-            e.Graphics.DrawLine(whitePen, 0, 105, 50, 45); // Angled Track Draw
-
-        }
-
-    
-        private void OH_E_Signal_Paint(object sender, PaintEventArgs e)
-        {
-
-            Rectangle rect = new Rectangle(); //Lamp 1
-            rect.Location = new Point(27, 45);
-            rect.Width = 14;
-            rect.Height = 14;
-
-            Rectangle rect1 = new Rectangle(); //Mast
-            rect1.Location = new Point(12, 52);
-            rect1.Width = 15;
-            rect1.Height = 1;
-
-            Rectangle rect2 = new Rectangle(); //IJ
-            rect2.Location = new Point(0, 30);
-            rect2.Width = 1;
-            rect2.Height = 12;
-
-            Rectangle rect3 = new Rectangle(); //Track
-            rect3.Location = new Point(0, 35);
-            rect3.Width = 10000;
-            rect3.Height = 1;
-
-            //Rectangle rect4 = new Rectangle(); //Lamp 2
-            //rect4.Location = new Point(44, 45);
-            //rect4.Width = 14;
-            //rect4.Height = 14;
-
-            Rectangle rect5 = new Rectangle(); //Base
-            rect5.Location = new Point(12, 47);
-            rect5.Width = 1;
-            rect5.Height = 12;
-
-            if (mouseenter == true)
-            {
-                SizeablePictureBox pb1 = (SizeablePictureBox)sender;
-                Rectangle rect6 = new Rectangle();
-                rect6.Location = new Point(0, 0);
-                rect6.Width = 5;
-                rect6.Height = 5;
-
-                Rectangle rect7 = new Rectangle();
-                rect7.Location = new Point(pb1.ClientRectangle.Width - 5, 0);
-                rect7.Width = 5;
-                rect7.Height = 5;
-
-                Rectangle rect8 = new Rectangle();
-                rect8.Location = new Point(0, pb1.ClientRectangle.Height - 5);
-                rect8.Width = 5;
-                rect8.Height = 5;
-
-                Rectangle rect9 = new Rectangle();
-                rect9.Location = new Point(pb1.ClientRectangle.Width - 5, pb1.ClientRectangle.Height - 5);
-                rect9.Width = 5;
-                rect9.Height = 5;
-                e.Graphics.FillRectangle(Brushes.White, rect6);
-                e.Graphics.FillRectangle(Brushes.White, rect7);
-                e.Graphics.FillRectangle(Brushes.White, rect8);
-                e.Graphics.FillRectangle(Brushes.White, rect9);
-            }
-            using (Pen pen = new Pen(Color.White, 2))
-            {
-                e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
-                e.Graphics.DrawEllipse(pen, rect);
-                //e.Graphics.DrawEllipse(pen, rect4);
-
-            }
-            e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
-            e.Graphics.FillEllipse(Brushes.Black, rect);
-            e.Graphics.FillRectangle(Brushes.White, rect1);
-            e.Graphics.FillRectangle(Brushes.White, rect2);
-            e.Graphics.FillRectangle(Brushes.White, rect3);
-            //e.Graphics.FillEllipse(Brushes.Black, rect4);
-            e.Graphics.FillRectangle(Brushes.White, rect5);
-        }
+             
         private void FormClick(object sender, EventArgs e)
         {
             var formclickcheck = this.Controls.OfType<PictureBox>().ToList();
