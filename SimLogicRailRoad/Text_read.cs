@@ -21,7 +21,7 @@ namespace testsim
 
 
         List<string> bits = new List<string>(); //bits and boolean logic
-        public List<string> to_bits = new List<string>(); //here bits and boolean logic go
+        public List<string> to_bits = new List<string>(); //where bits and boolean logic go to
 
         //display information
 
