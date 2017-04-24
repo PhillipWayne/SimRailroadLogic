@@ -75,7 +75,13 @@ namespace testsim
         {
             img = 1;
             sig = 1; // Changes Picturebox size in Form2
-            OH_E_Signal.DoDragDrop(OH_E_Signal.Image, DragDropEffects.Copy);
+            PictureBox pb = (PictureBox)sender;
+            string[] indef = new string[2];
+            indef[0] = "oneheadsignal";
+            indef[1] = "OH_E_Signal";
+            pb.Tag = indef;
+            OH_E_Signal.DoDragDrop(pb.Tag, DragDropEffects.Copy);
+
         }
 
       
@@ -239,7 +245,14 @@ namespace testsim
         {
             img = 1; // Picturebox Component in Form2
             sw = 1; // Changes Picturebox size in Form2
-            Switch_BL.DoDragDrop(Switch_BL.Image, DragDropEffects.Copy);
+            PictureBox pb = (PictureBox)sender;
+            string[] indef = new string[2];
+            indef[0] = "Switch";
+            indef[1] = "SwitchBL";
+            pb.Tag = indef;
+            Switch_BL.DoDragDrop(pb.Tag, DragDropEffects.Copy);
+
+            
         }
 
        
