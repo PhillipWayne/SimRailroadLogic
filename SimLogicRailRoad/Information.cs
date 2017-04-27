@@ -54,15 +54,21 @@ namespace testsim
             set{ bitsofcomponents  = value; }
             }
 
-        private string componentname;
-        [XmlElement("Componentname")]
-        public string Componentname
+        private string [] componentvalue;
+        [XmlElement("Componentvalue")]
+        public string [] Componentvalue
         {
-            get { return componentname; }
-            set { componentname = value; }
+            get { return componentvalue; }
+            set { componentvalue = value; }
+        }
+        private string [] componentIden;
+        [XmlElement("Identifer")]
+        public string [] ComponentIden
+        {
+            get { return componentIden; }
+            set { componentIden = value; }
         }
 
-        
     }
     
 }

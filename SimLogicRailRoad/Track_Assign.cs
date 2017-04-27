@@ -123,8 +123,7 @@ namespace SimLogicRailRoad
             SizeablePictureBox pb = (SizeablePictureBox)namebit;
 
 
-            List<string> refconver= new List<string>();
-
+            List<string> refconver= new List<string>();            
             if (comboBox1.SelectedItem != null)
             {
                 refconver.Add(comboBox1.SelectedItem.ToString());
@@ -160,22 +159,42 @@ namespace SimLogicRailRoad
             }
             pb.Bitsofcomponents= refconver.ToArray();
             List<string> placeforval = new List<string>();
-
-            for (int i = 0; i < pb.Bitsofcomponents.Length; i++)
+            if (pb.Componentval != null)
             {
-
-                if (Form2.Bitsref.ContainsKey(pb.Bitsofcomponents[i]))
+                for (int i = 0; i < pb.Bitsofcomponents.Length; i++)
                 {
-                    Form2.Bitsref.TryGetValue(pb.Bitsofcomponents[i], out forvalbit);
-                    placeforval.Add(forvalbit);
+                    if (Form2.Bitsref.ContainsKey(pb.Bitsofcomponents[i]) && pb.Componentval[i] == null)
+                    {
+                        Form2.Bitsref.TryGetValue(pb.Bitsofcomponents[i], out forvalbit);
+                        placeforval.Add(forvalbit);
+                    }
+                    else if (Form2.Bitsref.ContainsKey(pb.Bitsofcomponents[i]) && pb.Componentval[i] != null)
+                    {
+                        placeforval.Add(pb.Componentval[i]);
+                    }
 
+                    else
+                        placeforval.Add("");
                 }
-                else
-                    placeforval.Add("");
-             }
 
-            pb.Componentval = placeforval.ToArray();
-            this.Close();
+            }
+            else
+            {
+                for (int i = 0; i < pb.Bitsofcomponents.Length; i++)
+                {
+
+                    if (Form2.Bitsref.ContainsKey(pb.Bitsofcomponents[i]))
+                    {
+                        Form2.Bitsref.TryGetValue(pb.Bitsofcomponents[i], out forvalbit);
+                        placeforval.Add(forvalbit);
+
+                    }
+                    else
+                        placeforval.Add("");
+                }
+            }
+                pb.Componentval = placeforval.ToArray();
+                this.Close();
             
 
         }
