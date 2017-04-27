@@ -31,7 +31,7 @@ namespace testsim
 
         Dictionary<string, string> inputs_and_outputs = new Dictionary<string, string>();
 
-        List<string> input_bits =   new List<string>(Simulation.bits_static);
+        List<string> input_bits =  new List<string>(Simulation.bits_static);
         List<string> output_bits = new List<string>(Simulation.to_bits_static);
         List<string> individual_bits = new List<string>(Simulation.unique_bits);
         List<string> boolean_logic = new List<string>(Simulation.disp_bits_static);
