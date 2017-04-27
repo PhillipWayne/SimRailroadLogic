@@ -13,7 +13,7 @@ namespace SimLogicRailRoad
    public class GettingPaintevent
     {
         private bool onlyone = true;
-
+        object pic;
         public void painting(object obj)
         {
            
@@ -72,7 +72,7 @@ namespace SimLogicRailRoad
             rect14.Location = new Point(0, 35);
             rect14.Width = 10000;
             rect14.Height = 1;
-            if (Form2.mouseenter == true )
+          /*  if (Form2.mouseenter == true )
             {
                
                 SizeablePictureBox pb1 = (SizeablePictureBox)sender;
@@ -100,7 +100,7 @@ namespace SimLogicRailRoad
                 e.Graphics.FillRectangle(Brushes.White, rect7);
                 e.Graphics.FillRectangle(Brushes.White, rect1);
                 
-            }
+            }*/
             Pen whitePen = new Pen(Color.White, 1); // Angled Track
 
             e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
@@ -199,7 +199,7 @@ namespace SimLogicRailRoad
             rect13.Width = 1;
             rect13.Height = 12;
 
-            if (Form2.mouseenter == true)
+           /* if (Form2.mouseenter == true)
             {
                 SizeablePictureBox pb1 = (SizeablePictureBox)sender;
                 Rectangle rect5 = new Rectangle();
@@ -227,7 +227,7 @@ namespace SimLogicRailRoad
                 e.Graphics.FillRectangle(Brushes.White, rect1);
                 
             }
-
+            */
             using (Pen pen = new Pen(Color.White, 2))
             {
                 e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
@@ -252,40 +252,40 @@ namespace SimLogicRailRoad
 
                 if (pb.Componentval[2] == "1")
                 {
-                    e.Graphics.FillEllipse(Brushes.Green, rect8);
+                    e.Graphics.FillEllipse(Brushes.Green, rect12);
                 }
 
                 if (pb.Componentval[3] == "1")
                 {
-                    e.Graphics.FillEllipse(Brushes.Yellow, rect8);
+                    e.Graphics.FillEllipse(Brushes.Yellow, rect12);
                 }
 
 
                 if (pb.Componentval[5] == "1")
                 {
-                    e.Graphics.FillEllipse(Brushes.Red, rect8);
+                    e.Graphics.FillEllipse(Brushes.Red, rect12);
                 }
 
                 if (pb.Componentval[8] == "1")
                 {
-                    e.Graphics.FillEllipse(Brushes.Gray, rect8);
+                    e.Graphics.FillEllipse(Brushes.Gray, rect12);
                 }
 
                 if (pb.Componentval[16] == "1")
                 {
-                    e.Graphics.FillEllipse(Brushes.Green, rect12);
+                    e.Graphics.FillEllipse(Brushes.Green, rect8);
                 }
                 if (pb.Componentval[14] == "1")
                 {
-                    e.Graphics.FillEllipse(Brushes.Yellow, rect12);
+                    e.Graphics.FillEllipse(Brushes.Yellow, rect8);
                 }
                 if (pb.Componentval[12] == "1")
                 {
-                    e.Graphics.FillEllipse(Brushes.Red, rect12);
+                    e.Graphics.FillEllipse(Brushes.Red, rect8);
                 }
                 if (pb.Componentval[10] == "1")
                 {
-                    e.Graphics.FillEllipse(Brushes.Gray, rect12);
+                    e.Graphics.FillEllipse(Brushes.Gray, rect8);
                 }
             }
 
@@ -299,10 +299,17 @@ namespace SimLogicRailRoad
             rect.Location = new Point(0, 35);
             rect.Height = 1;
 
-            if (Form2.copy == false)
+            SizeablePictureBox pb = (SizeablePictureBox)sender;
+            rect.Width = pb.ClientRectangle.Width;
+
+            e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
+            e.Graphics.FillRectangle(Brushes.White, rect);
+
+        /*    if (Form2.copy == false)
             {
                 SizeablePictureBox pb = (SizeablePictureBox)sender;
                 rect.Width = pb.ClientRectangle.Width;
+               
                 e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
                 e.Graphics.FillRectangle(Brushes.White, rect);
 
@@ -310,13 +317,14 @@ namespace SimLogicRailRoad
             }
             if (Form2.copy == true)
             {
-                SizeablePictureBox pb = (SizeablePictureBox)Form2.gl;
+                SizeablePictureBox pb = (SizeablePictureBox)Form2.copypic;
                 rect.Width = pb.ClientRectangle.Width;
+            
                 e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
                 e.Graphics.FillRectangle(Brushes.White, rect);
-            }
+            }*/
 
-            if (Form2.mouseenter == true)
+        /*    if (Form2.mouseenter == true)
             {
                 SizeablePictureBox pb1 = (SizeablePictureBox)sender;
                 Rectangle rect1 = new Rectangle();
@@ -344,13 +352,23 @@ namespace SimLogicRailRoad
                 e.Graphics.FillRectangle(Brushes.White, rect5);
                
             }
+            */
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
 
 
 
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             //This will be a bit that the user assigns the tracktrain
-            SizeablePictureBox pb2 = (SizeablePictureBox)sender;
+            if (Form2.copy == true)
+            {
+                 pic = Form2.copypic;
+            }
+            else if (Form2.copy == false)
+            {
+                 pic = sender;
+            }
+            SizeablePictureBox pb2 = (SizeablePictureBox)pic;
+           
             if (pb2.Bitsofcomponents != null)
             {
                 if (pb2.Componentval[2] == "1")
@@ -398,7 +416,7 @@ namespace SimLogicRailRoad
             rect5.Width = 1;
             rect5.Height = 12;
 
-            if ( Form2.mouseenter == true)
+         /*   if ( Form2.mouseenter == true)
             {
                 SizeablePictureBox pb1 = (SizeablePictureBox)sender;
                 Rectangle rect6 = new Rectangle();
@@ -425,7 +443,7 @@ namespace SimLogicRailRoad
                 e.Graphics.FillRectangle(Brushes.White, rect8);
                 e.Graphics.FillRectangle(Brushes.White, rect9);
                 
-            }
+            }*/
             using (Pen pen = new Pen(Color.White, 2))
             {
                 e.Graphics.SmoothingMode = SmoothingMode.HighQuality;

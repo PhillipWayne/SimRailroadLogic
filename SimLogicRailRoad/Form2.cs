@@ -53,6 +53,7 @@ namespace testsim
         private object ttxloc;
         private object pbloc;
         private bool checkcomp = false;
+        public static object copypic;
         private bool Exit = false;
         private bool click = false;
         public static Dictionary<string, string> Bitsref;
@@ -404,6 +405,11 @@ namespace testsim
                 capture = true;
                 gl = sender;
             }
+            if (e.Button == System.Windows.Forms.MouseButtons.Right)
+            {
+                SizeablePictureBox pb = (SizeablePictureBox)sender;
+                pb.BorderStyle = BorderStyle.Fixed3D;
+            }
 
             gl = sender;
         }
@@ -414,11 +420,11 @@ namespace testsim
             x = e.X;
             y = e.Y;
             mouseenter = false;
-             var pb1 = this.Controls.OfType<SizeablePictureBox>().ToList();
+            /* var pb1 = this.Controls.OfType<SizeablePictureBox>().ToList();
              for (int i = 0; i < pb1.Count; i++)
              {
                  pb1[i].Refresh();
-             }
+             }*/
             if (drophapp == true)
             {
                 // PictureBox location after it is dragged and dropped on the form
@@ -439,7 +445,7 @@ namespace testsim
             if (drophapp1 == true)
             {
                 // PictureBox location after it is dragged and dropped on the form
-                PictureBox pb = (PictureBox)pbloc;
+                SizeablePictureBox pb = (SizeablePictureBox)pbloc;
                 double Lf = Math.Round((e.X - MouseDownLocation.X) / 10.0) * 10; // Rounds X Mouse/Component Location
                 double Tp = Math.Round((e.Y - MouseDownLocation.Y) / 10.0) * 10; // Rounds Y Mouse/Component Location
 
@@ -512,26 +518,26 @@ namespace testsim
 
                         }
                         //This gets a collection of controls in this form and places them in an array
-                        var pBoxes1 = this.Controls.OfType<PictureBox>().ToArray();
+                        var pBoxes1 = this.Controls.OfType<SizeablePictureBox>().ToArray();
 
                         //This creates a list which passes the values of pBoxes to it
-                        List<PictureBox> pbList1 = new List<PictureBox>(pBoxes1);
+                        List<SizeablePictureBox> pbList1 = new List<SizeablePictureBox>(pBoxes1);
                         List<Information> work1 = new List<Information>();
 
                         // This is created so the string values are stored in the list Information
                         for (int i = 0; i < pbList1.Count; i++)
                         {
-                            MemoryStream ms = new MemoryStream();
+                           /* MemoryStream ms = new MemoryStream();
                             pBoxes1[i].Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
                             Byte[] a = ms.ToArray();
 
-                            String text = Convert.ToBase64String(a);
+                            String text = Convert.ToBase64String(a);*/
                             try
                             {
                                 Information go1 = new Information();
-                                go1.Componentpic = text;
-                                go1.Bitsofcomponents = (string[])pBoxes1[i].Tag;
-                                go1.Componentname = pBoxes1[i].Name;
+                                go1.Componentvalue = pBoxes1[i].Componentval;
+                                go1.ComponentIden = (string[])pBoxes1[i].Tag;
+                                go1.Bitsofcomponents = pBoxes1[i].Bitsofcomponents;
                                 go1.Piclocx = pBoxes1[i].Location.X.ToString();
                                 go1.Piclocy = pBoxes1[i].Location.Y.ToString();
                                 work1.Add(go1);
@@ -560,26 +566,26 @@ namespace testsim
 
 
                     //This gets a collection of controls in this form and places them in an array
-                    var pBoxes = this.Controls.OfType<PictureBox>().ToArray();
+                    var pBoxes = this.Controls.OfType<SizeablePictureBox>().ToArray();
 
                     //This creates a list which passes the values of pBoxes to it
-                    List<PictureBox> pbList = new List<PictureBox>(pBoxes);
+                    List<SizeablePictureBox> pbList = new List<SizeablePictureBox>(pBoxes);
                     List<Information> work = new List<Information>();
 
                     // This is created so the string values are stored in the list Information
                     for (int i = 0; i < pbList.Count; i++)
                     {
-                        MemoryStream ms = new MemoryStream();
+                      /*  MemoryStream ms = new MemoryStream();
                         pBoxes[i].Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
                         Byte[] a = ms.ToArray();
 
-                        String text = Convert.ToBase64String(a);
+                        String text = Convert.ToBase64String(a);*/
                         try
                         {
                             Information go1 = new Information();
-                            go1.Componentpic = text;
-                            go1.Bitsofcomponents = (string[])pBoxes[i].Tag;
-                            go1.Componentname = pBoxes[i].Name;
+                            go1.Componentvalue = pBoxes[i].Componentval;
+                            go1.ComponentIden = (string[])pBoxes[i].Tag;
+                            go1.Bitsofcomponents = pBoxes[i].Bitsofcomponents;
                             go1.Piclocx = pBoxes[i].Location.X.ToString();
                             go1.Piclocy = pBoxes[i].Location.Y.ToString();
                             work.Add(go1);
@@ -674,26 +680,26 @@ namespace testsim
 
                     }
                     //This gets a collection of controls in this form and places them in an array
-                    var pBoxes1 = this.Controls.OfType<PictureBox>().ToArray();
+                    var pBoxes1 = this.Controls.OfType<SizeablePictureBox>().ToArray();
 
                     //This creates a list which passes the values of pBoxes to it
-                    List<PictureBox> pbList1 = new List<PictureBox>(pBoxes1);
+                    List<SizeablePictureBox> pbList1 = new List<SizeablePictureBox>(pBoxes1);
                     List<Information> work1 = new List<Information>();
 
                     // This is created so the string values are stored in the list Information
                     for (int i = 0; i < pbList1.Count; i++)
                     {
-                        MemoryStream ms = new MemoryStream();
+                       /* MemoryStream ms = new MemoryStream();
                         pBoxes1[i].Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
                         Byte[] a = ms.ToArray();
 
-                        String text = Convert.ToBase64String(a);
+                        String text = Convert.ToBase64String(a);*/
                         try
                         {
                             Information go1 = new Information();
-                            go1.Componentpic = text;
-                            go1.Bitsofcomponents = (string[])pBoxes1[i].Tag;
-                            go1.Componentname = pBoxes1[i].Name;
+                            go1.Componentvalue = pBoxes1[i].Componentval;
+                            go1.ComponentIden = (string[])pBoxes1[i].Tag;
+                            go1.Bitsofcomponents = pBoxes1[i].Bitsofcomponents;
                             go1.Piclocx = pBoxes1[i].Location.X.ToString();
                             go1.Piclocy = pBoxes1[i].Location.Y.ToString();
                             work1.Add(go1);
@@ -720,26 +726,26 @@ namespace testsim
             }
 
             //This gets a collection of controls in this form and places them in an array
-            var pBoxes = this.Controls.OfType<PictureBox>().ToArray();
+            var pBoxes = this.Controls.OfType<SizeablePictureBox>().ToArray();
 
             //This creates a list which passes the values of pBoxes to it
-            List<PictureBox> pbList = new List<PictureBox>(pBoxes);
+            List<SizeablePictureBox> pbList = new List<SizeablePictureBox>(pBoxes);
             List<Information> work = new List<Information>();
 
             // This is created so the string values are stored in the list Information
             for (int i = 0; i < pbList.Count; i++)
             {
-                MemoryStream ms = new MemoryStream();
+               /* MemoryStream ms = new MemoryStream();
                 pBoxes[i].Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
                 Byte[] a = ms.ToArray();
 
-                String text = Convert.ToBase64String(a);
+                String text = Convert.ToBase64String(a);*/
                 try
                 {
                     Information go1 = new Information();
-                    go1.Componentpic = text;
-                    go1.Bitsofcomponents = (string[])pBoxes[i].Tag;
-                    go1.Componentname = pBoxes[i].Name;
+                    go1.Componentvalue = pBoxes[i].Componentval;
+                    go1.ComponentIden = (string[])pBoxes[i].Tag;
+                    go1.Bitsofcomponents = pBoxes[i].Bitsofcomponents;
                     go1.Piclocx = pBoxes[i].Location.X.ToString();
                     go1.Piclocy = pBoxes[i].Location.Y.ToString();
                     work.Add(go1);
@@ -778,16 +784,21 @@ namespace testsim
                         rx = Int32.Parse(goy[i].Piclocx);
                         ry = Int32.Parse(goy[i].Piclocy);
 
-                        byte[] imagebytes = Convert.FromBase64String(f);
+                      /*  byte[] imagebytes = Convert.FromBase64String(f);
                         //
                         MemoryStream ms = new MemoryStream(imagebytes, 0, imagebytes.Length);
                         ms.Write(imagebytes, 0, imagebytes.Length);
-                        Image image = Image.FromStream(ms, true);
-                        PictureBox pb = new PictureBox();
+                        Image image = Image.FromStream(ms, true);*/
+                        SizeablePictureBox pb = new SizeablePictureBox();
 
-                        pb.Image = image;
-                        pb.Name = goy[i].Componentname;
-                        pb.Tag = goy[i].Bitsofcomponents;
+                       // pb.Image = image;
+                       // pb.Name = goy[i].Componentname;
+                        pb.Tag = goy[i].ComponentIden;
+                        pb.Componentval = goy[i].Componentvalue;
+                        pb.Bitsofcomponents = goy[i].Bitsofcomponents;
+                        GettingPaintevent gpe = new GettingPaintevent();
+                        gpe.painting(pb);
+                        pb.Click += new EventHandler(PictureBox_Click);
                         pb.SizeMode = PictureBoxSizeMode.Normal;
                         pb.Location = new Point(rx, ry);
                         pb.MouseMove += new MouseEventHandler(pb_MouseMove);
@@ -824,26 +835,26 @@ namespace testsim
 
                 }
                 //This gets a collection of controls in this form and places them in an array
-                var pBoxes = this.Controls.OfType<PictureBox>().ToArray();
+                var pBoxes = this.Controls.OfType<SizeablePictureBox>().ToArray();
 
                 //This creates a list which passes the values of pBoxes to it
-                List<PictureBox> pbList = new List<PictureBox>(pBoxes);
+                List<SizeablePictureBox> pbList = new List<SizeablePictureBox>(pBoxes);
                 List<Information> work = new List<Information>();
 
                 // This is created so the string values are stored in the list Information
                 for (int i = 0; i < pbList.Count; i++)
                 {
-                    MemoryStream ms = new MemoryStream();
+                   /* MemoryStream ms = new MemoryStream();
                     pBoxes[i].Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
                     Byte[] a = ms.ToArray();
 
-                    String text = Convert.ToBase64String(a);
+                    String text = Convert.ToBase64String(a);*/
                     try
                     {
                         Information go1 = new Information();
-                        go1.Componentpic = text;
-                        go1.Bitsofcomponents = (string[])pBoxes[i].Tag;
-                        go1.Componentname = pBoxes[i].Name;
+                        go1.Componentvalue = pBoxes[i].Componentval;
+                        go1.ComponentIden = (string[])pBoxes[i].Tag;
+                        go1.Bitsofcomponents = pBoxes[i].Bitsofcomponents;
                         go1.Piclocx = pBoxes[i].Location.X.ToString();
                         go1.Piclocy = pBoxes[i].Location.Y.ToString();
                         work.Add(go1);
@@ -899,26 +910,26 @@ namespace testsim
 
                         }
                         //This gets a collection of controls in this form and places them in an array
-                        var pBoxes1 = this.Controls.OfType<PictureBox>().ToArray();
+                        var pBoxes1 = this.Controls.OfType<SizeablePictureBox>().ToArray();
 
                         //This creates a list which passes the values of pBoxes to it
-                        List<PictureBox> pbList1 = new List<PictureBox>(pBoxes1);
+                        List<SizeablePictureBox> pbList1 = new List<SizeablePictureBox>(pBoxes1);
                         List<Information> work1 = new List<Information>();
 
                         // This is created so the string values are stored in the list Information
                         for (int i = 0; i < pbList1.Count; i++)
                         {
-                            MemoryStream ms = new MemoryStream();
+                           /* MemoryStream ms = new MemoryStream();
                             pBoxes1[i].Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
                             Byte[] a = ms.ToArray();
 
-                            String text = Convert.ToBase64String(a);
+                            String text = Convert.ToBase64String(a);*/
                             try
                             {
                                 Information go1 = new Information();
-                                go1.Componentpic = text;
-                                go1.Bitsofcomponents = (string[])pBoxes1[i].Tag;
-                                go1.Componentname = pBoxes1[i].Name;
+                                go1.Componentvalue = pBoxes1[i].Componentval;
+                                go1.ComponentIden = (string[])pBoxes1[i].Tag;
+                                go1.Bitsofcomponents = pBoxes1[i].Bitsofcomponents;
                                 go1.Piclocx = pBoxes1[i].Location.X.ToString();
                                 go1.Piclocy = pBoxes1[i].Location.Y.ToString();
                                 work1.Add(go1);
@@ -944,26 +955,26 @@ namespace testsim
 
 
                     //This gets a collection of controls in this form and places them in an array
-                    var pBoxes = this.Controls.OfType<PictureBox>().ToArray();
+                    var pBoxes = this.Controls.OfType<SizeablePictureBox>().ToArray();
 
                     //This creates a list which passes the values of pBoxes to it
-                    List<PictureBox> pbList = new List<PictureBox>(pBoxes);
+                    List<SizeablePictureBox> pbList = new List<SizeablePictureBox>(pBoxes);
                     List<Information> work = new List<Information>();
 
                     // This is created so the string values are stored in the list Information
                     for (int i = 0; i < pbList.Count; i++)
                     {
-                        MemoryStream ms = new MemoryStream();
+                       /* MemoryStream ms = new MemoryStream();
                         pBoxes[i].Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
                         Byte[] a = ms.ToArray();
 
-                        String text = Convert.ToBase64String(a);
+                        String text = Convert.ToBase64String(a);*/
                         try
                         {
                             Information go1 = new Information();
-                            go1.Componentpic = text;
-                            go1.Bitsofcomponents = (string[])pBoxes[i].Tag;
-                            go1.Componentname = pBoxes[i].Name;
+                            go1.Componentvalue = pBoxes[i].Componentval;
+                            go1.ComponentIden = (string[])pBoxes[i].Tag;
+                            go1.Bitsofcomponents = pBoxes[i].Bitsofcomponents;
                             go1.Piclocx = pBoxes[i].Location.X.ToString();
                             go1.Piclocy = pBoxes[i].Location.Y.ToString();
                             work.Add(go1);
@@ -1099,7 +1110,7 @@ namespace testsim
                     pBoxes[i].MouseEnter -= new EventHandler(pb_MouseEnter);
                     pBoxes[i].Cursor = Cursors.Arrow;
                     pBoxes[i].MouseLeave -= new EventHandler(pb_MouseLeave);
-                    pBoxes[i].MouseMove -= new MouseEventHandler(pb_MouseMove);
+                  //  pBoxes[i].MouseMove -= new MouseEventHandler(pb_MouseMove);
                     pBoxes[i].MouseDown -= new MouseEventHandler(pb_MouseDown);
                     pBoxes[i].MouseUp -= new MouseEventHandler(pb_MouseButtonUp);
                     pBoxes[i].ContextMenuStrip = null;
@@ -1132,7 +1143,7 @@ namespace testsim
                 pBoxes[i].Cursor = Cursors.SizeAll;
                 pBoxes[i].MouseEnter += new EventHandler(pb_MouseEnter);
                 pBoxes[i].MouseLeave += new EventHandler(pb_MouseLeave);
-                pBoxes[i].MouseMove += new MouseEventHandler(pb_MouseMove);
+              //  pBoxes[i].MouseMove += new MouseEventHandler(pb_MouseMove);
                 pBoxes[i].MouseDown += new MouseEventHandler(pb_MouseDown);
                 pBoxes[i].MouseUp += new MouseEventHandler(pb_MouseButtonUp);
                 pBoxes[i].ContextMenuStrip = contextMenuStrip1;
@@ -1142,6 +1153,7 @@ namespace testsim
 
             simstart = false;
             MakeBackgroundGrid();
+            
         }
 
         //Copy
@@ -1149,6 +1161,27 @@ namespace testsim
         {
 
             copy = true;
+            var checkborder = this.Controls.OfType<SizeablePictureBox>().ToList();
+            for (int i = 0; i < checkborder.Count; i++)
+            {
+                if (checkborder[i].BorderStyle == BorderStyle.Fixed3D)
+                {
+                    checkborder[i].BorderStyle = BorderStyle.None;
+                    SizeablePictureBox pb = new SizeablePictureBox();
+                     pb.Width = checkborder[i].Width;
+                    pb.Height = checkborder[i].Height;
+                    pb.Tag = checkborder[i].Tag;
+                    pb.Bitsofcomponents = checkborder[i].Bitsofcomponents;
+                    pb.Componentval = checkborder[i].Componentval;
+                    var eventsField = typeof(Component).GetField("events", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+                    var eventHandlerList = eventsField.GetValue(checkborder[i]);
+                    eventsField.SetValue(pb, eventHandlerList);
+                    copypic = pb;
+                    checkborder[i].BorderStyle = BorderStyle.Fixed3D;
+                }
+
+            }
+
             // PictureBox pb = (PictureBox)gl;
         }
 
@@ -1160,21 +1193,31 @@ namespace testsim
             {
 
 
-                PictureBox pb = (PictureBox)gl;
-                PictureBox kl = new PictureBox();
+                SizeablePictureBox pb = (SizeablePictureBox)copypic;
+                SizeablePictureBox kl = new SizeablePictureBox();
                 var eventsField = typeof(Component).GetField("events", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
                 var eventHandlerList = eventsField.GetValue(pb);
                 eventsField.SetValue(kl, eventHandlerList);
+
                 kl.Left = x;
                 kl.Top = y;
                 kl.Name = pb.Name;
-              /*  kl.MouseMove += new MouseEventHandler(pb_MouseMove);
-                kl.MouseDown += new MouseEventHandler(pb_MouseDown);
-                kl.MouseUp += new MouseEventHandler(pb_MouseButtonUp);*/
+                kl.Width = pb.ClientSize.Width;
+                kl.Height = pb.ClientSize.Height;
+                
+                kl.Tag = pb.Tag;
+                kl.Componentval = pb.Componentval;
+                kl.Bitsofcomponents = pb.Bitsofcomponents;
+              
+              //  kl.SizeMode = PictureBoxSizeMode.Normal;
                 kl.Cursor = Cursors.SizeAll;
                 kl.ContextMenuStrip = contextMenuStrip1;
+                /*  kl.MouseMove += new MouseEventHandler(pb_MouseMove);
+                  kl.MouseDown += new MouseEventHandler(pb_MouseDown);
+                  kl.MouseUp += new MouseEventHandler(pb_MouseButtonUp);*/
+                
                 Controls.Add(kl);
-                kl.Update();
+                kl.Refresh();
                 copy = false;
 
             }
@@ -1305,7 +1348,7 @@ namespace testsim
              
         private void FormClick(object sender, EventArgs e)
         {
-            var formclickcheck = this.Controls.OfType<PictureBox>().ToList();
+            var formclickcheck = this.Controls.OfType<SizeablePictureBox>().ToList();
 
             for(int i = 0; i < formclickcheck.Count; i++)
             {
